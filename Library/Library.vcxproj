@@ -43,7 +43,7 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -147,11 +147,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CBaseEntity.h" />
+    <ClInclude Include="CDotaPlayer.h" />
+    <ClInclude Include="CEngineClient.h" />
+    <ClInclude Include="CEntitySystem.h" />
+    <ClInclude Include="CEventManager.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="CSource2Client.h" />
+    <ClInclude Include="definitions.h" />
+    <ClInclude Include="IAppSystem.h" />
+    <ClInclude Include="IInputSystem.h" />
+    <ClInclude Include="Library.h" />
+    <ClInclude Include="SDK.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="vector.h" />
+    <ClInclude Include="vmt.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="EventHooks.cpp" />
     <ClCompile Include="Library.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

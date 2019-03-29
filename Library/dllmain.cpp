@@ -1,10 +1,20 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
 #include "stdafx.h"
+#include "Library.h"
+using namespace std;
 
-DWORD WINAPI ThreadEntry(LPVOID lpvReserved)
+ClientLoader client;
+EngineLoader engine;
+
+void ThreadEntry(HMODULE hInstance)
 {
-	MessageBox(NULL, TEXT("uwu"), TEXT("Thread Started"),
-		MB_OK); return NULL;
+	cout << "[Dotka Library] Injection <OK>, Handle <" << hInstance << ">\n";
+	ClientLoader client = ClientLoader(); EngineLoader engine = EngineLoader();
+	// Event System VMT
+	eventsVMT = new VMT(client.events); eventsVMT->HookVM(FireEvent, 8);
+	eventsVMT->HookVM(FireEventClientSide, 9); eventsVMT->ApplyVMT();
+	// Finished
+	cout << "[Dotka Library] Routines <OK>, Exiting...\n";
 }
 
 BOOL APIENTRY DllMain(
@@ -12,15 +22,14 @@ BOOL APIENTRY DllMain(
 	DWORD fdwReason,
 	LPVOID lpvReserved
 ) {
-	if (hInstance) 
-		DisableThreadLibraryCalls(hInstance);
+	AllocConsole(); 
+	DisableThreadLibraryCalls(hInstance);
+	BindCrtHandlesToStdHandles(true, true, true); 
     switch (fdwReason)
     {
     case DLL_PROCESS_ATTACH:
-		if (!CreateThread(0, 0, ThreadEntry, lpvReserved, 0, 0)) {
-			MessageBox(NULL, TEXT("idk lol"), TEXT("Thread Error"), 
-				MB_OK | MB_ICONERROR); return FALSE;
-		} else break;
+		CreateThread(0, 0, (LPTHREAD_START_ROUTINE)
+			ThreadEntry, hInstance, 0, 0); break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
     case DLL_PROCESS_DETACH:
@@ -28,4 +37,3 @@ BOOL APIENTRY DllMain(
     }
     return TRUE;
 }
-
