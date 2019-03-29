@@ -50,11 +50,10 @@ ClientLoader::ClientLoader() : ModuleSystem("client.dll")
 		if (auto pEntity = entities->GetBaseEntity(EntityIndex)){
 			const char* EntityClass = pEntity->Schema_DynamicBinding()->bindingName;
 			printf("[+] pEntity: %p , %i , %s\n", pEntity, EntityIndex, EntityClass);
-			cout << "Name: " << ((CDotaPlayer*)pEntity)->C_DOTAPlayer__GetPlayerName() << endl;
 		} 
 	// Shit
 	events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 13) + 0x2C, 3));
-	cout << "[" << module << "] CGameEventManager found at " << entities << endl;
+	cout << "[" << module << "] CGameEventManager found at " << events << endl;
 }
 
 EngineLoader::EngineLoader() : ModuleSystem("engine2.dll")

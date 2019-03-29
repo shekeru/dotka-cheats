@@ -184,7 +184,7 @@ public:
 	virtual CBaseEntity* C_BasePlayer__FindPickerEntity(void);                 // ^^
 	virtual void C_BasePlayer__FindEntityInheritingFromForward(void* CSchemaClassBindingBase);
 	virtual void C_DOTAPlayer__FindPickerEntityInheritingFrom(void* CSchemaClassBindingBase);
-	virtual void C_DOTAPlayer__ProcessMouseclick(void* button, bool unk, bool unk2);
+	virtual void C_DOTAPlayer__ProcessMouseclick(ButtonCode_t button, bool unk, bool unk2);
 	virtual void C_DotaPlayer__PrepareUnitOrders(DotaUnitOrder_t order, int entHandle, Vector movePosition, int abilityIndex, PlayerOrderIssuer_t orderIssuer, void* entity, OrderQueueBehavior_t queueBehavior, bool showEffects);
 	virtual void* C_DOTAPlayer__GetValidCursor(void);
 	virtual bool C_DOTAPlayer__ShouldRegenerateOriginFromCellBits(void);

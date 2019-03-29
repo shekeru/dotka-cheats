@@ -38,20 +38,51 @@ enum DOTATeam_t : int {
 	DOTA_TEAM_COUNT = 14
 };
 
+inline int FindDataMapElementOffset(Datamap *dMap, const char *element) {
+	while (dMap) {
+		for (uint64_t i = 0; i < dMap->numFields; i++) {
+			if (!dMap->dataDesc[i].fieldName)
+				continue;
+
+			if (!strcmp(dMap->dataDesc[i].fieldName, element))
+				return dMap->dataDesc[i].fieldOffset[TD_OFFSET_NORMAL];
+
+			if (dMap->dataDesc[i].type == FIELD_EMBEDDED) {
+				if (dMap->dataDesc[i].td) {
+
+					int temp = FindDataMapElementOffset(dMap->dataDesc[i].td, element);
+					if (temp != 0)
+						return temp;
+				}
+			}
+		}
+		dMap = dMap->baseMap;
+	} return 0;
+}
+
 class CBaseEntity
 {
 public:
 	inline const DOTATeam_t GetTeam()
 	{
-		static bool bFirst = true;
-		static int offset = 0;
-		if (bFirst) {
-			bFirst = false;
-		}
-		if (!offset) {
+		static int offset = FindDataMapElementOffset(this->GetPredDescMap(), "m_iTeamNum");
+		if (!offset) 
 			return DOTA_TEAM_INVALID;
-		}
-		return *(DOTATeam_t *)(((uintptr_t)this) + offset);
+		return *(DOTATeam_t*)(((uintptr_t)this) + offset);
+	}
+	inline QAngle* const GetNetworkAngles()
+	{
+
+		return NULL;
+	}
+	inline Vector* const GetNetworkOrigin()
+	{
+
+		return NULL;
+	}
+	inline const int GetOwnerID()
+	{
+		return NULL;
 	}
 	virtual CSchemaClassBinding* Schema_DynamicBinding(void);
 	virtual void DESTROY();
@@ -82,11 +113,11 @@ public:
 	virtual void sub_26F4ED0();
 	virtual void sub_26F4EE0();
 	virtual void* C_BaseAnimating__GetDataDescMap(void); // C_BaseAnimatingOverlay::m_DataMap
-	virtual void* C_DOTAPlayer__GetPredDescMap(void);
+	virtual Datamap* GetPredDescMap(void);
 	virtual void* C_BaseModelEntity__GetCollideable(void);
 	virtual void* C_BaseEntity__GetPredictionCopyable(void);
 	virtual void YouForgotToImplementOrDeclareClientClass();
-	virtual void* C_DOTAPlayer__GetClientClass(void);
+	virtual ClientClass* C_DOTAPlayer__GetClientClass(void);
 	virtual void C_BaseModelEntity__SpawnShared(void* CEntityKeyValues);
 	virtual void C_BaseModelEntity__PopulatePoseParameters(void);
 	virtual void C_BasePlayer__PreFirstNetworkUpdate(void);
@@ -187,7 +218,6 @@ public:
 	virtual void C_BaseEntity__EstimateAbsVelocity(Vector &out);
 	virtual bool C_BaseEntity__CanBePoweredUp(void);
 	virtual void C_BaseEntity__AttemptToPowerup(int unk, float unk2, float unk3, void* C_BaseEntity, void* CDamageModifier);
-	virtual bool C_BaseEntity__IsCurrentlyTouching(void);
 	virtual void C_BaseEntity__StartTouch(void* C_BaseEntity);
 	virtual void C_BaseEntity__Touch(void* C_BaseEntity);
 	virtual void C_BaseEntity__EndTouch(void* C_BaseEntity);
@@ -212,7 +242,7 @@ public:
 	virtual bool C_BaseEntity__ShouldDrawWaterImpacts(void);
 	virtual bool C_BaseEntity__ShouldDrawUnderwaterBulletBubbles(void);
 	virtual void sub_273F850();
-	virtual void C_BaseCombatCharacter__BloodColor(void);
+	virtual void* C_BaseCombatCharacter__BloodColor(void);
 	virtual bool C_DOTAPlayer__IsPlayer(void);
 	virtual bool C_BaseEntity__IsHMDAvatar(void);
 	virtual void sub_26F5350();

@@ -8,10 +8,12 @@ using namespace std;
 
 bool FireEvent(CGameEventManager *thisptr, CGameEvent *event, bool opts) {
 	if (!strcmp(event->GetName(), "dota_player_kill")) {
-		cout << "Player death! " << event->GetInt("victim_userid") << endl;
-		cout << "entity ID: " <<
-			client.entities->GetBaseEntity(event->GetInt("victim_userid") + 1) 
-			<< endl;
+		int playerId = event->GetInt("victim_userid"); CDotaPlayer* victim =
+			(CDotaPlayer*) client.entities->GetBaseEntity(playerId + 1);
+		cout << "Player death! " << victim << endl;
+		cout << " [+] Team: " << victim->C_BaseEntity__GetPlayerName() << endl;
+		//cout << "\tName: " << victim->GetPlayerName() << endl;
+		//cout << "\tName: " << victim->GetCharacterDisplayName() << endl;
 	}
 	return eventsVMT->GetOriginalMethod<FireEventFn>(8)(thisptr, event, opts);
 }
