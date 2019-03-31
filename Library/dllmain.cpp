@@ -8,13 +8,13 @@ EngineLoader engine;
 
 void ThreadEntry(HMODULE hInstance)
 {
-	cout << "[Dotka Library] Injection <OK>, Handle <" << hInstance << ">\n";
+	cout << "Thread Started <OK>, Handle Address: " << hInstance << "\n\n";
 	ClientLoader client = ClientLoader(); EngineLoader engine = EngineLoader();
 	// Event System VMT
-	eventsVMT = new VMT(client.events); eventsVMT->HookVM(FireEvent, 8);
-	eventsVMT->HookVM(FireEventClientSide, 9); eventsVMT->ApplyVMT();
-	// Finished
-	cout << "[Dotka Library] Routines <OK>, Exiting...\n";
+	eventsVMT = new VMT(client.events); //eventsVMT->HookVM(FireEvent, 8);
+	eventsVMT->HookVM(FireEventClientSide, 8); eventsVMT->ApplyVMT();
+	// Finished 
+	cout << "System Init Finished <OK>, Exiting Startup Thread...\n\n";
 }
 
 BOOL APIENTRY DllMain(

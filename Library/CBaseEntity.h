@@ -2,7 +2,6 @@
 #include "common.h"
 #include "vector.h"
 
-
 enum OverlayFlags_t : unsigned long long
 {
 	BBOX = (1 << 2), //4
@@ -84,9 +83,8 @@ public:
 	{
 		return NULL;
 	}
-	virtual CSchemaClassBinding* Schema_DynamicBinding(void);
+	virtual CSchemaClassBinding* SchemaDynamicBinding(void); // 0?
 	virtual void DESTROY();
-	virtual void DESTROY2();
 	virtual int CEntityInstance__GetRefEHandle(void);
 	virtual void* C_BaseCombatCharacter__GetScriptDesc(void);
 	virtual void C_BaseFlex__Connect(void);
@@ -385,8 +383,5 @@ public:
 	virtual void C_BaseCombatCharacter__Weapon_OwnsThisType(const char*, int);
 	virtual void C_BaseCombatCharacter__Weapon_GetSlot(const char*, int);
 	virtual void C_BasePlayer__Weapon_Switch(void* C_BaseCombatWeapon, int);
-	virtual void C_BaseCombatCharacter__GetActiveWeapon() = 0;
-	virtual void sub_2863F20();
-	virtual void sub_2A5D600();
-	virtual void sub_2A5D650();
+	virtual void C_BaseCombatCharacter__GetActiveWeapon() = 0; // 303
 };

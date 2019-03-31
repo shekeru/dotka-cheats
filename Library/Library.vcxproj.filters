@@ -70,6 +70,9 @@
     <ClInclude Include="CDotaPlayer.h">
       <Filter>SDK Files\EntitySystem</Filter>
     </ClInclude>
+    <ClInclude Include="CDotaBaseNPC.h">
+      <Filter>SDK Files\EntitySystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Library.cpp">

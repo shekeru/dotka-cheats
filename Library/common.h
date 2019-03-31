@@ -63,3 +63,25 @@ struct CSchemaClassBinding {
 	const char* dllName; // ex: libclient.so
 	const char* libName; // ex: client
 };
+
+class TypeDescription;
+
+class Datamap
+{
+public:
+	TypeDescription *dataDesc;
+	uint64_t numFields;
+	const char *className; // Ex: C_DOTAPlayer
+	Datamap *baseMap; // Ex: For C_DOTAPlayer it would be next baseclass C_BasePlayer, can be NULL
+};
+
+class TypeDescription
+{
+public:
+	fieldtype_t type;
+	const char *fieldName;
+	int fieldOffset[TD_OFFSET_COUNT];
+	void *_unk[5];
+	Datamap * td;
+	void *_unk2[5];
+};

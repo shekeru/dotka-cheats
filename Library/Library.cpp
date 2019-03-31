@@ -10,22 +10,22 @@ interface* ModuleSystem::LoadInterface(LPCSTR name)
 {
 	auto GetInterface = reinterpret_cast<void* (*)(LPCSTR, int)>(CreateInterface);
 	interface* pointer = reinterpret_cast<interface*>(GetInterface(name, 0));
-	cout << "[" << module << "] Loaded symbol <" << name << "> at " 
-		<< pointer << endl; return pointer;
+	cout << "  [-] " << name << ": " << pointer << endl; 
+	return pointer;
 }
 
 ModuleSystem::ModuleSystem(LPCSTR module)
 {
-	cout << "["<<module<<"] Loaded with handle " << 
-		(library = GetModuleHandle(module)) 
-	<< endl; CreateInterface = (uintptr_t) GetProcAddress(library, "CreateInterface");
-	cout << "["<<module<<"] CreateInterface found at " << hex << CreateInterface << endl; 
+	cout << "Module \""<< (this->module = module) <<"\" loaded with handle " 
+		<< hex << (library = GetModuleHandle(module)) << endl; 
+	CreateInterface = (uintptr_t) GetProcAddress(library, "CreateInterface");
+	cout << " [+] CreateInterface: " << hex << CreateInterface << endl; 
+	// Idk what this was for
 	InterfaceList = *reinterpret_cast<InterfaceReg**>(GetAbsoluteAddress(CreateInterface, 3));
 	/*for (InterfaceReg* current = InterfaceList; current; current = current->m_pNext)
 		printf("\t%s => 0x%llx\n", current->m_pName, current->m_CreateFn());*/
-	this->module = module;
+	
 }
-
 
 ModuleSystem::~ModuleSystem()
 {
@@ -42,25 +42,26 @@ ClientLoader::ClientLoader() : ModuleSystem("client.dll")
 	//	sub_18011BFB0 + 4B     FF 15 3F 19 43 01     call    cs : Msg
 	//	sub_18011BFB0 + 51     48 8B 0D 70 1C 5A + mov     rcx, cs : g_CGameEntitySystem
 	entities = *reinterpret_cast<CGameEntitySystem**>(GetAbsoluteAddress((uintptr_t)library + 0x11c001, 3));
-	cout << "[" << module << "] CEntitySystem found at " << entities << endl;
+	cout << " [+] CEntitySystem: " << entities << endl;
 	//cout << "TYPE: " << test->GetBaseEntity(1)->Schema_DynamicBinding()->bindingName << endl;
 	//cout << "HIGHEST: " << test->GetHighestEntityIndex() << endl;
-	//for (int EntityIndex = 0; EntityIndex <= entities->GetHighestEntityIndex(); EntityIndex++)
-	for (int EntityIndex = 0; EntityIndex <= 10; EntityIndex++)
+	for (int EntityIndex = 0; EntityIndex <= entities->GetHighestEntityIndex(); EntityIndex++)
 		if (auto pEntity = entities->GetBaseEntity(EntityIndex)){
-			const char* EntityClass = pEntity->Schema_DynamicBinding()->bindingName;
-			printf("[+] pEntity: %p , %i , %s\n", pEntity, EntityIndex, EntityClass);
+			const char* EntityClass = pEntity->SchemaDynamicBinding()->bindingName;
+			printf("  [-] pEntity: %p , %i , %s\n", pEntity, EntityIndex, EntityClass);
 		} 
 	// Shit
 	events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 13) + 0x2C, 3));
-	cout << "[" << module << "] CGameEventManager found at " << events << endl;
+	cout << " [+] CGameEventManager: " << events << endl;
+	cout << endl;
 }
 
 EngineLoader::EngineLoader() : ModuleSystem("engine2.dll")
 {
 	DWORD index = 0;
-	engine = LoadInterface<CEngineClient>("Source2EngineToClient001");
+	client = LoadInterface<CEngineClient>("Source2EngineToClient001");
 	//cout << "GetLocalPlayer: " << (*(FARPROC**)engine)[22] << endl;
 	//cout << "RETURN: " << engine->GetLocalPlayer(&index, 0) << endl;
 	//cout << "INDEX: " << index << endl;
+	cout << endl;
 }

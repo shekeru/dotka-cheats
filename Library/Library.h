@@ -27,7 +27,7 @@ public:
 class EngineLoader : ModuleSystem
 {
 public:
-	CEngineClient* engine;
+	CEngineClient* client;
 	EngineLoader();
 };
 

@@ -30,7 +30,7 @@ public:
 	virtual bool IsEmpty(char const* keyname = NULL) = 0;
 
 	virtual bool GetBool(char const* keyname = NULL, bool defaultValue = false) = 0; // 6
-	virtual int GetInt(char const* keyname = NULL, int defaultValue = 0) = 0;
+	virtual int GetInt(char const* keyname = NULL, int defaultValue = 0) = 0; //7
 	virtual uint64_t GetUint64(char const* keyname = NULL, uint64_t DefaultValue = 0) = 0;
 	virtual float GetFloat(char const* keyname = NULL, float defaultValue = 0.0f) = 0;
 	virtual const char* GetString(char const* keyname = NULL, char const* defaultValue = NULL) = 0;
@@ -58,7 +58,6 @@ class CGameEventListener2
 class CGameEventManager
 {
 	virtual void DESTROY() = 0; // 0
-	virtual void DESTROY2() = 0;
 	virtual int LoadEventsFromFile(const char *filename) = 0;
 	virtual void Reset(void) = 0; // 3
 	virtual bool AddListener(CGameEventListener2 *listener, const char *eventName, bool serverSide) = 0;

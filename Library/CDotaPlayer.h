@@ -55,16 +55,7 @@ enum OrderQueueBehavior_t : int {
 // find PrepareUnitOrders with "particles/ui_mouseactions/waypoint_flag.vpcf"
 class CDotaPlayer : public CBaseEntity
 {
-public:
-	virtual void sub_2A5EB10(); // 313
-	virtual void sub_2A5EB11();
-	virtual void sub_2A5EB12();
-	virtual void sub_2A5EB13();
-	virtual void sub_2A5EB14();
-	virtual void sub_2A5EFEF();
-	virtual void sub_2A5EFE0();
-	virtual void sub_2A5F750();
-	virtual void sub_285FCF0();
+public: //wtf were those LWSS
 	virtual void C_BasePlayer__OnAmmoCountChanged(int unk, unsigned int unk2, unsigned int unk3);
 	virtual void C_BasePlayer__OnWearablesChanged(void);
 	virtual void C_BasePlayer__OnBecomeLocalPlayer(void);
@@ -73,7 +64,7 @@ public:
 	virtual void C_BasePlayer__CalcRoll(const QAngle& angles, const Vector& velocity, float rollangle, float rollspeed);
 	virtual bool C_BasePlayer__IsInThirdPersonView(void);
 	virtual void C_BasePlayer__SetPlayerUnderwater(bool underwater);
-	virtual void C_BasePlayer__PlayWadeSound(void);
+	virtual void C_BasePlayer__PlayWadeSound(void); //ok till here
 	virtual void* C_BasePlayer__ActivePlayerCombatCharacter(void);
 	virtual void sub_2A5DCC0();
 	virtual void sub_2A5DCA0();
@@ -137,8 +128,8 @@ public:
 	virtual void ViewPunch(const QAngle& out);
 	virtual void sub_2C8F980(); // added late June 2018, takes 2 args, sets them in class.
 	virtual void C_BasePlayer__OverrideView(void* CViewSetup);
-	virtual const char* C_DOTAPlayer__GetPlayerName(void);
-	virtual const char* C_BasePlayer__GetCharacterDisplayName(void);
+	virtual const char* GetPlayerName(void); // ce: 372+1, rel: 81
+	virtual const char* GetCharacterDisplayName(void);
 	virtual Vector* C_BasePlayer__GetPlayerMins(void);
 	virtual Vector* C_BasePlayer__GetPlayerMaxs(void);
 	virtual void* C_DOTAPlayer__GetPlayerColor(void);

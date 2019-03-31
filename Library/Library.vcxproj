@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CBaseEntity.h" />
+    <ClInclude Include="CDotaBaseNPC.h" />
     <ClInclude Include="CDotaPlayer.h" />
     <ClInclude Include="CEngineClient.h" />
     <ClInclude Include="CEntitySystem.h" />
