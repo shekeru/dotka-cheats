@@ -12,7 +12,6 @@ bool FireEventClientSide(CGameEventManager *thisptr, CGameEvent *event) {
 		cout << "Player Death Event: " << victim << endl;
 		cout << " [+] BindingName: " << victim->SchemaDynamicBinding()->bindingName << endl;
 		cout << " [+] PlayerName: " << victim->GetPlayerName() << endl;
-		cout << " [+] Is Same Team: " << victim->C_BaseEntity__InLocalTeam() << endl;
 		// try to find
 		for (int EntityIndex = 0; EntityIndex <= client.entities->GetHighestEntityIndex(); EntityIndex++)
 			if (auto entity = client.entities->GetBaseEntity(EntityIndex))
@@ -24,10 +23,13 @@ bool FireEventClientSide(CGameEventManager *thisptr, CGameEvent *event) {
 					Datamap* pred = hero->GetPredDescMap();
 					cout << " [+] PreDescMap: " << pred << endl;
 					cout << "  [-] MapLength: " << pred->numFields << endl;
-					cout << " [+] CurrentMana: " << hero->GetMana() << endl;
-					cout << " [+] GetMaxMana: " << hero->GetMaxMana() << endl;
+					cout << " [+] Health: " << hero->C_BaseEntity__GetHealth()
+						<< " / " << hero->C_BaseEntity__GetMaxHealth() << endl;
+					cout << " [+] Mana: " << hero->GetMana() << " / " 
+						<< hero->GetMaxMana() << endl;
 					cout << " [+] PlayerOwner: " << victim << " | " << hero->GetPlayerOwner() 
 						<< " ==> " << hero->GetPlayerOwnerID() << endl;
+					cout << " [+] Is Same Team: " << hero->C_BaseEntity__InLocalTeam() << endl;
 					cout << " [+] Damages: " << dec << hero->C_DOTA_BaseNPC__GetDamageMin()
 						<< " - " << hero->C_DOTA_BaseNPC__GetDamageMax() << endl;
 				}		

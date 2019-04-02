@@ -88,43 +88,41 @@ public:
 	virtual int CEntityInstance__GetRefEHandle(void);
 	virtual void* C_BaseCombatCharacter__GetScriptDesc(void);
 	virtual void C_BaseFlex__Connect(void);
-	virtual void PreCache() = 0;
+	virtual void PreCache() = 0; // 5
 	virtual void C_BaseAnimating__AddedToEntityDatabase(void);
 	virtual void C_DOTAPlayer__Spawn(void* CEntityKeyValues);
 	virtual void C_DOTAPlayer__PostDataUpdate(int DataUpdateType_t);
 	virtual void C_BaseFlex__Activate(void);
-	virtual void C_BasePlayer__UpdateOnRemove(void);
+	virtual void C_BasePlayer__UpdateOnRemove(void); // 10
 	virtual void C_BaseAnimating__OnSetDormant(void);
 	virtual void C_BasePlayer__PreDataUpdate(int DataUpdateType_t);
 	virtual void C_BaseEntity__DrawEntityDebugOverlays(OverlayFlags_t flags);
 	virtual void C_BaseEntity__Save(void* ISave);
-	virtual void C_BaseEntity__Restore(void* IRestore);
+	virtual void C_BaseEntity__Restore(void* IRestore); // 15
 	virtual void C_BaseEntity__OnSave(void);
 	virtual void C_BasePlayer__OnRestore(void);
 	virtual void C_BaseEntity__ObjectCaps(void);
 	virtual int CEntityInstance__RequiredEdictIndex(void);
-	virtual void C_BaseEntity__NetworkStateChanged(void);
+	virtual void C_BaseEntity__NetworkStateChanged(void); // 20
 	virtual void C_BaseEntity__NetworkStateChanged2(unsigned int unk, int unk2, int ChangeAccessorFieldPathIndex_t);
 	virtual void sub_273BE20();
 	virtual void CEntityInstance__AddChangeAccessorPath(void* CFieldPath);
-	virtual void CEntityInstance__ReloadPrivateScripts(void);
+	virtual void CEntityInstance__ReloadPrivateScripts(void); // 24
 	virtual void sub_26F4ED0();
 	virtual void sub_26F4EE0();
 	virtual void* C_BaseAnimating__GetDataDescMap(void); // C_BaseAnimatingOverlay::m_DataMap
-	virtual Datamap* GetPredDescMap(void);
+	virtual Datamap* GetPredDescMap(void); // 28
 	virtual void* C_BaseModelEntity__GetCollideable(void);
-	virtual void* C_BaseEntity__GetPredictionCopyable(void);
+	virtual void* C_BaseEntity__GetPredictionCopyable(void); // 30
 	virtual void YouForgotToImplementOrDeclareClientClass();
 	virtual ClientClass* C_DOTAPlayer__GetClientClass(void);
 	virtual void C_BaseModelEntity__SpawnShared(void* CEntityKeyValues);
 	virtual void C_BaseModelEntity__PopulatePoseParameters(void);
-	virtual void C_BasePlayer__PreFirstNetworkUpdate(void);
-	virtual void* C_BaseModelEntity__GetBaseModelEntity(void);
+	virtual void C_BasePlayer__PreFirstNetworkUpdate(void); // 35
+	virtual void* C_BaseModelEntity__GetBaseModelEntity(void); 
 	virtual void* C_BaseModelEntity__GetBaseModelEntity2(void);
 	virtual void* C_BaseAnimating__GetBaseAnimating(void);
 	virtual void* C_BaseAnimating__GetBaseAnimating2(void);
-	virtual void sub_285FB30();
-	virtual void sub_285FB40();
 	virtual bool C_BasePlayer__Classify(void);
 	virtual void C_BaseEntity__ModifyEconParticles(int unk);
 	virtual bool C_BaseEntity__ShouldSavePhysics(void);
@@ -161,7 +159,7 @@ public:
 	virtual void C_BaseEntity__PredCopy_Tell(void);
 	virtual void C_BaseEntity__PredCopy_GetHeaderBlock(void* CFieldPath, unsigned int unk);
 	virtual void* C_BaseAnimating__GetMouth(void);
-	virtual void C_BaseEntity__GetSoundSpatialization(void* SpatializationInfo_t);
+	virtual void C_BaseEntity__GetSoundSpatialization(void* SpatializationInfo_t); // 83
 	virtual void C_BaseAnimating__LookupAttachment(const char* name);
 	virtual void C_BaseAnimating__GetAttachment(unsigned char, matrix3x4_t &);
 	virtual void C_BaseEntity__InvalidateAttachments(void);
@@ -182,30 +180,23 @@ public:
 	virtual bool C_DOTAPlayer__ShouldDraw(void);
 	virtual void C_DOTAPlayer__Simulate(void);
 	virtual void sub_2A97C00();
-	virtual void sub_2CDAE90();
-	virtual void sub_2CDAD10();
 	virtual void* C_BaseEntity__GetClientVehicle(void);
 	virtual void sub_26F5240();
 	virtual void C_BaseEntity__OverrideAlphaModulation(unsigned char alpha);
 	virtual void C_BaseEntity__OverrideShadowAlphaModulation(unsigned char alpha);
-	virtual void sub_26F5250();
-	virtual void loc_2A93EF0();
-	virtual void sub_2A7C7A0();
 	virtual void C_BaseModelEntity__Clear(void);
 	virtual long C_BaseEntity__GetTextureAnimationStartTime(void);
 	virtual bool C_BaseEntity__TextureAnimationWrapped(void);
 	virtual int C_BasePlayer__ShadowCastType(void);
 	virtual bool C_BasePlayer__ShouldReceiveProjectedTextures(int unk);
-	virtual void* sub_2A95330(); // added dec 7th 2018, returns pointer most likely
-	virtual void loc_2A7A330();
 	virtual void C_BaseEntity__OnTakeDamage(void* CTakeDamageInfo);
 	virtual void C_BaseEntity__TakeDamage(void* CTakeDamageInfo);
 	virtual void sub_26F57E0();
 	virtual void sub_2937C60();
-	virtual int C_BaseEntity__ClothSettingsTypeID(); // a guess
+	virtual int C_BaseEntity__ClothSettingsTypeID(); // ok, probs 110
 	virtual void sub_2907330();
 	virtual void* C_BasePlayer__GetPredictionOwner(void);
-	virtual void C_BaseEntity__InitPredictable(void* C_BasePlayer);
+	virtual void C_BaseEntity__InitPredictable(void* C_BasePlayer); // 113, ok to health
 	virtual void C_BaseAnimating__SetPredictable(bool predictable);
 	virtual void C_BaseEntity__DecalTrace(void* CGameTrace, const char* unk);
 	virtual void C_BaseEntity__ImpactTrace(void* CGameTrace, int unk, const char* unk2);
@@ -221,8 +212,8 @@ public:
 	virtual void C_BaseEntity__EndTouch(void* C_BaseEntity);
 	virtual void C_BaseEntity__Think(void);
 	virtual void sub_2CCC210();
-	virtual void C_BasePlayer__PhysicsSimulate(void);
 	virtual void qword_2B708B0();
+	virtual void C_BasePlayer__PhysicsSimulate(void);
 	virtual void C_BasePlayer__PhysicsSolidMaskForEntity(void);
 	virtual void* C_BaseEntity__ClothGetEntityInstanceSettings(void);
 	virtual void C_BaseEntity__NotifySystemEvent(void* C_BaseEntity, int notify_system_event_t, void* notify_system_event_params_t);
@@ -257,7 +248,7 @@ public:
 	virtual bool C_BaseEntity__IsSprite(void);
 	virtual int C_BaseEntity__GetMaxHealth(void);
 	virtual void C_BaseEntity__SetHealth(int health);
-	virtual int C_BaseEntity__GetHealth(void);
+	virtual int C_BaseEntity__GetHealth(void); // 165
 	virtual int C_BaseEntity__GetActualHealth(void);
 	virtual void C_BaseEntity__ModifyOrAppendCriteria(void* CResponseCriteriaSet);
 	virtual bool C_BaseEntity__WantSpawnCallOnPreData(void);
@@ -383,5 +374,14 @@ public:
 	virtual void C_BaseCombatCharacter__Weapon_OwnsThisType(const char*, int);
 	virtual void C_BaseCombatCharacter__Weapon_GetSlot(const char*, int);
 	virtual void C_BasePlayer__Weapon_Switch(void* C_BaseCombatWeapon, int);
-	virtual void C_BaseCombatCharacter__GetActiveWeapon() = 0; // 303
+	virtual void C_BaseCombatCharacter__GetActiveWeapon() = 0; // 303, added
+	virtual void* sub_2A95330(); // added dec 7th 2018, returns pointer most likely
+	virtual void loc_2A7A330();
+	virtual void sub_26F5250();
+	virtual void loc_2A93EF0();
+	virtual void sub_2A7C7A0(); // 5th
+	virtual void sub_285FB30();
+	virtual void sub_285FB40();
+	virtual void sub_2CDAE90();
+	virtual void sub_2CDAD10();
 };
