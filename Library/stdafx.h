@@ -10,6 +10,7 @@
 #include <iostream>
 #include <string>
 #include <fcntl.h>
+#include <ctime>
 #include <io.h>
 // reference additional headers your program requires here
 void BindCrtHandlesToStdHandles(bool bindStdIn, bool bindStdOut, bool bindStdErr);

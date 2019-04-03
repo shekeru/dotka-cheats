@@ -42,17 +42,9 @@ ClientLoader::ClientLoader() : ModuleSystem("client.dll")
 	//	sub_18011BFB0 + 4B     FF 15 3F 19 43 01     call    cs : Msg
 	//	sub_18011BFB0 + 51     48 8B 0D 70 1C 5A + mov     rcx, cs : g_CGameEntitySystem
 	entities = *reinterpret_cast<CGameEntitySystem**>(GetAbsoluteAddress((uintptr_t)library + 0x11c001, 3));
-	cout << " [+] CEntitySystem: " << entities << endl;
-	//cout << "TYPE: " << test->GetBaseEntity(1)->Schema_DynamicBinding()->bindingName << endl;
-	//cout << "HIGHEST: " << test->GetHighestEntityIndex() << endl;
-	for (int EntityIndex = 0; EntityIndex <= entities->GetHighestEntityIndex(); EntityIndex++)
-		if (auto pEntity = entities->GetBaseEntity(EntityIndex)){
-			const char* EntityClass = pEntity->SchemaDynamicBinding()->bindingName;
-			printf("  [-] pEntity: %p , %i , %s\n", pEntity, EntityIndex, EntityClass);
-		} 
-	// Shit
 	events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 13) + 0x2C, 3));
 	cout << " [+] CGameEventManager: " << events << endl;
+	cout << " [+] CEntitySystem: " << entities << endl;
 	cout << endl;
 }
 

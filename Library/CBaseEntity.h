@@ -117,57 +117,50 @@ public:
 	virtual void YouForgotToImplementOrDeclareClientClass();
 	virtual ClientClass* C_DOTAPlayer__GetClientClass(void);
 	virtual void C_BaseModelEntity__SpawnShared(void* CEntityKeyValues);
-	virtual void C_BaseModelEntity__PopulatePoseParameters(void);
+	virtual void C_BaseModelEntity__PopulatePoseParameters(void); // 34
 	virtual void C_BasePlayer__PreFirstNetworkUpdate(void); // 35
-	virtual void* C_BaseModelEntity__GetBaseModelEntity(void); 
-	virtual void* C_BaseModelEntity__GetBaseModelEntity2(void);
-	virtual void* C_BaseAnimating__GetBaseAnimating(void);
-	virtual void* C_BaseAnimating__GetBaseAnimating2(void);
-	virtual bool C_BasePlayer__Classify(void);
-	virtual void C_BaseEntity__ModifyEconParticles(int unk);
-	virtual bool C_BaseEntity__ShouldSavePhysics(void);
-	virtual bool C_BaseEntity__CreateVPhysics(void);
-	virtual void C_BaseAnimating__DrawVCollide(void);
-	virtual void C_BaseEntity__VPhysicsDestroyObject(void);
-	virtual void C_BaseEntity__VPhysicsUpdate(void* IPhysicsObject);
-	virtual void C_BaseAnimating__VPhysicsGetObjectList(void** IPhysicsObject, int unk);
-	virtual bool C_BaseEntity__VPhysicsIsFlesh(void);
-	virtual void* C_BaseEntity__GetShadowDrawMaterial(void);
-	virtual bool C_BaseEntity__IsAbleToHaveFireEffect(void); // Checks for low violence mode, kek.
-	virtual bool C_BaseEntity__IsSelectable(void);
-	virtual bool C_BaseEntity__ReceivesMouseoverButNotSelection(void);
-	virtual float C_BaseEntity__GetRingRadius(void);
-	virtual void sub_2A7EEE0();
-	virtual void sub_2A5E4E0();
-	virtual void C_BaseFlex__SetupWeights(matrix3x4_t * matrix, int unk, float *unk2, float *unk3);
-	virtual void C_BaseEntity__GetVectors(Vector *outForward, Vector *outRight, Vector *outUp);
-	virtual const Vector* const C_BaseEntity__WorldAlignMins(void);
-	virtual const Vector* const C_BaseEntity__WorldAlignMaxs(void);
-	virtual const Vector* const C_BaseEntity__WorldSpaceCenter(void);
-	virtual void sub_2A5E2D0();
-	virtual void sub_2739BE0();
+	virtual void n_36();
+	virtual void n_37();
+	virtual void n_38();
+	virtual void n_39();
+	virtual void n_40();
+	virtual void n_41();
+	virtual void n_42();
+	virtual void n_43();
+	virtual void n_44();
+	virtual void n_45();
+	virtual void n_46();
+	virtual void n_47();
+	virtual void n_48();
+	virtual void n_49();
+	virtual void n_50();
+	virtual void n_51();
+	virtual void n_52();
+	virtual void n_53();
+	virtual void n_54();
+	virtual void n_55();
 	virtual void C_BaseEntity__ValidateModelIndex(void);
-	virtual void C_BaseEntity__AsParticleEHandle(void);
+	virtual void C_BaseEntity__AsParticleEHandle(void); // 57
 	virtual void C_BaseCombatCharacter__OnNewParticleEffect(const char* name, void* CNewParticleEffect);
 	virtual void C_BaseCombatCharacter__OnParticleEffectDeleted(void *CNewParticleEffect);
-	virtual void C_BaseEntity__PredCopy_SetHeapSize(int);
+	virtual void C_BaseEntity__PredCopy_SetHeapSize(int); // 60
 	virtual void* C_BaseEntity__PredCopy_GetStructBase(void);
 	virtual int C_BaseEntity__PredCopy_GetOffsetType(void);
 	virtual void C_BaseEntity__PredCopy_SetCommand(int);
 	virtual void* C_BaseEntity__PredCopy_GetCommand(void);
-	virtual void C_BaseEntity__PredCopy_Alloc(unsigned int unk, void* datamap_t, bool unk2);
-	virtual void C_BaseEntity__PredCopy_Tell(void);
+	virtual void C_BaseEntity__PredCopy_Alloc(unsigned int unk, void* datamap_t, bool unk2); // 65
+	virtual void C_BaseEntity__PredCopy_Tell(void); // 66
 	virtual void C_BaseEntity__PredCopy_GetHeaderBlock(void* CFieldPath, unsigned int unk);
-	virtual void* C_BaseAnimating__GetMouth(void);
-	virtual void C_BaseEntity__GetSoundSpatialization(void* SpatializationInfo_t); // 83
-	virtual void C_BaseAnimating__LookupAttachment(const char* name);
-	virtual void C_BaseAnimating__GetAttachment(unsigned char, matrix3x4_t &);
-	virtual void C_BaseEntity__InvalidateAttachments(void);
-	virtual void C_BaseEntity__OnBoneTransformsChanged(void);
-	virtual void C_BaseEntity__ChangeTeam(DOTATeam_t team);
-	virtual bool C_BaseEntity__InSameTeam(CBaseEntity *otherEnt);
-	virtual bool C_BaseEntity__InLocalTeam(void);
-	virtual void C_BaseAnimating__DrawDebugTextOverlays(unsigned long long unk, int unk2);
+	virtual void* C_BaseAnimating__GetMouth(void); // 68, correct
+	virtual void C_BaseEntity__GetSoundSpatialization(void* SpatializationInfo_t); // 69
+	virtual void C_BaseAnimating__LookupAttachment(const char* name); // 70
+	virtual void C_BaseAnimating__GetAttachment(unsigned char, matrix3x4_t &); // 71
+	virtual void C_BaseEntity__InvalidateAttachments(void); // 72
+	virtual void C_BaseEntity__OnBoneTransformsChanged(void); // 73
+	virtual void C_BaseEntity__ChangeTeam(DOTATeam_t team); // 74
+	virtual bool C_BaseEntity__InSameTeam(CBaseEntity *otherEnt); // 75
+	virtual bool InLocalTeam(void); // 76
+	virtual void C_BaseAnimating__DrawDebugTextOverlays(unsigned long long unk, int unk2); // 77
 	virtual bool C_BaseEntity__IsValidIDTarget(void);
 	virtual const char* C_BaseEntity__GetIDString(void);
 	virtual bool C_BaseEntity__IsPotentiallyUsable(void);
@@ -180,15 +173,22 @@ public:
 	virtual bool C_DOTAPlayer__ShouldDraw(void);
 	virtual void C_DOTAPlayer__Simulate(void);
 	virtual void sub_2A97C00();
+	virtual void sub_2CDAE90();
+	virtual void sub_2CDAD10();
 	virtual void* C_BaseEntity__GetClientVehicle(void);
 	virtual void sub_26F5240();
 	virtual void C_BaseEntity__OverrideAlphaModulation(unsigned char alpha);
 	virtual void C_BaseEntity__OverrideShadowAlphaModulation(unsigned char alpha);
+	virtual void sub_26F5250();
+	virtual void loc_2A93EF0();
+	virtual void sub_2A7C7A0();
 	virtual void C_BaseModelEntity__Clear(void);
 	virtual long C_BaseEntity__GetTextureAnimationStartTime(void);
 	virtual bool C_BaseEntity__TextureAnimationWrapped(void);
 	virtual int C_BasePlayer__ShadowCastType(void);
 	virtual bool C_BasePlayer__ShouldReceiveProjectedTextures(int unk);
+	virtual void* sub_2A95330(); // added dec 7th 2018, returns pointer most likely
+	virtual void loc_2A7A330();
 	virtual void C_BaseEntity__OnTakeDamage(void* CTakeDamageInfo);
 	virtual void C_BaseEntity__TakeDamage(void* CTakeDamageInfo);
 	virtual void sub_26F57E0();
@@ -212,8 +212,8 @@ public:
 	virtual void C_BaseEntity__EndTouch(void* C_BaseEntity);
 	virtual void C_BaseEntity__Think(void);
 	virtual void sub_2CCC210();
-	virtual void qword_2B708B0();
 	virtual void C_BasePlayer__PhysicsSimulate(void);
+	virtual void qword_2B708B0();
 	virtual void C_BasePlayer__PhysicsSolidMaskForEntity(void);
 	virtual void* C_BaseEntity__ClothGetEntityInstanceSettings(void);
 	virtual void C_BaseEntity__NotifySystemEvent(void* C_BaseEntity, int notify_system_event_t, void* notify_system_event_params_t);
@@ -374,14 +374,14 @@ public:
 	virtual void C_BaseCombatCharacter__Weapon_OwnsThisType(const char*, int);
 	virtual void C_BaseCombatCharacter__Weapon_GetSlot(const char*, int);
 	virtual void C_BasePlayer__Weapon_Switch(void* C_BaseCombatWeapon, int);
-	virtual void C_BaseCombatCharacter__GetActiveWeapon() = 0; // 303, added
-	virtual void* sub_2A95330(); // added dec 7th 2018, returns pointer most likely
-	virtual void loc_2A7A330();
-	virtual void sub_26F5250();
-	virtual void loc_2A93EF0();
-	virtual void sub_2A7C7A0(); // 5th
-	virtual void sub_285FB30();
-	virtual void sub_285FB40();
-	virtual void sub_2CDAE90();
-	virtual void sub_2CDAD10();
+	virtual void C_BaseCombatCharacter__GetActiveWeapon() = 0; // 300, added
+	virtual void v_pad292();
+	virtual void v_pad293();
+	virtual void v_pad294();
+	virtual void v_pad295();
+	virtual void v_pad296();
+	virtual void v_pad297();
+	virtual void v_pad298();
+	virtual void v_pad299();
+	virtual void v_pad300();
 };

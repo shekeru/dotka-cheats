@@ -102,7 +102,7 @@ public: //wtf were those LWSS
 	virtual float C_BasePlayer__GetDefaultAnimSpeed(void);
 	virtual void C_BasePlayer__ThirdPersonSwitch(bool thirdperson);
 	virtual void sub_2CAF2C0(); // added mid-july 2018. Possibly related to CViewAngleAnimation::RunAnimation
-	virtual int C_DOTAPlayer__GetPlayerID(void);
+	virtual int GetPlayerID(void);
 	virtual bool C_BasePlayer__CanSetSoundMixer(void);
 	virtual void* C_BasePlayer__GetSoundscapeListener(void);
 	virtual bool C_BasePlayer__WeaponHasInfiniteAmmo(void* C_BaseCombatWeapon);

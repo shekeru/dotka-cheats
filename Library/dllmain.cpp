@@ -11,7 +11,7 @@ void ThreadEntry(HMODULE hInstance)
 	cout << "Thread Started <OK>, Handle Address: " << hInstance << "\n\n";
 	ClientLoader client = ClientLoader(); EngineLoader engine = EngineLoader();
 	// Event System VMT
-	eventsVMT = new VMT(client.events); //eventsVMT->HookVM(FireEvent, 8);
+	eventsVMT = new VMT(client.events); srand(time(nullptr));
 	eventsVMT->HookVM(FireEventClientSide, 8); eventsVMT->ApplyVMT();
 	// Finished 
 	cout << "System Init Finished <OK>, Exiting Startup Thread...\n\n";
