@@ -6,7 +6,12 @@ void EvaluatePlayerDeath(CGameEvent* event);
 const char* messages[] = {
 	"say I'm glad you tried, I'm sure you'll do better next time...",
 	"say Maybe you should try not resorting to violence?",
-	"say I fully support your efforts!"
+	"say I fully support your efforts!",
+	"say Please kindly fuck off",
+	"say Boom! Headshot!",
+	"say keep feeding",
+	"say retard",
+	"say lmao"
 }; time_t recent = time(nullptr);
 
 using namespace std;
@@ -20,9 +25,9 @@ bool FireEventClientSide(CGameEventManager *thisptr, CGameEvent *event)
 
 void DispatchDeathTaunt(bool inLocalTeam) 
 {
-	if (inLocalTeam || difftime(time(nullptr), recent) < 45)
+	if (inLocalTeam || difftime(time(nullptr), recent) < 15)
 		return; time(&recent); cout << "Player Taunted!" << endl;
-	engine.client->ExecuteClientCmd(messages[rand() % 3]);
+	engine.client->ExecuteClientCmd(messages[rand() % 8]);
 }
 
 void EvaluatePlayerDeath(CGameEvent* event)
