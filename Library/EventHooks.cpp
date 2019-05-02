@@ -1,9 +1,14 @@
 #include "stdafx.h"
 #include "Library.h"
+#include <thread>
+#include <chrono>
+#include <atomic>
 
 typedef bool(*EventClientFn)(CGameEventManager*, CGameEvent *);
 void EvaluatePlayerDeath(CGameEvent* event);
+
 const char* messages[] = {
+	"say Good game, well played.",
 	"say I'm glad you tried, I'm sure you'll do better next time...",
 	"say Maybe you should try not resorting to violence?",
 	"say I fully support your efforts!",
@@ -12,22 +17,32 @@ const char* messages[] = {
 	"say keep feeding",
 	"say retard",
 	"say lmao"
-}; time_t recent = time(nullptr);
-
-using namespace std;
+}; using namespace std;
+atomic<time_t> recent = time(nullptr);
 
 bool FireEventClientSide(CGameEventManager *thisptr, CGameEvent *event) 
 {
 	if (!strcmp(event->GetName(), "dota_player_kill"))
+		/*CreateThread(0, 0, (LPTHREAD_START_ROUTINE)
+			EvaluatePlayerDeath, (LPVOID) event, 0, 0);*/
 		EvaluatePlayerDeath(event);
 	return eventsVMT->GetOriginalMethod<EventClientFn>(8)(thisptr, event);
 }
 
 void DispatchDeathTaunt(bool inLocalTeam) 
 {
-	if (inLocalTeam || difftime(time(nullptr), recent) < 15)
-		return; time(&recent); cout << "Player Taunted!" << endl;
-	engine.client->ExecuteClientCmd(messages[rand() % 8]);
+	using namespace std::chrono_literals;
+	if (inLocalTeam || difftime(time(nullptr), recent) < 45)
+		return; recent = time(0); //this_thread::sleep_for(2s);
+	engine.client->ExecuteClientCmd(messages[0]);
+	// Find Pudge Hook Entity
+	CBaseEntity* ability = nullptr;
+	for (int EntityIndex = 0; EntityIndex <= client.entities->GetHighestEntityIndex(); EntityIndex++)
+		if (ability = client.entities->GetBaseEntity(EntityIndex)) {
+			auto typeName = ability->SchemaDynamicBinding()->bindingName;
+			if (strstr(typeName, "Pudge_MeatHook"))
+				cout << "FOUND: " << typeName << endl;
+		}
 }
 
 void EvaluatePlayerDeath(CGameEvent* event)

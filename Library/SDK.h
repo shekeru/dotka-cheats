@@ -8,5 +8,6 @@
 #include "common.h"
 #include "vmt.h"
 
+bool FireEvent(CGameEventManager *thisptr, CGameEvent *event, bool dontBroadcast);
 bool FireEventClientSide(CGameEventManager *thisptr, CGameEvent *event);
 extern VMT* eventsVMT;
