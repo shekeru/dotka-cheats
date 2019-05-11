@@ -37,18 +37,6 @@ void DispatchDeathTaunt(bool inLocalTeam)
 	engine.client->ExecuteClientCmd(messages[0]);
 }
 
-void cycle_fuck() {
-	using namespace std::chrono_literals;
-	CBaseEntity* ability = nullptr;
-	for (int EntityIndex = 0; EntityIndex <= client.entities->GetHighestEntityIndex(); EntityIndex++)
-		if (ability = client.entities->GetBaseEntity(EntityIndex)) {
-			auto typeName = ability->SchemaDynamicBinding()->bindingName;
-			if (strstr(typeName, "Pudge_MeatHook"))
-				cout << "FOUND: " << typeName << " at " 
-					<< EntityIndex << endl;
-		}; //this_thread::sleep_for(2s);
-}
-
 void EvaluatePlayerDeath(CGameEvent* event)
 {
 	CDotaPlayer* player = nullptr;

@@ -31,15 +31,17 @@ public:
 	virtual void UpdateOnRemove(void); // 10
 	virtual void OnSetDormant(EntityDormancyType_t, EntityDormancyType_t);
 	virtual void PreDataUpdate(DataUpdateType_t);
-	virtual void DrawEntityDebugOverlays(OverlayFlags_t flags);
-	virtual void Save(ISave &);
+	virtual void DrawEntityDebugOverlays(OverlayFlags_t flags); // 13
+	virtual void Save(ISave &); // 14
 	virtual void Restore(IRestore &);
 	virtual void OnSave(void);
-	virtual void OnRestore(void);
+	virtual void OnRestore(void); //
 	virtual void ObjectCaps(void);
 	virtual int RequiredEdictIndex(void);
 	virtual void NetworkStateChanged(void); // 20
-	virtual void NetworkStateChanged(unsigned int, int, ChangeAccessorFieldPathIndex_t);
+	virtual void NetworkStateChanged2(unsigned int, int, ChangeAccessorFieldPathIndex_t);
+	virtual void* pad_unk_lwss_ads();
 	virtual void AddChangeAccessorPath(CFieldPath const&);
-	virtual void ReloadPrivateScripts(void);
+	virtual void ReloadPrivateScripts(void); // 24
+	virtual void* pad_unk_obc_like(); // 25
 };

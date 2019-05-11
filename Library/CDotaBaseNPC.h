@@ -1,5 +1,6 @@
 #pragma once
 #include "CBaseEntity.h"
+#include "CBaseCombatCharacter.h"
 class CDotaPlayer;
 class C_DOTABaseAbility;
 // xref "%s_Abilities" to CreateDictionaries() OR "-herorecorder" to ParsePortraitInfo
@@ -23,7 +24,7 @@ public:
 	virtual float C_DOTA_BaseNPC__GetBaseMoveSpeed() = 0;
 	virtual float C_DOTA_BaseNPC__GetIdealSpeed() = 0;
 	virtual void sub_2D10A70() = 0;
-	virtual void C_DOTA_BaseNPC__LoadVoiceResources(void const *CEntityPrecacheContext) = 0;
+	//virtual void C_DOTA_BaseNPC__LoadVoiceResources(void const *CEntityPrecacheContext) = 0;
 	virtual void sub_2D15050() = 0;
 	virtual bool C_DOTA_BaseNPC__IsValidAbilityToCast(C_DOTABaseAbility *ability) = 0;
 	virtual void loc_2B523C0() = 0;

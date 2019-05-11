@@ -33,4 +33,3 @@ public:
 
 extern ClientLoader client;
 extern EngineLoader engine;
-void cycle_fuck();

@@ -38,67 +38,64 @@ enum DOTATeam_t : int {
 };
 
 #include "CEntityInstance.h"
+#include "Datamap.h"
+#define SpatializationInfo_t char
+#define IPhysicsObject char
 
 class CBaseEntity : public CEntityInstance
 {
 public:
-	virtual void C_BaseEntity__NetworkStateChanged2(unsigned int unk, int unk2, int ChangeAccessorFieldPathIndex_t);
-	virtual void sub_273BE20();
-	virtual void CEntityInstance__AddChangeAccessorPath(void* CFieldPath);
-	virtual void CEntityInstance__ReloadPrivateScripts(void); // 24
-	virtual void sub_26F4ED0();
-	virtual void sub_26F4EE0();
-	virtual void* C_BaseAnimating__GetDataDescMap(void); // C_BaseAnimatingOverlay::m_DataMap
-	//virtual Datamap* GetPredDescMap(void); // 28
-	virtual void* C_BaseModelEntity__GetCollideable(void);
-	virtual void* C_BaseEntity__GetPredictionCopyable(void); // 30
-	virtual void YouForgotToImplementOrDeclareClientClass();
-	virtual ClientClass* C_DOTAPlayer__GetClientClass(void);
-	virtual void C_BaseModelEntity__SpawnShared(void* CEntityKeyValues);
-	virtual void C_BaseModelEntity__PopulatePoseParameters(void); // 34
-	virtual void C_BasePlayer__PreFirstNetworkUpdate(void); // 35
-	virtual void n_36();
-	virtual void n_37();
-	virtual void n_38();
-	virtual void n_39();
-	virtual void n_40();
-	virtual void n_41();
-	virtual void n_42();
-	virtual void n_43();
-	virtual void n_44();
-	virtual void n_45();
-	virtual void n_46();
-	virtual void n_47();
-	virtual void n_48();
-	virtual void n_49();
-	virtual void n_50();
-	virtual void n_51();
-	virtual void n_52();
-	virtual void n_53();
-	virtual void n_54();
-	virtual void n_55();
-	virtual void C_BaseEntity__ValidateModelIndex(void);
-	virtual void C_BaseEntity__AsParticleEHandle(void); // 57
-	virtual void C_BaseCombatCharacter__OnNewParticleEffect(const char* name, void* CNewParticleEffect);
-	virtual void C_BaseCombatCharacter__OnParticleEffectDeleted(void *CNewParticleEffect);
-	virtual void C_BaseEntity__PredCopy_SetHeapSize(int); // 60
-	virtual void* C_BaseEntity__PredCopy_GetStructBase(void);
-	virtual int C_BaseEntity__PredCopy_GetOffsetType(void);
-	virtual void C_BaseEntity__PredCopy_SetCommand(int);
-	virtual void* C_BaseEntity__PredCopy_GetCommand(void);
-	virtual void C_BaseEntity__PredCopy_Alloc(unsigned int unk, void* datamap_t, bool unk2); // 65
-	virtual void C_BaseEntity__PredCopy_Tell(void); // 66
-	virtual void C_BaseEntity__PredCopy_GetHeaderBlock(void* CFieldPath, unsigned int unk);
-	virtual void* C_BaseAnimating__GetMouth(void); // 68, correct
-	virtual void C_BaseEntity__GetSoundSpatialization(void* SpatializationInfo_t); // 69
-	virtual void C_BaseAnimating__LookupAttachment(const char* name); // 70
-	virtual void C_BaseAnimating__GetAttachment(unsigned char, matrix3x4_t &); // 71
-	virtual void C_BaseEntity__InvalidateAttachments(void); // 72
-	virtual void C_BaseEntity__OnBoneTransformsChanged(void); // 73
-	virtual void C_BaseEntity__ChangeTeam(DOTATeam_t team); // 74
-	virtual bool C_BaseEntity__InSameTeam(CBaseEntity *otherEnt); // 75
-	virtual bool InLocalTeam(void); // 76
-	virtual void C_BaseAnimating__DrawDebugTextOverlays(unsigned long long unk, int unk2); // 77
+	virtual void* C_BaseAnimating__GetDataDescMap(void); // 26
+	virtual Datamap* GetPredDescMap(void); // 27
+	virtual void C_BaseModelEntity__PopulatePoseParameters(void); // 28
+	virtual void C_BasePlayer__PreFirstNetworkUpdate(void); // 29
+	virtual void* C_BaseModelEntity__GetBaseModelEntity(void); // 30
+	virtual void* C_BaseModelEntity__GetBaseAnimating(void);
+	virtual bool Classify(void);
+	virtual void ModifyEconParticles(int, void* Color);
+	virtual bool ShouldSavePhysics(void);
+	virtual bool CreateVPhysics(void); // 35
+	virtual void DrawVCollide(void);
+	virtual void VPhysicsDestroyObject(void);
+	virtual void VPhysicsUpdate(IPhysicsObject *);
+	virtual void VPhysicsGetObjectList(IPhysicsObject **, int);
+	virtual bool VPhysicsIsFlesh(void); // 40
+	virtual void* GetShadowDrawMaterial(void);
+	virtual bool IsAbleToHaveFireEffect(void);
+	virtual bool IsSelectable(void);
+	virtual bool ReceivesMouseoverButNotSelection(void);
+	virtual float GetRingRadius(void); // 45
+	virtual void UpdateFlexControllers(int, float *);
+	virtual void SetupWeights(matrix3x4_t const*, int, float *, float *); // 47
+	virtual Vector* GetVectors(Vector *outForward, Vector *outRight, Vector *outUp);
+	virtual bool WorldAlignMins(void);
+	virtual bool WorldAlignMaxs(void); // 50
+	virtual bool WorldSpaceCenter(void); 
+	virtual void ComputeWorldSpaceSurroundingBox(Vector *, Vector *);
+	virtual void UpdateTransmitState(void);
+	virtual void ValidateModelIndex(void); // 54
+	virtual void AsParticleEHandle(void); // 55
+	virtual void OnNewParticleEffect(const char* name, void* CNewParticleEffect);
+	virtual void OnParticleEffectDeleted(void *CNewParticleEffect);
+	virtual void PredCopy_SetHeapSize(int);
+	virtual void* PredCopy_GetStructBase(void);
+	virtual int PredCopy_GetOffsetType(void); //60
+	virtual void PredCopy_SetCommand(int);
+	virtual void* PredCopy_GetCommand(void);
+	virtual void PredCopy_Alloc(unsigned int, void* datamap_t, bool);
+	virtual void PredCopy_Tell(void); 
+	virtual void PredCopy_GetHeaderBloc(CFieldPath const&, unsigned int); //65
+	virtual void* GetMouth(void);
+	virtual void GetSoundSpatialization(SpatializationInfo_t &);
+	virtual void LookupAttachment(const char* name);
+	virtual void GetAttachment(unsigned char, matrix3x4_t &);
+	virtual void InvalidateAttachments(void); // 70
+	virtual void OnBoneTransformsChanged(void); // 71
+	virtual void ChangeTeam(DOTATeam_t team); // 72
+	virtual bool InSameTeam(CBaseEntity *other); // 73
+	virtual bool InLocalTeam(void); // 74
+	virtual void DrawDebugTextOverlays(unsigned long long unk, int unk2); // 75
+	// fuck em all to hell
 	virtual bool C_BaseEntity__IsValidIDTarget(void);
 	virtual const char* C_BaseEntity__GetIDString(void);
 	virtual bool C_BaseEntity__IsPotentiallyUsable(void);
@@ -134,7 +131,7 @@ public:
 	virtual int C_BaseEntity__ClothSettingsTypeID(); // ok, probs 110
 	virtual void sub_2907330();
 	virtual void* C_BasePlayer__GetPredictionOwner(void);
-	virtual void C_BaseEntity__InitPredictable(void* C_BasePlayer); // 113, ok to health
+	virtual void InitPredictable(void* C_BasePlayer); // 111, ok to health
 	virtual void C_BaseAnimating__SetPredictable(bool predictable);
 	virtual void C_BaseEntity__DecalTrace(void* CGameTrace, const char* unk);
 	virtual void C_BaseEntity__ImpactTrace(void* CGameTrace, int unk, const char* unk2);

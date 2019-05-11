@@ -46,6 +46,11 @@ ClientLoader::ClientLoader() : ModuleSystem("client.dll")
 	cout << " [+] CGameEventManager: " << events << endl;
 	cout << " [+] CEntitySystem: " << entities << endl;
 	cout << endl;
+	for (int EntityIndex = 0; EntityIndex <= 10; EntityIndex++)
+		if (auto pEntity = entities->GetBaseEntity(EntityIndex)) {
+			const char* EntityClass = pEntity->SchemaDynamicBinding()->bindingName;
+			printf("[+] pEntity: %p , %i , %s\n", pEntity, EntityIndex, EntityClass);
+		}
 }
 
 EngineLoader::EngineLoader() : ModuleSystem("engine2.dll")
