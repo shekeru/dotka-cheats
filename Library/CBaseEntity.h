@@ -37,73 +37,11 @@ enum DOTATeam_t : int {
 	DOTA_TEAM_COUNT = 14
 };
 
-inline int FindDataMapElementOffset(Datamap *dMap, const char *element) {
-	while (dMap) {
-		for (uint64_t i = 0; i < dMap->numFields; i++) {
-			if (!dMap->dataDesc[i].fieldName)
-				continue;
+#include "CEntityInstance.h"
 
-			if (!strcmp(dMap->dataDesc[i].fieldName, element))
-				return dMap->dataDesc[i].fieldOffset[TD_OFFSET_NORMAL];
-
-			if (dMap->dataDesc[i].type == FIELD_EMBEDDED) {
-				if (dMap->dataDesc[i].td) {
-
-					int temp = FindDataMapElementOffset(dMap->dataDesc[i].td, element);
-					if (temp != 0)
-						return temp;
-				}
-			}
-		}
-		dMap = dMap->baseMap;
-	} return 0;
-}
-
-class CBaseEntity
+class CBaseEntity : public CEntityInstance
 {
 public:
-	inline const DOTATeam_t GetTeam()
-	{
-		static int offset = FindDataMapElementOffset(this->GetPredDescMap(), "m_iTeamNum");
-		if (!offset) 
-			return DOTA_TEAM_INVALID;
-		return *(DOTATeam_t*)(((uintptr_t)this) + offset);
-	}
-	inline QAngle* const GetNetworkAngles()
-	{
-
-		return NULL;
-	}
-	inline Vector* const GetNetworkOrigin()
-	{
-
-		return NULL;
-	}
-	inline const int GetOwnerID()
-	{
-		return NULL;
-	}
-	virtual CSchemaClassBinding* SchemaDynamicBinding(void); // 0?
-	virtual void DESTROY();
-	virtual int CEntityInstance__GetRefEHandle(void);
-	virtual void* C_BaseCombatCharacter__GetScriptDesc(void);
-	virtual void C_BaseFlex__Connect(void);
-	virtual void PreCache() = 0; // 5
-	virtual void C_BaseAnimating__AddedToEntityDatabase(void);
-	virtual void C_DOTAPlayer__Spawn(void* CEntityKeyValues);
-	virtual void C_DOTAPlayer__PostDataUpdate(int DataUpdateType_t);
-	virtual void C_BaseFlex__Activate(void);
-	virtual void C_BasePlayer__UpdateOnRemove(void); // 10
-	virtual void C_BaseAnimating__OnSetDormant(void);
-	virtual void C_BasePlayer__PreDataUpdate(int DataUpdateType_t);
-	virtual void C_BaseEntity__DrawEntityDebugOverlays(OverlayFlags_t flags);
-	virtual void C_BaseEntity__Save(void* ISave);
-	virtual void C_BaseEntity__Restore(void* IRestore); // 15
-	virtual void C_BaseEntity__OnSave(void);
-	virtual void C_BasePlayer__OnRestore(void);
-	virtual void C_BaseEntity__ObjectCaps(void);
-	virtual int CEntityInstance__RequiredEdictIndex(void);
-	virtual void C_BaseEntity__NetworkStateChanged(void); // 20
 	virtual void C_BaseEntity__NetworkStateChanged2(unsigned int unk, int unk2, int ChangeAccessorFieldPathIndex_t);
 	virtual void sub_273BE20();
 	virtual void CEntityInstance__AddChangeAccessorPath(void* CFieldPath);
@@ -111,7 +49,7 @@ public:
 	virtual void sub_26F4ED0();
 	virtual void sub_26F4EE0();
 	virtual void* C_BaseAnimating__GetDataDescMap(void); // C_BaseAnimatingOverlay::m_DataMap
-	virtual Datamap* GetPredDescMap(void); // 28
+	//virtual Datamap* GetPredDescMap(void); // 28
 	virtual void* C_BaseModelEntity__GetCollideable(void);
 	virtual void* C_BaseEntity__GetPredictionCopyable(void); // 30
 	virtual void YouForgotToImplementOrDeclareClientClass();
@@ -357,24 +295,7 @@ public:
 	virtual void C_BaseFlex__ClearSceneEvent();
 	virtual void C_BaseFlex__CheckSceneEventCompletion();
 	virtual void C_BaseFlex__ShouldProcessSceneEvents();
-	virtual bool C_BaseCombatCharacter__IsLookingTowardsEntity(const void* C_BaseEntity, float fovMaybe);
-	virtual bool C_BaseCombatCharacter__IsLookingTowardsVector(const Vector &point, float fovMaybe);
-	virtual bool C_BaseCombatCharacter__IsEntityInFOV(const void* C_BaseEntity);
-	virtual bool C_BaseCombatCharacter__IsVectorInFOV(const Vector &point);
-	virtual Vector* C_BaseCombatCharacter__IsLineOfSightClear(void* C_BaseEntity, int LineOfSightCheckType);
-	virtual bool C_BaseCombatCharacter__IsLineOfSightClear(Vector &out, void* C_BaseEntity, int LineOfSightCheckType);
-	virtual void C_BaseCombatCharacter__OnFootstep(const Vector &pos, bool unk, bool unk2);
-	virtual void*C_BaseCombatCharacter__GetGroundSurface(void);
-	virtual void*C_BaseCombatCharacter__GetFootstepSound(const char* unk, bool unk2, float unk3, bool unk4);
-	virtual bool C_BaseCombatCharacter__AreFootstepsAudible(float unk, bool unk2);
-	virtual bool C_BaseCombatCharacter__IsFootstepAudible(float unk, bool unk2);
-	virtual float C_BaseCombatCharacter__GetFootstepRunThreshold(void);
-	virtual bool C_BasePlayer__IsGhost(void);
-	virtual void C_BaseCombatCharacter__UpdateParticles(void);
-	virtual void C_BaseCombatCharacter__Weapon_OwnsThisType(const char*, int);
-	virtual void C_BaseCombatCharacter__Weapon_GetSlot(const char*, int);
-	virtual void C_BasePlayer__Weapon_Switch(void* C_BaseCombatWeapon, int);
-	virtual void C_BaseCombatCharacter__GetActiveWeapon() = 0; // 300, added
+	//fuck
 	virtual void v_pad292();
 	virtual void v_pad293();
 	virtual void v_pad294();
@@ -382,6 +303,4 @@ public:
 	virtual void v_pad296();
 	virtual void v_pad297();
 	virtual void v_pad298();
-	virtual void v_pad299();
-	virtual void v_pad300();
 };

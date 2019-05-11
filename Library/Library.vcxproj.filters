@@ -20,6 +20,9 @@
     <Filter Include="SDK Files\EntitySystem">
       <UniqueIdentifier>{2285c391-508b-4eb0-a940-70db8e1b4cf6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SDK Files\Source 2 Base">
+      <UniqueIdentifier>{fb40c438-a4c8-4347-abbf-7db867e55c2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -64,14 +67,26 @@
     <ClInclude Include="CEntitySystem.h">
       <Filter>SDK Files\EntitySystem</Filter>
     </ClInclude>
-    <ClInclude Include="CBaseEntity.h">
-      <Filter>SDK Files\EntitySystem</Filter>
-    </ClInclude>
     <ClInclude Include="CDotaPlayer.h">
       <Filter>SDK Files\EntitySystem</Filter>
     </ClInclude>
     <ClInclude Include="CDotaBaseNPC.h">
       <Filter>SDK Files\EntitySystem</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseCombatCharacter.h">
+      <Filter>SDK Files\Source 2 Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseEntity.h">
+      <Filter>SDK Files\Source 2 Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CEntityInstance.h">
+      <Filter>SDK Files\Source 2 Base</Filter>
+    </ClInclude>
+    <ClInclude Include="C_GameEntity.h">
+      <Filter>SDK Files\Source 2 Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Datamap.h">
+      <Filter>Utility Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

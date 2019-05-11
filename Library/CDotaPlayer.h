@@ -1,5 +1,5 @@
 #pragma once
-#include "CBaseEntity.h"
+#include "CBaseCombatCharacter.h"
 
 enum DotaUnitOrder_t : int {
 	DOTA_UNIT_ORDER_NONE = 0,
@@ -53,11 +53,9 @@ enum OrderQueueBehavior_t : int {
 };
 
 // find PrepareUnitOrders with "particles/ui_mouseactions/waypoint_flag.vpcf"
-class CDotaPlayer : public CBaseEntity
+class CDotaPlayer : public CBaseCombatCharacter
 {
 public: //wtf were those LWSS
-	virtual void C_BasePlayer__OnAmmoCountChanged(int unk, unsigned int unk2, unsigned int unk3);
-	virtual void C_BasePlayer__OnWearablesChanged(void);
 	virtual void C_BasePlayer__OnBecomeLocalPlayer(void);
 	virtual void C_BasePlayer__CalcView(Vector &eyeOrigin, QAngle &eyeAngles, float &zNear, float &zFar, float &fov);
 	virtual void C_BasePlayer__CalcViewModelView(const Vector& eyeOrigin, const QAngle& eyeAngles);
@@ -67,8 +65,8 @@ public: //wtf were those LWSS
 	virtual void C_BasePlayer__PlayWadeSound(void); //ok till here
 	virtual void* C_BasePlayer__ActivePlayerCombatCharacter(void);
 	virtual void sub_2A5DCC0();
-	virtual void sub_2A5DCA0();
-	virtual void sub_2A5DD70();
+	virtual void Weapon_ShootPosition_unk();
+	virtual void Weapon_ShootAngles_unk();
 	virtual bool C_BasePlayer__Weapon_CanUse(void* C_BaseCombatWeapon);
 	virtual void C_BasePlayer__Weapon_DropPrimary(void);
 	virtual Vector* C_BasePlayer__GetAutoaimVector(float fovMaybe);

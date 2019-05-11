@@ -147,14 +147,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CBaseCombatCharacter.h" />
     <ClInclude Include="CBaseEntity.h" />
     <ClInclude Include="CDotaBaseNPC.h" />
     <ClInclude Include="CDotaPlayer.h" />
     <ClInclude Include="CEngineClient.h" />
+    <ClInclude Include="CEntityInstance.h" />
     <ClInclude Include="CEntitySystem.h" />
     <ClInclude Include="CEventManager.h" />
+    <ClInclude Include="C_GameEntity.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="CSource2Client.h" />
+    <ClInclude Include="Datamap.h" />
     <ClInclude Include="definitions.h" />
     <ClInclude Include="IAppSystem.h" />
     <ClInclude Include="IInputSystem.h" />

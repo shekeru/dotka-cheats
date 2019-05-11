@@ -35,14 +35,18 @@ void DispatchDeathTaunt(bool inLocalTeam)
 	if (inLocalTeam || difftime(time(nullptr), recent) < 45)
 		return; recent = time(0); //this_thread::sleep_for(2s);
 	engine.client->ExecuteClientCmd(messages[0]);
-	// Find Pudge Hook Entity
+}
+
+void cycle_fuck() {
+	using namespace std::chrono_literals;
 	CBaseEntity* ability = nullptr;
 	for (int EntityIndex = 0; EntityIndex <= client.entities->GetHighestEntityIndex(); EntityIndex++)
 		if (ability = client.entities->GetBaseEntity(EntityIndex)) {
 			auto typeName = ability->SchemaDynamicBinding()->bindingName;
 			if (strstr(typeName, "Pudge_MeatHook"))
-				cout << "FOUND: " << typeName << endl;
-		}
+				cout << "FOUND: " << typeName << " at " 
+					<< EntityIndex << endl;
+		}; //this_thread::sleep_for(2s);
 }
 
 void EvaluatePlayerDeath(CGameEvent* event)

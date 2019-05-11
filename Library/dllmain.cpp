@@ -15,6 +15,7 @@ void ThreadEntry(HMODULE hInstance)
 	eventsVMT->HookVM(FireEventClientSide, 8); eventsVMT->ApplyVMT();
 	// Finished 
 	cout << "System Init Finished <OK>, Exiting Startup Thread...\n\n";
+	//while (1) cycle_fuck();
 }
 
 BOOL APIENTRY DllMain(
