@@ -93,16 +93,16 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Base System\Platform Files</Filter>
     </ClCompile>
-    <ClCompile Include="EventSystem.cpp">
-      <Filter>Cheat Logic</Filter>
-    </ClCompile>
     <ClCompile Include="Logic.cpp">
       <Filter>Base System</Filter>
     </ClCompile>
-    <ClCompile Include="Modules.cpp">
+    <ClCompile Include="Fuck This.cpp">
+      <Filter>Cheat Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Loader.cpp">
       <Filter>Base System</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="Entry.cpp">
       <Filter>Base System</Filter>
     </ClCompile>
   </ItemGroup>

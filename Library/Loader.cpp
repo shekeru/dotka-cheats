@@ -39,9 +39,11 @@ ClientLoader::ClientLoader() : ModuleSystem("client.dll")
 	//  sub_18011BFB0 + 44     48 8D 0D 05 89 4F + lea     rcx, aSearchingForEn; "Searching for entities with class/targe"...
 	//	sub_18011BFB0 + 4B     FF 15 3F 19 43 01     call    cs : Msg
 	//	sub_18011BFB0 + 51     48 8B 0D 70 1C 5A + mov     rcx, cs : g_CGameEntitySystem
-	entity = *reinterpret_cast<CGameEntitySystem**>(GetAbsoluteAddress(*vmt_slot(client, 25), 3));
 	//entities = *reinterpret_cast<CGameEntitySystem**>(GetAbsoluteAddress(*vmt_slot(client, 3) + 0x296, 3));
-	events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 13) + 0x2C, 3));
+	entity = *reinterpret_cast<CGameEntitySystem**>(GetAbsoluteAddress(*vmt_slot(client, 25), 3));
+	//events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 13) + 0x2C, 3));
+	//events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 13) + 0xCF, 3));
+	events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 4) + 0xDF, 3));
 	cout << " [+] CGameEventManager: " << events << endl;
 	cout << " [+] CGameEntitySystem: " << entity << endl;
 	cout << endl;
@@ -61,18 +63,20 @@ Internal::Internal()
 {
 	// Virtual Tables
 	events = new VMT(client.events);
-	entity = new VMT(client.entity);
+	//entity = new VMT(client.entity);
 	// Function Swaps
 	events->HookVM(SDK::FireEventClientSide, 8);
 	//entity->HookVM(SDK::OnAddEntity, 17);
 	// Apply
 	events->ApplyVMT();
-	entity->ApplyVMT();
+	//entity->ApplyVMT();
 }
 
 Internal::~Internal()
 {
-	events->ReleaseVMT();
-	entity->ReleaseVMT();
+	// Reverse Table
+	//events->ReleaseVMT();
+	//entity->ReleaseVMT();
+	// Deallocate
 }
 

@@ -19,7 +19,7 @@ class CEntityInstance
 {
 public:
 	virtual CSchemaClassBinding* SchemaDynamicBinding(void); // 0?
-	virtual void DESTROY10(); // note: win64 only has 1 destrcutor
+	virtual void DESTROY(); // note: win64 only has 1 destrcutor
 	virtual int GetRefEHandle(void);
 	virtual int GetScriptDesc(void);
 	virtual void Connect(void);

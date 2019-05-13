@@ -169,9 +169,9 @@
     <ClInclude Include="vmt.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="EventSystem.cpp" />
-    <ClCompile Include="Modules.cpp" />
+    <ClCompile Include="Fuck This.cpp" />
+    <ClCompile Include="Entry.cpp" />
+    <ClCompile Include="Loader.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -2,7 +2,6 @@
 #include "System.h"
 #include <thread>
 #include <chrono>
-#include <atomic>
 
 typedef bool(*EventClientFn)(CGameEventManager*, CGameEvent *);
 void EvaluatePlayerDeath(CGameEvent* event);
@@ -18,7 +17,7 @@ const char* messages[] = {
 	"say retard",
 	"say lmao"
 }; using namespace std;
-atomic<time_t> recent = time(nullptr);
+time_t recent = time(nullptr);
 
 bool SDK::FireEventClientSide(CGameEventManager *thisptr, CGameEvent *event) 
 {
@@ -26,6 +25,8 @@ bool SDK::FireEventClientSide(CGameEventManager *thisptr, CGameEvent *event)
 		/*CreateThread(0, 0, (LPTHREAD_START_ROUTINE)
 			EvaluatePlayerDeath, (LPVOID) event, 0, 0);*/
 		//EvaluatePlayerDeath(event);
+	cout << "Event " << event->GetName() << " at " << event << " for " 
+		<< thisptr << endl;
 	return sdk.events->GetOriginalMethod<EventClientFn>(8)(thisptr, event);
 }
 
