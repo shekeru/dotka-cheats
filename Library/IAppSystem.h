@@ -26,16 +26,13 @@ enum AppSystemTier_t
 class IAppSystem
 {
 public:
-	virtual void Connect() = 0;
+	virtual void Connect() = 0; // 0
 	virtual void Disconnect() = 0;
-	// Here's where systems can access other interfaces implemented by this object
-	// Returns NULL if it doesn't implement the requested interface
-	virtual void QueryInterface(const char* interfaceName) = 0; // normally has string of interface in it. EX: "PanoramaUIEngine001"
-	virtual InitReturnVal_t Init() = 0;
-	virtual void Shutdown() = 0;
-	virtual void Preshutdown() = 0;
-	// Returns all dependent libraries
-	virtual const AppSystemInfo_t* GetDependencies() = 0;
+	virtual void QueryInterface(const char* interfaceName) = 0;
+	virtual InitReturnVal_t Init() = 0; // 3
+	virtual void Shutdown() = 0; // 4
+	virtual void Preshutdown() = 0; // 5
+	virtual const AppSystemInfo_t* GetDependencies() = 0; 
 	virtual AppSystemTier_t GetTier() = 0;
 	// Reconnect to a particular interface
 	virtual void Reconnect(void* factory, const char* pInterfaceName) = 0;

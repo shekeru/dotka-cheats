@@ -28,7 +28,37 @@ public:
 	CEntityIdentity m_pIdentities[MAX_ENTITIES_IN_LIST];
 };
 
-class CEntitySystem
+#define ClearEntityDatabaseMode_t char
+#define CEntityHandle char
+#define EntitySpawnInfo_t char
+
+class CEntitySystem {
+public:
+	virtual void n_0();
+	virtual void BuildResourceManifest(void); // 01
+	virtual void n_2();
+	virtual void n_3();
+	virtual void n_4();
+	virtual void n_5();
+	virtual void n_6();
+	virtual void n_7();
+	virtual void n_8();
+	virtual void n_9();
+	virtual void n_10();
+	virtual void n_11();
+	virtual void n_12();
+	virtual void n_13();
+	virtual void n_14();
+	virtual void n_15();
+	virtual void n_16();
+	virtual void n_17();
+	virtual void n_18();
+	virtual void n_19();
+	virtual void n_20();
+	virtual void n_21();
+};
+
+class CGameEntitySystem : public CEntitySystem
 {
 public:
 	CBaseEntity* GetBaseEntity(int index)
@@ -48,7 +78,6 @@ public:
 			return nullptr;
 		}
 	}
-
 	int GetHighestEntityIndex()
 	{
 		// 33 FF xor edi, edi
@@ -58,24 +87,7 @@ public:
 	    // "Ent %3d: %s class %s name %s\n"
 		return *(int*)((uintptr_t)this + 0x2030);
 	}
-
 	void* unk; void* unk2; void* unk3;
 	CEntityIdentities* m_pEntityList[MAX_ENTITY_LISTS];
-};
-
-#define ClearEntityDatabaseMode_t char
-#define CEntityHandle char
-#define EntitySpawnInfo_t char
-
-class CGameEntitySystem : public CEntitySystem
-{
-public:
-	//More shit to add, eventually bother
-	virtual void DESTROY10(void);
-	virtual void ClearEntityDatabase(ClearEntityDatabaseMode_t);
-	virtual void FindEntityProcedural(const char *, CEntityInstance*, CEntityInstance*, CEntityInstance*);
-	virtual void OnEntityParentChanged(CEntityInstance *, CEntityInstance *);
-	virtual void OnAddEntity(CEntityInstance *, CEntityHandle);
-	virtual void OnRemoveEntity(CEntityInstance *, CEntityHandle);
-	virtual void SortEntities(EntitySpawnInfo_t *, int *, int *);
+	// Fucking Hell
 };

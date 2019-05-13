@@ -79,21 +79,23 @@ public:
 class CSource2Client : IAppSystem
 {
 public:
-	virtual void* _11();
-	virtual void* _12();
-	virtual void PlayerInfoChanged(int entIndex);
-	virtual void* _14();
-	virtual void* _15();
+	virtual void SetGlobals(void* CGlobalVarsBase);; // 11
+	virtual void InstallStringTableCallback(const char *);
+	virtual void PlayerInfoChanged(int entIndex); // 13
+	virtual void ClearInstancedBaselineFromClientClasses(void); // 14
+	virtual void CreateMove(int screenSlot, int, bool); // 15
 	virtual void* _16();
 	virtual void* _17();
-	virtual void* _18();
-	virtual void* _19();
-	virtual void* _20();
-	virtual void* _21();
-	virtual void* _22();
-	virtual void* _23(); // bool_chr EntityFuckery
-	virtual void* _24();
-	virtual void* _25();
-	virtual void* _26();
-	virtual ClientClass* GetAllClasses(); //27
+	virtual void SendMove(int screanSlot, int); // 18
+	virtual void ProcessInput(int screenSlot, float, bool); // 19
+	virtual void WriteUserCmdDeltaToBuffer(int, void*, int, int, bool); // 20
+	virtual bool EncodeUserCmdToBuffer(void* CSplitScreenSlot_t, char&, int);
+	virtual bool DecodeUserCmdToBuffer(void* CSplitScreenSlot_t, char&, int);
+	virtual void GetEntity2Networkable(int entIndex, void* Entity2Networkable_t);
+	virtual const char* GetEntity2ClassName(int entIndex);
+	virtual void GetNetworkFieldChangeCallbackQueue(void); // 25
+	virtual void NotifyShouldTransmit();
+	virtual ClientClass* GetAllClasses(); // 27
+	virtual void ReceivedServerInfo(void* GameSessionConfiguration_t, void* ILoopModePrerequisiteRegistry);
+	virtual void FrameStageNotify(ClientFrameStage_t stage); // 29
 };
