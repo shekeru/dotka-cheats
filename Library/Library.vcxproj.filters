@@ -8,19 +8,19 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="SDK Files">
-      <UniqueIdentifier>{22f8cc7c-237d-4738-8cfc-d18591817aee}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utility Files">
       <UniqueIdentifier>{efb2c824-4b48-4f42-a4e0-08f49eb4bc82}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SDK Files\Interfaces">
-      <UniqueIdentifier>{60c6f1df-9bd8-4357-ae82-bcd14a383432}</UniqueIdentifier>
+    <Filter Include="Source 2 SDK">
+      <UniqueIdentifier>{22f8cc7c-237d-4738-8cfc-d18591817aee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SDK Files\EntitySystem">
+    <Filter Include="Source 2 SDK\EntitySystem">
       <UniqueIdentifier>{2285c391-508b-4eb0-a940-70db8e1b4cf6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SDK Files\Source 2 Base">
+    <Filter Include="Source 2 SDK\Interfaces">
+      <UniqueIdentifier>{60c6f1df-9bd8-4357-ae82-bcd14a383432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source 2 SDK\EntitySystem\Dota Specifics">
       <UniqueIdentifier>{fb40c438-a4c8-4347-abbf-7db867e55c2d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -50,43 +50,40 @@
       <Filter>Utility Files</Filter>
     </ClInclude>
     <ClInclude Include="CEngineClient.h">
-      <Filter>SDK Files\Interfaces</Filter>
+      <Filter>Source 2 SDK\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="CEventManager.h">
-      <Filter>SDK Files\Interfaces</Filter>
+      <Filter>Source 2 SDK\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="CSource2Client.h">
-      <Filter>SDK Files\Interfaces</Filter>
+      <Filter>Source 2 SDK\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IAppSystem.h">
-      <Filter>SDK Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="IInputSystem.h">
-      <Filter>SDK Files\Interfaces</Filter>
+      <Filter>Source 2 SDK\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="CEntitySystem.h">
-      <Filter>SDK Files\EntitySystem</Filter>
-    </ClInclude>
-    <ClInclude Include="CDotaPlayer.h">
-      <Filter>SDK Files\EntitySystem</Filter>
-    </ClInclude>
-    <ClInclude Include="CDotaBaseNPC.h">
-      <Filter>SDK Files\EntitySystem</Filter>
+      <Filter>Source 2 SDK\EntitySystem</Filter>
     </ClInclude>
     <ClInclude Include="CBaseCombatCharacter.h">
-      <Filter>SDK Files\Source 2 Base</Filter>
-    </ClInclude>
-    <ClInclude Include="CBaseEntity.h">
-      <Filter>SDK Files\Source 2 Base</Filter>
-    </ClInclude>
-    <ClInclude Include="CEntityInstance.h">
-      <Filter>SDK Files\Source 2 Base</Filter>
-    </ClInclude>
-    <ClInclude Include="C_GameEntity.h">
-      <Filter>SDK Files\Source 2 Base</Filter>
+      <Filter>Source 2 SDK\EntitySystem\Dota Specifics</Filter>
     </ClInclude>
     <ClInclude Include="Datamap.h">
       <Filter>Utility Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CEntityInstance.h">
+      <Filter>Source 2 SDK\EntitySystem</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseEntity.h">
+      <Filter>Source 2 SDK\EntitySystem</Filter>
+    </ClInclude>
+    <ClInclude Include="CDotaPlayer.h">
+      <Filter>Source 2 SDK\EntitySystem\Dota Specifics</Filter>
+    </ClInclude>
+    <ClInclude Include="CDotaBaseNPC.h">
+      <Filter>Source 2 SDK\EntitySystem\Dota Specifics</Filter>
+    </ClInclude>
+    <ClInclude Include="C_GameEntity.h">
+      <Filter>Source 2 SDK\EntitySystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

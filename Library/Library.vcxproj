@@ -161,7 +161,6 @@
     <ClInclude Include="Datamap.h" />
     <ClInclude Include="definitions.h" />
     <ClInclude Include="IAppSystem.h" />
-    <ClInclude Include="IInputSystem.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="SDK.h" />
     <ClInclude Include="stdafx.h" />

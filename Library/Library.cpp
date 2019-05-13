@@ -41,7 +41,7 @@ ClientLoader::ClientLoader() : ModuleSystem("client.dll")
 	//  sub_18011BFB0 + 44     48 8D 0D 05 89 4F + lea     rcx, aSearchingForEn; "Searching for entities with class/targe"...
 	//	sub_18011BFB0 + 4B     FF 15 3F 19 43 01     call    cs : Msg
 	//	sub_18011BFB0 + 51     48 8B 0D 70 1C 5A + mov     rcx, cs : g_CGameEntitySystem
-	entities = *reinterpret_cast<CGameEntitySystem**>(GetAbsoluteAddress((uintptr_t)library + 0x11c001, 3));
+	entities = *reinterpret_cast<CGameEntitySystem**>(GetAbsoluteAddress((uintptr_t)library + 0x1549F1, 3));
 	events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 13) + 0x2C, 3));
 	cout << " [+] CGameEventManager: " << events << endl;
 	cout << " [+] CEntitySystem: " << entities << endl;

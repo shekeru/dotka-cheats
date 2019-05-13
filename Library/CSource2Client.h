@@ -1,8 +1,7 @@
 #pragma once
 #include "IAppSystem.h"
-#include "IInputSystem.h"
-#include "vector.h"
 #include "definitions.h"
+
 struct RecvProp;
 
 struct DVariant
@@ -58,10 +57,6 @@ struct RecvProp
 	int m_nElements;
 	const char *m_pParentArrayPropName;
 };
-
-class IClientNetworkable;
-typedef IClientNetworkable* (*CreateClientClassFn)(int entnum, int serialNum);
-typedef IClientNetworkable* (*CreateEventFn)();
 
 class ClientClass
 {

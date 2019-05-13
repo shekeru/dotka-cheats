@@ -1,5 +1,6 @@
 #pragma once
 #include "CBaseCombatCharacter.h"
+#define ButtonCode_t char
 
 enum DotaUnitOrder_t : int {
 	DOTA_UNIT_ORDER_NONE = 0,

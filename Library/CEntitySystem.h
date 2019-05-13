@@ -28,7 +28,7 @@ public:
 	CEntityIdentity m_pIdentities[MAX_ENTITIES_IN_LIST];
 };
 
-class CGameEntitySystem
+class CEntitySystem
 {
 public:
 	CBaseEntity* GetBaseEntity(int index)
@@ -61,4 +61,21 @@ public:
 
 	void* unk; void* unk2; void* unk3;
 	CEntityIdentities* m_pEntityList[MAX_ENTITY_LISTS];
+};
+
+#define ClearEntityDatabaseMode_t char
+#define CEntityHandle char
+#define EntitySpawnInfo_t char
+
+class CGameEntitySystem : public CEntitySystem
+{
+public:
+	//More shit to add, eventually bother
+	virtual void DESTROY10(void);
+	virtual void ClearEntityDatabase(ClearEntityDatabaseMode_t);
+	virtual void FindEntityProcedural(const char *, CEntityInstance*, CEntityInstance*, CEntityInstance*);
+	virtual void OnEntityParentChanged(CEntityInstance *, CEntityInstance *);
+	virtual void OnAddEntity(CEntityInstance *, CEntityHandle);
+	virtual void OnRemoveEntity(CEntityInstance *, CEntityHandle);
+	virtual void SortEntities(EntitySpawnInfo_t *, int *, int *);
 };
