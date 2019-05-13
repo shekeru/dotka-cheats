@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Library.h"
+#include "System.h"
 #include <thread>
 #include <chrono>
 #include <atomic>
@@ -20,13 +20,13 @@ const char* messages[] = {
 }; using namespace std;
 atomic<time_t> recent = time(nullptr);
 
-bool FireEventClientSide(CGameEventManager *thisptr, CGameEvent *event) 
+bool SDK::FireEventClientSide(CGameEventManager *thisptr, CGameEvent *event) 
 {
-	if (!strcmp(event->GetName(), "dota_player_kill"))
+	//if (!strcmp(event->GetName(), "dota_player_kill"))
 		/*CreateThread(0, 0, (LPTHREAD_START_ROUTINE)
 			EvaluatePlayerDeath, (LPVOID) event, 0, 0);*/
-		EvaluatePlayerDeath(event);
-	return eventsVMT->GetOriginalMethod<EventClientFn>(8)(thisptr, event);
+		//EvaluatePlayerDeath(event);
+	return sdk.events->GetOriginalMethod<EventClientFn>(8)(thisptr, event);
 }
 
 void DispatchDeathTaunt(bool inLocalTeam) 
@@ -42,8 +42,8 @@ void EvaluatePlayerDeath(CGameEvent* event)
 	CDotaPlayer* player = nullptr;
 	int playerId = event->GetInt("victim_userid");
 	cout << "Player Death Event: " << event << " ==> " << playerId << "\n";
-	for (int EntityIndex = 0; EntityIndex <= client.entities->GetHighestEntityIndex(); EntityIndex++)
-		if (player = (CDotaPlayer*) client.entities->GetBaseEntity(EntityIndex)) {
+	for (int EntityIndex = 0; EntityIndex <= client.entity->GetHighestEntityIndex(); EntityIndex++)
+		if (player = (CDotaPlayer*) client.entity->GetBaseEntity(EntityIndex)) {
 			auto typeName = player->SchemaDynamicBinding()->bindingName;
 			if (strcmp(typeName, "C_DOTAPlayer"))
 				continue;

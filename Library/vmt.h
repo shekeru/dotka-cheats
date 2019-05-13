@@ -1,18 +1,11 @@
 #pragma once
 
-#include <cstdint>
-#include <vector>
-
-
 inline uint32_t CountVMs(void* interface)
 {
-	uintptr_t** vmt = reinterpret_cast<uintptr_t**>(interface);
-
 	uint32_t methodCount = 0;
-
+	uintptr_t** vmt = reinterpret_cast<uintptr_t**>(interface);
 	while (vmt && reinterpret_cast<uintptr_t*>(*vmt)[methodCount])
-		methodCount++;
-
+		methodCount++; 
 	return methodCount;
 }
 
@@ -25,7 +18,6 @@ public:
 	size_t method_count = 0;
 	bool hasRTTI = false;
 	int32_t rttiPrefix = 0;
-
 	~VMT() {
 		ReleaseVMT();
 		delete[] vmt;
@@ -33,11 +25,8 @@ public:
 	VMT(void* interface, bool copyRTTI = false, int32_t rttiPrefixAmount = 2)
 	{
 		this->interface = reinterpret_cast<uintptr_t**>(interface);
-
 		method_count = CountVMs(interface) + 2 + rttiPrefixAmount;
-
 		original_vmt = *this->interface;
-
 		vmt = new uintptr_t[method_count];
 		// Copy the Original Vtable.
 		if (copyRTTI) {
@@ -48,26 +37,21 @@ public:
 		else {
 			memcpy(vmt, original_vmt, sizeof(uintptr_t) * method_count);
 		}
-
 		// Make sure to "NULL terminate" our new array of pointers.
 		memset(&vmt[method_count], 0, sizeof(uintptr_t));
-
 		//createdVMTs.push_back(this);
 	}
-
 	// Hook virtual method
 	template <typename func>
 	void HookVM(func method, size_t methodIndex)
 	{
 		vmt[hasRTTI ? methodIndex + rttiPrefix : methodIndex] = reinterpret_cast<uintptr_t>(method);
 	}
-
 	template<typename Fn>
 	Fn GetOriginalMethod(size_t methodIndex)
 	{
 		return reinterpret_cast<Fn>(original_vmt[methodIndex]);
 	}
-
 	void ApplyVMT()
 	{
 		if (hasRTTI) {
@@ -77,7 +61,6 @@ public:
 			*this->interface = vmt;
 		}
 	}
-
 	void ReleaseVMT()
 	{
 		if (!this->interface)

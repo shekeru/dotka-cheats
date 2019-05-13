@@ -41,17 +41,17 @@ public:
 	virtual void n_4();
 	virtual void n_5();
 	virtual void n_6();
-	virtual void n_7();
-	virtual void n_8();
+	virtual void AddRefKeyValues(CEntityKeyValues const*); // 7
+	virtual void ReleaseKeyValues(CEntityKeyValues const*); // 8
 	virtual void n_9();
 	virtual void n_10();
-	virtual void n_11();
-	virtual void n_12();
-	virtual void n_13();
-	virtual void n_14();
-	virtual void n_15();
+	virtual void ClearEntityDatabase(void); // 11
+	virtual CEntityInstance* FindEntityProcedural(const char *...);
+	virtual CEntityInstance* OnEntityParentChanged(CEntityInstance*, CEntityInstance*);
+	virtual void* OnAddEntity(CEntityInstance*, CEntityHandle); // 14
+	virtual void* OnRemoveEntity(CEntityInstance*, CEntityHandle); // 15
 	virtual void n_16();
-	virtual void n_17();
+	virtual void SortEntities(int, EntitySpawnInfo_t *, int *, int *); // 17
 	virtual void n_18();
 	virtual void n_19();
 	virtual void n_20();
@@ -87,7 +87,6 @@ public:
 	    // "Ent %3d: %s class %s name %s\n"
 		return *(int*)((uintptr_t)this + 0x2030);
 	}
-	void* unk; void* unk2; void* unk3;
+	void* unk; void* unk2; //void* unk3;, remove because of vtable
 	CEntityIdentities* m_pEntityList[MAX_ENTITY_LISTS];
-	// Fucking Hell
 };

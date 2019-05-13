@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "SDK.h"
+#include "Cheat.h"
 #pragma once
 
 class ModuleSystem
@@ -19,7 +19,7 @@ class ClientLoader : ModuleSystem
 {
 public:
 	CSource2Client* client;
-	CGameEntitySystem* entities;
+	CGameEntitySystem* entity;
 	CGameEventManager* events;
 	ClientLoader();
 };
@@ -31,5 +31,19 @@ public:
 	EngineLoader();
 };
 
+class Internal {
+public:
+	VMT* events;
+	VMT* entity;
+	Internal();
+	~Internal();
+};
+
+// Global Externs
 extern ClientLoader client;
 extern EngineLoader engine;
+extern Internal sdk;
+
+using namespace std;
+bool ThreadIsRunning();
+void PostStartupLogic();

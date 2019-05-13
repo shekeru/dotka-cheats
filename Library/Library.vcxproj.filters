@@ -1,13 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Platform Files">
-      <UniqueIdentifier>{21851884-6ab0-424d-89b3-92d235f51a6a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main Sources">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Utility Files">
       <UniqueIdentifier>{efb2c824-4b48-4f42-a4e0-08f49eb4bc82}</UniqueIdentifier>
     </Filter>
@@ -23,19 +16,23 @@
     <Filter Include="Source 2 SDK\EntitySystem\Dota Specifics">
       <UniqueIdentifier>{fb40c438-a4c8-4347-abbf-7db867e55c2d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Base System">
+      <UniqueIdentifier>{f06e2e44-3a6c-48ea-8cf5-4485a01b15a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base System\Platform Files">
+      <UniqueIdentifier>{21851884-6ab0-424d-89b3-92d235f51a6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cheat Logic">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
-      <Filter>Platform Files</Filter>
+      <Filter>Base System\Platform Files</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Platform Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Library.h">
-      <Filter>Main Sources</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK.h">
-      <Filter>Main Sources</Filter>
+      <Filter>Base System\Platform Files</Filter>
     </ClInclude>
     <ClInclude Include="vector.h">
       <Filter>Utility Files</Filter>
@@ -44,9 +41,6 @@
       <Filter>Utility Files</Filter>
     </ClInclude>
     <ClInclude Include="definitions.h">
-      <Filter>Utility Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vmt.h">
       <Filter>Utility Files</Filter>
     </ClInclude>
     <ClInclude Include="CEngineClient.h">
@@ -85,19 +79,31 @@
     <ClInclude Include="C_GameEntity.h">
       <Filter>Source 2 SDK\EntitySystem</Filter>
     </ClInclude>
+    <ClInclude Include="Cheat.h">
+      <Filter>Cheat Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="System.h">
+      <Filter>Base System</Filter>
+    </ClInclude>
+    <ClInclude Include="vmt.h">
+      <Filter>Base System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Library.cpp">
-      <Filter>Main Sources</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Platform Files</Filter>
+      <Filter>Base System\Platform Files</Filter>
     </ClCompile>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>Platform Files</Filter>
+    <ClCompile Include="EventSystem.cpp">
+      <Filter>Cheat Logic</Filter>
     </ClCompile>
-    <ClCompile Include="EventHooks.cpp">
-      <Filter>Main Sources</Filter>
+    <ClCompile Include="Logic.cpp">
+      <Filter>Base System</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules.cpp">
+      <Filter>Base System</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Base System</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

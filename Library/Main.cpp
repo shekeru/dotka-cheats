@@ -1,20 +1,16 @@
-// dllmain.cpp : Defines the entry point for the DLL application.
 #include "stdafx.h"
-#include "Library.h"
-using namespace std;
+#include "System.h"
 
 ClientLoader client;
 EngineLoader engine;
+Internal sdk;
 
 void ThreadEntry(HMODULE hInstance)
 {
 	cout << "Thread Started <OK>, Handle Address: " << hInstance << "\n\n";
-	ClientLoader client = ClientLoader(); EngineLoader engine = EngineLoader();
-	// Event System VMT
-	eventsVMT = new VMT(client.events); srand(time(nullptr));
-	eventsVMT->HookVM(FireEventClientSide, 8); eventsVMT->ApplyVMT();
-	// Finished 
-	cout << "System Init Finished <OK>, Exiting Startup Thread...\n\n";
+	client = ClientLoader(); engine = EngineLoader(); sdk = Internal();
+	cout << "System Init Finished <OK>, " << "Now Running PostStartupLogic"
+		<< "...\n\n"; while (ThreadIsRunning()) PostStartupLogic();
 }
 
 BOOL APIENTRY DllMain(

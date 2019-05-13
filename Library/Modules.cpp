@@ -1,9 +1,6 @@
 // Library.cpp : Defines the exported functions for the DLL application.
 #include "stdafx.h"
-#include "Library.h"
-
-using namespace std;
-VMT* eventsVMT;
+#include "System.h"
 
 template <typename interface>
 interface* ModuleSystem::LoadInterface(LPCSTR name)
@@ -29,7 +26,8 @@ ModuleSystem::ModuleSystem(LPCSTR module)
 
 ModuleSystem::~ModuleSystem()
 {
-	CloseHandle(library);
+	// CloseHandle(library);
+	// No need to apparently?
 }
 
 ClientLoader::ClientLoader() : ModuleSystem("client.dll")
@@ -41,16 +39,12 @@ ClientLoader::ClientLoader() : ModuleSystem("client.dll")
 	//  sub_18011BFB0 + 44     48 8D 0D 05 89 4F + lea     rcx, aSearchingForEn; "Searching for entities with class/targe"...
 	//	sub_18011BFB0 + 4B     FF 15 3F 19 43 01     call    cs : Msg
 	//	sub_18011BFB0 + 51     48 8B 0D 70 1C 5A + mov     rcx, cs : g_CGameEntitySystem
-	entities = *reinterpret_cast<CGameEntitySystem**>(GetAbsoluteAddress(*vmt_slot(client, 25), 3));
+	entity = *reinterpret_cast<CGameEntitySystem**>(GetAbsoluteAddress(*vmt_slot(client, 25), 3));
+	//entities = *reinterpret_cast<CGameEntitySystem**>(GetAbsoluteAddress(*vmt_slot(client, 3) + 0x296, 3));
 	events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 13) + 0x2C, 3));
 	cout << " [+] CGameEventManager: " << events << endl;
-	cout << " [+] CGameEntitySystem: " << entities << endl;
+	cout << " [+] CGameEntitySystem: " << entity << endl;
 	cout << endl;
-	for (int EntityIndex = 0; EntityIndex <= 20; EntityIndex++)
-		if (auto pEntity = entities->GetBaseEntity(EntityIndex)) {
-			const char* EntityClass = pEntity->SchemaDynamicBinding()->bindingName;
-			printf("[+] pEntity: %p , %i , %s\n", pEntity, EntityIndex, EntityClass);
-		}
 }
 
 EngineLoader::EngineLoader() : ModuleSystem("engine2.dll")
@@ -62,3 +56,23 @@ EngineLoader::EngineLoader() : ModuleSystem("engine2.dll")
 	//cout << "INDEX: " << index << endl;
 	cout << endl;
 }
+
+Internal::Internal()
+{
+	// Virtual Tables
+	events = new VMT(client.events);
+	entity = new VMT(client.entity);
+	// Function Swaps
+	events->HookVM(SDK::FireEventClientSide, 8);
+	//entity->HookVM(SDK::OnAddEntity, 17);
+	// Apply
+	events->ApplyVMT();
+	entity->ApplyVMT();
+}
+
+Internal::~Internal()
+{
+	events->ReleaseVMT();
+	entity->ReleaseVMT();
+}
+
