@@ -51,8 +51,8 @@ void InjectionManager::LoadPath(string filePath)
 
 InjectionManager::InjectionManager()
 {
-	pEntry.dwSize = sizeof(PROCESSENTRY32);
 	hProcess = INVALID_HANDLE_VALUE;
+	pEntry.dwSize = sizeof(PROCESSENTRY32);
 	LibraryLoad = (LPTHREAD_START_ROUTINE) GetProcAddress(
 		GetModuleHandle("kernel32.dll"), "LoadLibraryA"
 	); cout << "[Injector] LoadLibraryA found at " << LibraryLoad << endl;

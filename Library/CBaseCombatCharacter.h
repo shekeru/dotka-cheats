@@ -1,6 +1,5 @@
-#pragma once
-
 #include "CBaseEntity.h"
+#pragma once
 
 class CBaseCombatCharacter : public CBaseEntity
 {

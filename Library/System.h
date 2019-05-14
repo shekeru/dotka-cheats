@@ -12,7 +12,6 @@ public:
 	template <typename interface>
 	interface* LoadInterface(LPCSTR name);
 	ModuleSystem(LPCSTR module);
-	~ModuleSystem();
 };
 
 class ClientLoader : ModuleSystem
@@ -31,19 +30,18 @@ public:
 	EngineLoader();
 };
 
-class Internal {
-public:
-	VMT* events;
-	VMT* entity;
-	Internal();
-	~Internal();
-};
-
-// Global Externs
 extern ClientLoader client;
 extern EngineLoader engine;
+
+class Internal {
+public:
+	VMT* events = new VMT(client.events);
+	VMT* entity = new VMT(client.entity);
+};
+
 extern Internal sdk;
 
-using namespace std;
 bool ThreadIsRunning();
 void PostStartupLogic();
+
+using namespace std;

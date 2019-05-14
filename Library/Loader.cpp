@@ -17,17 +17,10 @@ ModuleSystem::ModuleSystem(LPCSTR module)
 		<< hex << (library = GetModuleHandle(module)) << endl; 
 	CreateInterface = (uintptr_t) GetProcAddress(library, "CreateInterface");
 	cout << " [+] CreateInterface: " << hex << CreateInterface << endl; 
-	// Idk what this was for
 	InterfaceList = *reinterpret_cast<InterfaceReg**>(GetAbsoluteAddress(CreateInterface, 3));
 	/*for (InterfaceReg* current = InterfaceList; current; current = current->m_pNext)
 		printf("\t%s => 0x%llx\n", current->m_pName, current->m_CreateFn());*/
 	
-}
-
-ModuleSystem::~ModuleSystem()
-{
-	// CloseHandle(library);
-	// No need to apparently?
 }
 
 ClientLoader::ClientLoader() : ModuleSystem("client.dll")
@@ -41,9 +34,9 @@ ClientLoader::ClientLoader() : ModuleSystem("client.dll")
 	//	sub_18011BFB0 + 51     48 8B 0D 70 1C 5A + mov     rcx, cs : g_CGameEntitySystem
 	//entities = *reinterpret_cast<CGameEntitySystem**>(GetAbsoluteAddress(*vmt_slot(client, 3) + 0x296, 3));
 	entity = *reinterpret_cast<CGameEntitySystem**>(GetAbsoluteAddress(*vmt_slot(client, 25), 3));
-	//events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 13) + 0x2C, 3));
+	events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 13) + 0x2C, 3));
 	//events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 13) + 0xCF, 3));
-	events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 4) + 0xDF, 3));
+	//events = *reinterpret_cast<CGameEventManager**>(GetAbsoluteAddress(*vmt_slot(client, 4) + 0xDF, 3));
 	cout << " [+] CGameEventManager: " << events << endl;
 	cout << " [+] CGameEntitySystem: " << entity << endl;
 	cout << endl;
@@ -58,25 +51,3 @@ EngineLoader::EngineLoader() : ModuleSystem("engine2.dll")
 	//cout << "INDEX: " << index << endl;
 	cout << endl;
 }
-
-Internal::Internal()
-{
-	// Virtual Tables
-	events = new VMT(client.events);
-	//entity = new VMT(client.entity);
-	// Function Swaps
-	events->HookVM(SDK::FireEventClientSide, 8);
-	//entity->HookVM(SDK::OnAddEntity, 17);
-	// Apply
-	events->ApplyVMT();
-	//entity->ApplyVMT();
-}
-
-Internal::~Internal()
-{
-	// Reverse Table
-	//events->ReleaseVMT();
-	//entity->ReleaseVMT();
-	// Deallocate
-}
-

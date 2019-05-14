@@ -34,7 +34,6 @@ public:
 	virtual void Preshutdown() = 0; // 5
 	virtual const AppSystemInfo_t* GetDependencies() = 0; 
 	virtual AppSystemTier_t GetTier() = 0;
-	// Reconnect to a particular interface
 	virtual void Reconnect(void* factory, const char* pInterfaceName) = 0;
 	virtual bool IsSingleton() = 0;
 	virtual void GetBuildType() = 0; // 10

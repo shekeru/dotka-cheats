@@ -1,72 +1,58 @@
 #pragma once
 
-inline uint32_t CountVMs(void* interface)
-{
-	uint32_t methodCount = 0;
-	uintptr_t** vmt = reinterpret_cast<uintptr_t**>(interface);
-	while (vmt && reinterpret_cast<uintptr_t*>(*vmt)[methodCount])
-		methodCount++; 
-	return methodCount;
-}
-
 class VMT
 {
 public:
 	uintptr_t* vmt;
+	uintptr_t* sdk_vmt = nullptr;
 	uintptr_t** interface = nullptr;
-	uintptr_t* original_vmt = nullptr;
 	size_t method_count = 0;
-	bool hasRTTI = false;
-	int32_t rttiPrefix = 0;
+	VMT(void* instance)
+	{
+		interface = reinterpret_cast<uintptr_t**>(instance);
+		sdk_vmt = *interface; while (sdk_vmt[method_count])
+		method_count++; vmt = new uintptr_t[method_count + 1]();
+		memcpy(vmt, sdk_vmt, sizeof(uintptr_t) * method_count);
+	}
+	template <typename func>
+	void HookVM(func method, size_t methodIndex)
+	{
+		vmt[methodIndex] = reinterpret_cast<uintptr_t>(method);
+	}
+	template<typename Fn>
+	Fn GetOriginalMethod(size_t index)
+	{
+		return reinterpret_cast<Fn>(sdk_vmt[index]);
+	}
+	void ReleaseVMT()
+	{
+		if (interface && *interface && sdk_vmt)
+			*this->interface = sdk_vmt;
+	}
+	void ApplyVMT()
+	{
+		*interface = vmt;
+	}
 	~VMT() {
 		ReleaseVMT();
 		delete[] vmt;
 	}
-	VMT(void* interface, bool copyRTTI = false, int32_t rttiPrefixAmount = 2)
-	{
-		this->interface = reinterpret_cast<uintptr_t**>(interface);
-		method_count = CountVMs(interface) + 2 + rttiPrefixAmount;
-		original_vmt = *this->interface;
-		vmt = new uintptr_t[method_count];
-		// Copy the Original Vtable.
-		if (copyRTTI) {
-			memcpy(vmt, &original_vmt[-rttiPrefixAmount], (sizeof(uintptr_t) * method_count) + sizeof(uintptr_t));
-			hasRTTI = true;
-			rttiPrefix = rttiPrefixAmount;
-		}
-		else {
-			memcpy(vmt, original_vmt, sizeof(uintptr_t) * method_count);
-		}
-		// Make sure to "NULL terminate" our new array of pointers.
-		memset(&vmt[method_count], 0, sizeof(uintptr_t));
-		//createdVMTs.push_back(this);
-	}
-	// Hook virtual method
-	template <typename func>
-	void HookVM(func method, size_t methodIndex)
-	{
-		vmt[hasRTTI ? methodIndex + rttiPrefix : methodIndex] = reinterpret_cast<uintptr_t>(method);
-	}
-	template<typename Fn>
-	Fn GetOriginalMethod(size_t methodIndex)
-	{
-		return reinterpret_cast<Fn>(original_vmt[methodIndex]);
-	}
-	void ApplyVMT()
-	{
-		if (hasRTTI) {
-			*this->interface = &vmt[rttiPrefix];
-		}
-		else {
-			*this->interface = vmt;
-		}
-	}
-	void ReleaseVMT()
-	{
-		if (!this->interface)
-			return;
-		if (*this->interface && original_vmt)
-			*this->interface = original_vmt;
-	}
-
 };
+// Store for now
+typedef void* (*InstantiateInterfaceFn) ();
+
+struct InterfaceReg
+{
+	InstantiateInterfaceFn m_CreateFn;
+	const char *m_pName;
+	InterfaceReg *m_pNext;
+};
+
+inline uintptr_t GetAbsoluteAddress(uintptr_t instruction_ptr, int offset)
+{
+	return instruction_ptr + *reinterpret_cast<int32_t*>(instruction_ptr + offset) + offset + 4;
+};
+
+inline uintptr_t* vmt_slot(void* instance, int offset) {
+	return (*(uintptr_t**)instance) + offset;
+}

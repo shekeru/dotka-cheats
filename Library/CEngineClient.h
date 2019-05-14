@@ -1,5 +1,5 @@
-#pragma once
 #include "IAppSystem.h"
+#pragma once
 
 class CEngineClient : IAppSystem
 {

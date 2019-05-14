@@ -7,12 +7,11 @@ bool isRunning = 1;
 bool ThreadIsRunning()
 {
 	using namespace chrono_literals;
-	this_thread::sleep_for(10ms);
+	this_thread::sleep_for(5s);
 	return isRunning;
 }
 
 void PostStartupLogic() 
 {
-
-	isRunning = false;
+	isRunning = true;
 }

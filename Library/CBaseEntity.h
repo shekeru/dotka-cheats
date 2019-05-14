@@ -1,6 +1,5 @@
-#pragma once
-#include "common.h"
 #include "vector.h"
+#pragma once
 
 enum OverlayFlags_t : unsigned long long
 {

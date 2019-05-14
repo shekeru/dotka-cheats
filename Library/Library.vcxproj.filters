@@ -37,9 +37,6 @@
     <ClInclude Include="vector.h">
       <Filter>Utility Files</Filter>
     </ClInclude>
-    <ClInclude Include="common.h">
-      <Filter>Utility Files</Filter>
-    </ClInclude>
     <ClInclude Include="definitions.h">
       <Filter>Utility Files</Filter>
     </ClInclude>
