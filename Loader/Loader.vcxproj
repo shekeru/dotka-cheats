@@ -151,11 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="External.h" />
+    <ClInclude Include="Injection.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Loader.cpp" />
-    <ClCompile Include="External.cpp" />
+    <ClCompile Include="Entry.cpp" />
+    <ClCompile Include="Manager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

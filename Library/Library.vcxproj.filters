@@ -10,9 +10,6 @@
     <Filter Include="Source 2 SDK\EntitySystem">
       <UniqueIdentifier>{2285c391-508b-4eb0-a940-70db8e1b4cf6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source 2 SDK\Interfaces">
-      <UniqueIdentifier>{60c6f1df-9bd8-4357-ae82-bcd14a383432}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source 2 SDK\EntitySystem\Dota Specifics">
       <UniqueIdentifier>{fb40c438-a4c8-4347-abbf-7db867e55c2d}</UniqueIdentifier>
     </Filter>
@@ -25,6 +22,9 @@
     <Filter Include="Cheat Logic">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source 2 SDK\Interfaces">
+      <UniqueIdentifier>{60c6f1df-9bd8-4357-ae82-bcd14a383432}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -41,9 +41,6 @@
       <Filter>Utility Files</Filter>
     </ClInclude>
     <ClInclude Include="CEngineClient.h">
-      <Filter>Source 2 SDK\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="CEventManager.h">
       <Filter>Source 2 SDK\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="CSource2Client.h">
@@ -76,13 +73,16 @@
     <ClInclude Include="C_GameEntity.h">
       <Filter>Source 2 SDK\EntitySystem</Filter>
     </ClInclude>
-    <ClInclude Include="Cheat.h">
+    <ClInclude Include="CEventManager.h">
+      <Filter>Source 2 SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks.h">
       <Filter>Cheat Logic</Filter>
     </ClInclude>
-    <ClInclude Include="System.h">
+    <ClInclude Include="SDK.h">
       <Filter>Base System</Filter>
     </ClInclude>
-    <ClInclude Include="vmt.h">
+    <ClInclude Include="Modules.h">
       <Filter>Base System</Filter>
     </ClInclude>
   </ItemGroup>
@@ -90,16 +90,16 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Base System\Platform Files</Filter>
     </ClCompile>
-    <ClCompile Include="Logic.cpp">
-      <Filter>Base System</Filter>
-    </ClCompile>
-    <ClCompile Include="Fuck This.cpp">
+    <ClCompile Include="On Death.cpp">
       <Filter>Cheat Logic</Filter>
     </ClCompile>
-    <ClCompile Include="Loader.cpp">
+    <ClCompile Include="Main Thread.cpp">
       <Filter>Base System</Filter>
     </ClCompile>
-    <ClCompile Include="Entry.cpp">
+    <ClCompile Include="DLL Entry.cpp">
+      <Filter>Base System</Filter>
+    </ClCompile>
+    <ClCompile Include="Module System.cpp">
       <Filter>Base System</Filter>
     </ClCompile>
   </ItemGroup>

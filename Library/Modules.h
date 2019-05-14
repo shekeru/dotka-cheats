@@ -1,6 +1,5 @@
 #include "stdafx.h"
-#include "Cheat.h"
-#pragma once
+#include "SDK.h"
 
 class ModuleSystem
 {
@@ -37,11 +36,13 @@ class Internal {
 public:
 	VMT* events = new VMT(client.events);
 	VMT* entity = new VMT(client.entity);
+	void AttachVMs() {
+		events->ApplyVMT();
+		entity->ApplyVMT();
+	}
 };
 
 extern Internal sdk;
-
 bool ThreadIsRunning();
 void PostStartupLogic();
-
 using namespace std;

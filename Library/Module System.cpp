@@ -1,6 +1,6 @@
 // Library.cpp : Defines the exported functions for the DLL application.
 #include "stdafx.h"
-#include "System.h"
+#include "Modules.h"
 
 template <typename interface>
 interface* ModuleSystem::LoadInterface(LPCSTR name)

@@ -160,24 +160,24 @@
     <ClInclude Include="Datamap.h" />
     <ClInclude Include="definitions.h" />
     <ClInclude Include="IAppSystem.h" />
-    <ClInclude Include="System.h" />
-    <ClInclude Include="Cheat.h" />
+    <ClInclude Include="SDK.h" />
+    <ClInclude Include="Modules.h" />
+    <ClInclude Include="Hooks.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="vector.h" />
-    <ClInclude Include="vmt.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Fuck This.cpp" />
-    <ClCompile Include="Entry.cpp" />
-    <ClCompile Include="Loader.cpp" />
+    <ClCompile Include="On Death.cpp" />
+    <ClCompile Include="DLL Entry.cpp" />
+    <ClCompile Include="Module System.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Logic.cpp" />
+    <ClCompile Include="Main Thread.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

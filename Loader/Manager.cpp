@@ -1,9 +1,6 @@
-#include "External.h"
-#include <iostream>
+#include "Injection.h"
 #include <thread>
 #include <chrono>
-
-using namespace std;
 
 BOOL InjectionManager::AttachProcess(string procName)
 {

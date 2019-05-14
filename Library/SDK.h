@@ -1,4 +1,12 @@
-#pragma once
+// Library Headers
+#include "CSource2Client.h"
+#include "CEngineClient.h"
+// Managers & Systems
+#include "CEventManager.h"
+#include "CEntitySystem.h"
+// Object Headers
+#include "CDotaPlayer.h"
+// Misc Required
 
 class VMT
 {
@@ -11,7 +19,7 @@ public:
 	{
 		interface = reinterpret_cast<uintptr_t**>(instance);
 		sdk_vmt = *interface; while (sdk_vmt[method_count])
-		method_count++; vmt = new uintptr_t[method_count + 1]();
+			method_count++; vmt = new uintptr_t[method_count + 1]();
 		memcpy(vmt, sdk_vmt, sizeof(uintptr_t) * method_count);
 	}
 	template <typename func>

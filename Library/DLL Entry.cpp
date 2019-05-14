@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "System.h"
+#include "Hooks.h"
 
 ClientLoader client;
 EngineLoader engine;
@@ -9,7 +9,7 @@ void ThreadEntry(HMODULE hInstance)
 {
 	cout << "Thread Started <OK>, Handle Address: " << hInstance << "\n\n";
 	client = ClientLoader(); engine = EngineLoader(); sdk = Internal();
-	sdk.events->HookVM(SDK::FireEventClientSide, 8); sdk.events->ApplyVMT();
+	SDK::LoadActiveHooks(); sdk.AttachVMs();
 	cout << "System Init Finished <OK>, " << "Now Running PostStartupLogic"
 		<< "...\n\n"; while (ThreadIsRunning()) PostStartupLogic();
 }
