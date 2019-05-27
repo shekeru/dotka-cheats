@@ -10,11 +10,11 @@
     <ClCompile Include="Manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entry.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClCompile Include="Entry.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Injection.h" />
+    <ClInclude Include="Injection.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

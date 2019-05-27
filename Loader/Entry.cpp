@@ -4,6 +4,6 @@
 int main()
 {
 	InjectionManager().LoadPath(
-		"C:\\Coding Repos (Home)\\Fucking Windows\\Dotka\\x64\\Debug\\Library.dll"
+		"C:\\Coding Repos (Home)\\Fucking Windows\\Dotka\\x64\\Debug\\DotkaLib.dll"
 	); cout << "[Injector] Init okay!\n"; 
 }
