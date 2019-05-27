@@ -8,5 +8,3 @@ namespace SDK {
 		sdk.events->HookVM(SDK::FireEventClientSide, 8);
 	}
 }; 
-
-

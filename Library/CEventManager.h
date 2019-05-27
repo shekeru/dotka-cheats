@@ -50,20 +50,20 @@ class CGameEventListener2
 class CGameEventManager
 {
 public:
-	virtual void DESTROY() = 0; // 0
-	virtual int LoadEventsFromFile(const char *filename) = 0;
-	virtual void Reset(void) = 0; // 2
-	virtual bool AddListener(CGameEventListener2 *listener, const char *eventName, bool serverSide) = 0; // 3
-	virtual bool FindListener(CGameEventListener2 *listener, const char *eventName) = 0; // 4
-	virtual void RemoveListener(CGameEventListener2 *listener) = 0; // 5
-	virtual CGameEvent* CreateEvent(const char* name, bool force = false, int *cookie = nullptr) = 0; // 6
-	virtual bool FireEvent(CGameEvent *event, bool dontBroadcast) = 0; // 7
-	virtual bool FireEventClientSide(CGameEvent *event) = 0; // 8
-	virtual CGameEvent* DuplicateEvent(CGameEvent *event) = 0; //9
-	virtual void FreeEvent(CGameEvent *event) = 0; // 10
-	virtual bool SerializeEvent(CGameEvent *event, void *Source1LegacyGameEvent) = 0;
-	virtual CGameEvent* UnserializeEvent(void const *Source1LegacyGameEvent) = 0;
-	virtual bool LookupEventId(const char *id) = 0;
+	virtual void DESTROY(); // 0
+	virtual int LoadEventsFromFile(const char *filename);
+	virtual void Reset(void); // 2
+	virtual bool AddListener(CGameEventListener2 *listener, const char *eventName, bool serverSide); // 3
+	virtual bool FindListener(CGameEventListener2 *listener, const char *eventName); // 4
+	virtual void RemoveListener(CGameEventListener2 *listener); // 5
+	virtual CGameEvent* CreateEvent(const char* name, bool force = false, int *cookie = nullptr); // 6
+	virtual bool FireEvent(CGameEvent *event, bool dontBroadcast); // 7
+	virtual bool FireEventClientSide(CGameEvent *event); // 8
+	virtual CGameEvent* DuplicateEvent(CGameEvent *event); //9
+	virtual void FreeEvent(CGameEvent *event); // 10
+	virtual bool SerializeEvent(CGameEvent *event, void *Source1LegacyGameEvent);
+	virtual CGameEvent* UnserializeEvent(void const *Source1LegacyGameEvent);
+	virtual bool LookupEventId(const char *id) ;
 	virtual void PrintEventToString(CGameEvent* ptr, char* str);
-	virtual void something() = 0;
+	virtual void something();
 };
