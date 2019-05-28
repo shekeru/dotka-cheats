@@ -65,5 +65,5 @@ public:
 	virtual CGameEvent* UnserializeEvent(void const *Source1LegacyGameEvent);
 	virtual bool LookupEventId(const char *id) ;
 	virtual void PrintEventToString(CGameEvent* ptr, char* str);
-	virtual void something();
+	virtual KeyValues* GetEventDataTypes(CGameEvent* event);
 };

@@ -26,12 +26,12 @@ enum AppSystemTier_t
 class IAppSystem
 {
 public:
-	virtual void Connect() = 0; // 0
+	virtual bool Connect() = 0; // 0
 	virtual void Disconnect() = 0;
-	virtual void QueryInterface(const char* interfaceName) = 0;
+	virtual void* QueryInterface(const char* interfaceName) = 0;
 	virtual InitReturnVal_t Init() = 0; // 3
 	virtual void Shutdown() = 0; // 4
-	virtual void Preshutdown() = 0; // 5
+	virtual void PreShutdown() = 0; // 5
 	virtual const AppSystemInfo_t* GetDependencies() = 0; 
 	virtual AppSystemTier_t GetTier() = 0;
 	virtual void Reconnect(void* factory, const char* pInterfaceName) = 0;

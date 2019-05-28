@@ -3,7 +3,7 @@
 #include <thread>
 #include <chrono>
 
-//typedef bool(*EventClientFn)(CGameEventManager*, CGameEvent *);
+typedef bool(*EventClientFn)(CGameEventManager*, CGameEvent *);
 void EvaluatePlayerDeath(CGameEvent* event);
 
 const char* messages[] = {
@@ -27,8 +27,7 @@ bool SDK::FireEventClientSide(CGameEventManager *object, CGameEvent *event)
 		//EvaluatePlayerDeath(event);
 	cout << "Event " << event->GetName() << " at " << event << " for " 
 		<< object << endl;
-	//return sdk.events->GetOriginalMethod<EventClientFn>(8)(thisptr, event);
-	return (object->*&CGameEventManager::FireEventClientSide)(event);
+	return sdk.events->GetOriginalMethod<EventClientFn>(8)(object, event);
 }
 
 void DispatchDeathTaunt(bool inLocalTeam) 

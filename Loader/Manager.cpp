@@ -32,7 +32,7 @@ void InjectionManager::LoadPath(string filePath)
 	while (!AttachProcess("dota2.exe"))
 		this_thread::sleep_for(1s);
 	// Allocate Memory and Commit
-	lpFileRemote = VirtualAllocEx(hProcess, NULL, 260, MEM_COMMIT, PAGE_READWRITE);
+	lpFileRemote = VirtualAllocEx(hProcess, NULL, 260, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
 	WriteProcessMemory(hProcess, lpFileRemote, filePath.c_str(), filePath.size(), 0);
 	cout << "[LoadPath] Wrote " << filePath.size() << " bytes to " << lpFileRemote << endl;
 	HANDLE remoteThread = CreateRemoteThread(hProcess, NULL, 0, LibraryLoad, lpFileRemote, 0, NULL);
