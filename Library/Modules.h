@@ -29,8 +29,8 @@ public:
 	EngineLoader();
 };
 
-extern ClientLoader client;
-extern EngineLoader engine;
+inline ClientLoader client;
+inline EngineLoader engine;
 
 class Internal {
 public:
@@ -42,7 +42,7 @@ public:
 	}
 };
 
-extern Internal sdk;
+inline Internal sdk;
 bool ThreadIsRunning();
 void PostStartupLogic();
 using namespace std;

@@ -26,6 +26,9 @@
     <Filter Include="Source 2 SDK\Interfaces">
       <UniqueIdentifier>{60c6f1df-9bd8-4357-ae82-bcd14a383432}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source 2 SDK\EntitySystem\Basic Types">
+      <UniqueIdentifier>{d120f315-2cc2-4273-8825-7ebba88881fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -52,26 +55,14 @@
     <ClInclude Include="CEntitySystem.h">
       <Filter>Source 2 SDK\EntitySystem</Filter>
     </ClInclude>
-    <ClInclude Include="CBaseCombatCharacter.h">
-      <Filter>Source 2 SDK\EntitySystem\Dota Specifics</Filter>
-    </ClInclude>
     <ClInclude Include="Datamap.h">
       <Filter>Utility Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CEntityInstance.h">
-      <Filter>Source 2 SDK\EntitySystem</Filter>
-    </ClInclude>
-    <ClInclude Include="CBaseEntity.h">
-      <Filter>Source 2 SDK\EntitySystem</Filter>
     </ClInclude>
     <ClInclude Include="CDotaPlayer.h">
       <Filter>Source 2 SDK\EntitySystem\Dota Specifics</Filter>
     </ClInclude>
     <ClInclude Include="CDotaBaseNPC.h">
       <Filter>Source 2 SDK\EntitySystem\Dota Specifics</Filter>
-    </ClInclude>
-    <ClInclude Include="C_GameEntity.h">
-      <Filter>Source 2 SDK\EntitySystem</Filter>
     </ClInclude>
     <ClInclude Include="CEventManager.h">
       <Filter>Source 2 SDK</Filter>
@@ -84,6 +75,21 @@
     </ClInclude>
     <ClInclude Include="Modules.h">
       <Filter>Base System</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseEntity.h">
+      <Filter>Source 2 SDK\EntitySystem\Basic Types</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseModelEntity.h">
+      <Filter>Source 2 SDK\EntitySystem\Basic Types</Filter>
+    </ClInclude>
+    <ClInclude Include="CEntityInstance.h">
+      <Filter>Source 2 SDK\EntitySystem\Basic Types</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseFlex.h">
+      <Filter>Source 2 SDK\EntitySystem\Basic Types</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseCombatCharacter.h">
+      <Filter>Source 2 SDK\EntitySystem\Dota Specifics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

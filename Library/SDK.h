@@ -7,6 +7,7 @@
 // Object Headers
 #include "CDotaPlayer.h"
 // Misc Required
+#include <map>
 
 class VMT
 {
@@ -14,6 +15,7 @@ public:
 	uintptr_t* vmt;
 	uintptr_t* sdk_vmt = nullptr;
 	uintptr_t** interface = nullptr;
+	std::map<uintptr_t, size_t> map;
 	size_t method_count = 0;
 	VMT(void* instance)
 	{
@@ -23,14 +25,20 @@ public:
 		memcpy(vmt, sdk_vmt, sizeof(uintptr_t) * method_count);
 	}
 	template <typename func>
-	void HookVM(func method, size_t methodIndex)
+	void HookVM(func ref, size_t index)
 	{
-		vmt[methodIndex] = reinterpret_cast<uintptr_t>(method);
+		vmt[index] = reinterpret_cast<uintptr_t>(ref);
+		map[(uintptr_t) ref] = index;
 	}
 	template<typename Fn>
-	Fn GetOriginalMethod(size_t index)
+	auto GetOriginalMethod(Fn &ref, size_t index)
 	{
-		return reinterpret_cast<Fn>(sdk_vmt[index]);
+		return reinterpret_cast<decltype(&ref)>(sdk_vmt[index]);
+	}
+	template<typename Fn>
+	auto GetOriginalMethod(Fn &ref)
+	{
+		return GetOriginalMethod(ref, map[(uintptr_t) ref]);
 	}
 	void ReleaseVMT()
 	{

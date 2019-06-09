@@ -1,26 +1,39 @@
-#include "CBaseEntity.h"
+#include "CBaseFlex.h"
 #pragma once
 
-class CBaseCombatCharacter : public CBaseEntity
+class CBaseCombatCharacter : public CBaseFlex
 {
-	virtual bool C_BaseCombatCharacter__IsLookingTowardsEntity(const void* C_BaseEntity, float fovMaybe);
-	virtual bool C_BaseCombatCharacter__IsLookingTowardsVector(const Vector &point, float fovMaybe);
-	virtual bool C_BaseCombatCharacter__IsEntityInFOV(const void* C_BaseEntity);
-	virtual bool C_BaseCombatCharacter__IsVectorInFOV(const Vector &point);
-	virtual Vector* C_BaseCombatCharacter__IsLineOfSightClear(void* C_BaseEntity, int LineOfSightCheckType);
-	virtual bool C_BaseCombatCharacter__IsLineOfSightClear(Vector &out, void* C_BaseEntity, int LineOfSightCheckType);
-	virtual void C_BaseCombatCharacter__OnFootstep(const Vector &pos, bool unk, bool unk2);
-	virtual void*C_BaseCombatCharacter__GetGroundSurface(void);
-	virtual void*C_BaseCombatCharacter__GetFootstepSound(const char* unk, bool unk2, float unk3, bool unk4);
-	virtual bool C_BaseCombatCharacter__AreFootstepsAudible(float unk, bool unk2);
-	virtual bool C_BaseCombatCharacter__IsFootstepAudible(float unk, bool unk2);
-	virtual float C_BaseCombatCharacter__GetFootstepRunThreshold(void);
-	virtual bool C_BasePlayer__IsGhost(void);
-	virtual void C_BaseCombatCharacter__UpdateParticles(void);
-	virtual void C_BaseCombatCharacter__Weapon_OwnsThisType(const char*, int);
-	virtual void C_BaseCombatCharacter__Weapon_GetSlot(const char*, int);
-	virtual void C_BasePlayer__Weapon_Switch(void* C_BaseCombatWeapon, int);
-	virtual void C_BaseCombatCharacter__GetActiveWeapon() = 0; // 300, added
-	virtual void C_BasePlayer__OnAmmoCountChanged(int unk, unsigned int unk2, unsigned int unk3);
-	virtual void C_BasePlayer__OnWearablesChanged(void);
+public:
+	virtual void n_270(); // 270, 
+	virtual void n_271(); // 271, 
+	virtual void n_272(); // 272, 
+	virtual void n_273(); // 273, 
+	virtual void n_274(); // 274, 
+	virtual void n_275(); // 275, 
+	virtual void n_276(); // 276, 
+	virtual void n_277(); // 277, 
+	virtual void n_278(); // 278, 
+	virtual void n_279(); // 279, 
+	virtual void n_280(); // 280, 
+	virtual void n_281(); // 281, 
+	virtual void n_282(); // 282, 
+	virtual void n_283(); // 283, 
+	virtual void n_284(); // 284, 
+	virtual void n_285(); // 285, 
+	virtual void n_286(); // 286, 
+	virtual void n_287(); // 287, 
+	virtual void n_288(); // 288, 
+	virtual void n_289(); // 289, 
+	virtual void n_290(); // 290, 
+	virtual void n_291(); // 291, 
+	virtual void n_292(); // 292, 
+	virtual void n_293(); // 293, 
+	virtual void n_294(); // 294, 
+	virtual void n_295(); // 295, 
+	virtual void n_296(); // 296, 
+	virtual void n_297(); // 297, 
+	virtual void n_298(); // 298, 
+	virtual void n_299(); // 299, 
+	virtual void n_300(); // 300, 
+	virtual void n_301(); // 301, 
 };

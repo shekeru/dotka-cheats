@@ -54,6 +54,7 @@ enum OrderQueueBehavior_t : int {
 };
 
 // find PrepareUnitOrders with "particles/ui_mouseactions/waypoint_flag.vpcf"
+//class C_BasePlayer, C_BaseCombatCharacter, C_BaseFlex, C_BaseAnimatingOverlay, C_BaseAnimating, C_BaseModelEntity, C_BaseEntity, C_GameEntity, CEntityInstance, IHandleEntity, IPredictionCopyable, IParticlePropertyOuter, IBoneTransformOverride;
 class CDotaPlayer : public CBaseCombatCharacter
 {
 public: //wtf were those LWSS

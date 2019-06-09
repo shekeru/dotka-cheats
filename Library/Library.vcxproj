@@ -166,15 +166,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CBaseFlex.h" />
     <ClInclude Include="CBaseCombatCharacter.h" />
     <ClInclude Include="CBaseEntity.h" />
+    <ClInclude Include="CBaseModelEntity.h" />
     <ClInclude Include="CDotaBaseNPC.h" />
     <ClInclude Include="CDotaPlayer.h" />
     <ClInclude Include="CEngineClient.h" />
     <ClInclude Include="CEntityInstance.h" />
     <ClInclude Include="CEntitySystem.h" />
     <ClInclude Include="CEventManager.h" />
-    <ClInclude Include="C_GameEntity.h" />
     <ClInclude Include="CSource2Client.h" />
     <ClInclude Include="Datamap.h" />
     <ClInclude Include="definitions.h" />

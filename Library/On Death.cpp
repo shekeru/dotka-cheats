@@ -3,9 +3,6 @@
 #include <thread>
 #include <chrono>
 
-typedef bool(*EventClientFn)(CGameEventManager*, CGameEvent *);
-void EvaluatePlayerDeath(CGameEvent* event);
-
 const char* messages[] = {
 	"say Good game, well played.",
 	"say I'm glad you tried, I'm sure you'll do better next time...",
@@ -19,15 +16,16 @@ const char* messages[] = {
 }; using namespace std;
 time_t recent = time(nullptr);
 
+void EvaluatePlayerDeath(CGameEvent* event);
+
 bool SDK::FireEventClientSide(CGameEventManager *object, CGameEvent *event) 
 {
 	//if (!strcmp(event->GetName(), "dota_player_kill"))
 		/*CreateThread(0, 0, (LPTHREAD_START_ROUTINE)
 			EvaluatePlayerDeath, (LPVOID) event, 0, 0);*/
-		//EvaluatePlayerDeath(event);
 	cout << "Event " << event->GetName() << " at " << event << " for " 
-		<< object << endl;
-	return sdk.events->GetOriginalMethod<EventClientFn>(8)(object, event);
+		<< object << endl; 	EvaluatePlayerDeath(event);
+	return sdk.events->GetOriginalMethod(FireEventClientSide)(object, event);
 }
 
 void DispatchDeathTaunt(bool inLocalTeam) 
