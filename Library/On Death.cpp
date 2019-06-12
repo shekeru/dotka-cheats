@@ -9,15 +9,16 @@ const char* messages[] = {
 	"say Maybe you should try not resorting to violence?",
 	"say I fully support your efforts!",
 	"say Please kindly fuck off",
+	"say Nice one mr. monkey.",
 	"say Boom! Headshot!",
-	"say keep feeding",
+	"say keep feeding.",
+	"say wanna yiff?",
 	"say retard",
 	"say lmao"
 }; using namespace std;
 time_t recent = time(nullptr);
 
 void EvaluatePlayerDeath(CGameEvent* event);
-
 bool SDK::FireEventClientSide(CGameEventManager *object, CGameEvent *event) 
 {
 	const char* eventName = event->GetName();
@@ -25,19 +26,19 @@ bool SDK::FireEventClientSide(CGameEventManager *object, CGameEvent *event)
 		if (!strcmp(eventName, "dota_player_kill"))
 			EvaluatePlayerDeath(event);
 	} catch (...) {
-		printf("ERROR: %s", "no");
+		printf("ERROR...\n");
 	}
 	// Debug and Return
-	printf("Event %s at %xx for %xx\n", eventName, event, object);
+	//printf("Event %s at %x for %x\n", eventName, event, object);
 	return sdk.events->GetOriginalMethod(FireEventClientSide)(object, event);
 }
 
 void DispatchDeathTaunt(bool inLocalTeam) 
 {
 	using namespace std::chrono_literals;
-	if (inLocalTeam || difftime(time(nullptr), recent) < 45)
+	if (inLocalTeam || difftime(time(0), recent) < 45)
 		return; recent = time(0);
-	engine.client->ExecuteClientCmd(messages[0]);
+	engine.client->ExecuteClientCmd(messages[rand() % 11]);
 }
 
 void EvaluatePlayerDeath(CGameEvent* event)
@@ -55,9 +56,10 @@ void EvaluatePlayerDeath(CGameEvent* event)
 		if (EntityIndex > 100)
 			goto invalid;
 	} // Initial Printing
+	cout << " [+] BindingName: " << player->SchemaDynamicBinding()->bindingName << endl;
 	cout << " [+] PlayerName: " << player->GetPlayerName() << endl;
 	cout << " [+] InLocalTeam: " << boolalpha << player->InLocalTeam() << endl;
-	DispatchDeathTaunt(player->InLocalTeam());	
+		DispatchDeathTaunt(player->InLocalTeam());	
 invalid:
 	cout << endl;
 }

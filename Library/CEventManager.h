@@ -34,10 +34,10 @@ public:
 	virtual void SetBool(char const* keyname, bool value) = 0;
 	virtual void SetInt(char const* keyname, int value) = 0;
 	virtual void SetUint64(char const* keyname, uint64_t value) = 0;
-	virtual void SetFloat(char const* keyname, float value) = 0;
+	virtual void SetFloat(char const* keyname, float value) = 0; //15
 	virtual void SetString(char const* keyname, char const* value) = 0;
 	virtual void SetPtr(char const* keyname, void const* value) = 0;
-	virtual void* GetDataKeys(void) = 0; // 18
+	virtual KeyValues* GetDataKeys(void) = 0; // 18
 };
 
 class CGameEventListener2
@@ -65,5 +65,5 @@ public:
 	virtual CGameEvent* UnserializeEvent(void const *Source1LegacyGameEvent);
 	virtual bool LookupEventId(const char *id) ;
 	virtual void PrintEventToString(CGameEvent* ptr, char* str);
-	virtual KeyValues* GetEventDataTypes(CGameEvent* event);
+	virtual bool UnknownFunction(byte);
 };

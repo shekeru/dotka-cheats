@@ -137,7 +137,7 @@ public:
 	virtual void ImpactTrace(); // 114, 
 	virtual bool ShouldPredict(); // 115, 
 	virtual void PreRender(); // 116, 
-	virtual const char* GetPlayerName(); // 117, 
+	virtual const char* GetPlayerName_0(); // 117, 
 	virtual void GetUsePriority(); // 118, 
 	virtual void EstimateAbsVelocity(); // 119, 
 	virtual void CanBePoweredUp(); // 120, 
