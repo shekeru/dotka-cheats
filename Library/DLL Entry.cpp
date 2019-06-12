@@ -5,7 +5,7 @@ void ThreadEntry(HMODULE hInstance)
 {
 	cout << "Thread Started <OK>, Handle Address: " << hInstance << "\n\n";
 	client = ClientLoader(); engine = EngineLoader(); sdk = Internal();
-	SDK::LoadActiveHooks(); sdk.AttachVMs();
+		SDK::LoadActiveHooks(); sdk.AttachVMs();
 	cout << "System Init Finished <OK>, " << "Now Running PostStartupLogic"
 		<< "...\n\n"; while (ThreadIsRunning()) PostStartupLogic();
 }

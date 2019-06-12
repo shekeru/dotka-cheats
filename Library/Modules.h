@@ -1,5 +1,5 @@
-#include "stdafx.h"
 #include "SDK.h"
+#pragma once
 
 class ModuleSystem
 {

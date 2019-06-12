@@ -21,12 +21,26 @@ enum AppSystemTier_t
 	APP_SYSTEM_TIER_OTHER,
 };
 
+typedef void* (*CreateInterfaceFn)(const char *pName, int *pReturnCode);
+typedef void* (*InstantiateInterfaceFn)();
+
+class InterfaceReg
+{
+public:
+	InterfaceReg(InstantiateInterfaceFn fn, const char *pName);
+public:
+	CreateInterfaceFn m_CreateFn;
+	const char *m_pName;
+	InterfaceReg *m_pNext;
+	static InterfaceReg *s_pInterfaceRegs;
+};
+
 /* Things that at the start of the Officially exported Interfaces */
 /* Note that some classes may not include all of these */
 class IAppSystem
 {
 public:
-	virtual bool Connect() = 0; // 0
+	virtual bool Connect(CreateInterfaceFn factory) = 0; // 0
 	virtual void Disconnect() = 0;
 	virtual void* QueryInterface(const char* interfaceName) = 0;
 	virtual InitReturnVal_t Init() = 0; // 3
@@ -34,7 +48,7 @@ public:
 	virtual void PreShutdown() = 0; // 5
 	virtual const AppSystemInfo_t* GetDependencies() = 0; 
 	virtual AppSystemTier_t GetTier() = 0;
-	virtual void Reconnect(void* factory, const char* pInterfaceName) = 0;
+	virtual void Reconnect(CreateInterfaceFn factory, const char* pInterfaceName) = 0;
 	virtual bool IsSingleton() = 0;
 	virtual void GetBuildType() = 0; // 10
 };

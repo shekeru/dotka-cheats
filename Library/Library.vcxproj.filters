@@ -34,9 +34,6 @@
     <ClInclude Include="stdafx.h">
       <Filter>Base System\Platform Files</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Base System\Platform Files</Filter>
-    </ClInclude>
     <ClInclude Include="vector.h">
       <Filter>Utility Files</Filter>
     </ClInclude>

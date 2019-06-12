@@ -1,4 +1,5 @@
 #include "Modules.h"
+#pragma once
 
 namespace SDK {
 	bool FireEventClientSide(CGameEventManager *thisptr, CGameEvent *event);

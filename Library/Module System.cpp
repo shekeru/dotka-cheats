@@ -16,8 +16,8 @@ ModuleSystem::ModuleSystem(LPCSTR module)
 	cout << "Module \""<< (this->module = module) <<"\" loaded with handle " 
 		<< hex << (library = GetModuleHandle(module)) << endl; 
 	CreateInterface = (uintptr_t) GetProcAddress(library, "CreateInterface");
-	cout << " [+] CreateInterface: " << hex << CreateInterface << endl; 
 	InterfaceList = *reinterpret_cast<InterfaceReg**>(GetAbsoluteAddress(CreateInterface, 3));
+	cout << " [+] CreateInterface: " << hex << CreateInterface << endl;
 	/*for (InterfaceReg* current = InterfaceList; current; current = current->m_pNext)
 		printf("\t%s => 0x%llx\n", current->m_pName, current->m_CreateFn());*/
 	

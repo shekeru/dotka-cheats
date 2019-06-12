@@ -1,3 +1,4 @@
+#pragma once
 // Library Headers
 #include "CSource2Client.h"
 #include "CEngineClient.h"
@@ -7,7 +8,33 @@
 // Object Headers
 #include "CDotaPlayer.h"
 // Misc Required
+#include <stdexcept>
+#include <cstdint>
 #include <map>
+
+namespace detail
+{
+	class protect_guard
+	{
+	public:
+		protect_guard(void* base, size_t len, uint32_t flags)
+		{
+			_base = base;
+			_length = len;
+			if (!VirtualProtect(base, len, flags, (PDWORD)&_old))
+				throw std::runtime_error("Failed to protect region.");
+		}
+		~protect_guard()
+		{
+			VirtualProtect(_base, _length, _old, (PDWORD)&_old);
+		}
+
+	private:
+		void*         _base;
+		size_t        _length;
+		uint32_t _old;
+	};
+};
 
 class VMT
 {
@@ -42,11 +69,15 @@ public:
 	}
 	void ReleaseVMT()
 	{
+		auto guard = detail::protect_guard{interface,
+			sizeof(uintptr_t), PAGE_READWRITE};
 		if (interface && *interface && sdk_vmt)
 			*this->interface = sdk_vmt;
 	}
 	void ApplyVMT()
 	{
+		auto guard = detail::protect_guard{interface,
+			sizeof(uintptr_t), PAGE_READWRITE};
 		*interface = vmt;
 	}
 	~VMT() {
@@ -55,15 +86,6 @@ public:
 	}
 };
 // Store for now
-typedef void* (*InstantiateInterfaceFn) ();
-
-struct InterfaceReg
-{
-	InstantiateInterfaceFn m_CreateFn;
-	const char *m_pName;
-	InterfaceReg *m_pNext;
-};
-
 inline uintptr_t GetAbsoluteAddress(uintptr_t instruction_ptr, int offset)
 {
 	return instruction_ptr + *reinterpret_cast<int32_t*>(instruction_ptr + offset) + offset + 4;

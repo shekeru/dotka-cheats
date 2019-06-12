@@ -58,125 +58,124 @@ enum OrderQueueBehavior_t : int {
 class CDotaPlayer : public CBaseCombatCharacter
 {
 public: //wtf were those LWSS
-	virtual void C_BasePlayer__OnBecomeLocalPlayer(void);
-	virtual void C_BasePlayer__CalcView(Vector &eyeOrigin, QAngle &eyeAngles, float &zNear, float &zFar, float &fov);
-	virtual void C_BasePlayer__CalcViewModelView(const Vector& eyeOrigin, const QAngle& eyeAngles);
-	virtual void C_BasePlayer__CalcRoll(const QAngle& angles, const Vector& velocity, float rollangle, float rollspeed);
-	virtual bool C_BasePlayer__IsInThirdPersonView(void);
-	virtual void C_BasePlayer__SetPlayerUnderwater(bool underwater);
-	virtual void C_BasePlayer__PlayWadeSound(void); //ok till here
-	virtual void* C_BasePlayer__ActivePlayerCombatCharacter(void);
-	virtual void sub_2A5DCC0();
-	virtual void Weapon_ShootPosition_unk();
-	virtual void Weapon_ShootAngles_unk();
-	virtual bool C_BasePlayer__Weapon_CanUse(void* C_BaseCombatWeapon);
-	virtual void C_BasePlayer__Weapon_DropPrimary(void);
-	virtual Vector* C_BasePlayer__GetAutoaimVector(float fovMaybe);
-	virtual void C_DOTAPlayer__CreateMove(void* CUserCmd, QAngle &unk, Vector &unk2);
-	virtual void C_DOTAPlayer__SendMove(int unk); // 332
-	virtual void C_BasePlayer__AvoidPhysicsProps(void* CUserCmd);
-	virtual void C_BasePlayer__PlayerUse(void* C_BaseEntity);
-	virtual void* C_BasePlayer__GetUseTarget(void);
-	virtual void* C_BasePlayer__FindUseEntity(float unk, float unk2, float unk3, bool *unk4, bool unk5);
-	virtual bool C_BasePlayer__IsUsableEntity(void* C_BaseEntity, unsigned int unk);
-	virtual void C_BasePlayer__OverrideMouseInput(float *x, float *y); // guess
-	virtual void C_BasePlayer__OverrideJoystickInput(float *x, float *y); // guess
-	virtual void sub_28646E0();
-	virtual int CDOTAPlayer__GetObserverMode(void);
-	virtual void* C_BasePlayer__GetObserverTarget(void);
-	virtual bool C_BasePlayer__IsBot(void);
-	virtual void C_BasePlayer__TeamChange(DOTATeam_t team);
-	virtual void sub_2A88F70();
-	virtual const char* C_BasePlayer__GetFlashlightTextureName(void);
-	virtual float C_BasePlayer__GetFlashlightFOV(void);
-	virtual float C_BasePlayer__GetFlashlightFarZ(void);
-	virtual void C_BasePlayer__GetFlashlightLinearAtten(void);
-	virtual bool C_BasePlayer__CastsFlashlightShadows(void);
-	virtual Vector* C_BasePlayer__GetFlashlightOffset(void);
-	virtual bool C_BasePlayer__IsAllowedToSwitchWeapons(void);
-	virtual void* C_BasePlayer__GetActiveWeaponForSelection(void);
-	virtual void unknown(); // added around 5/13/18. Returns 0 by default.
-	virtual void*C_BasePlayer__GetRenderedWeaponModel(void);
-	virtual bool C_BasePlayer__IsOverridingViewModel(void);
-	virtual void C_BasePlayer__DrawOverriddenViewModel(void* C_BaseViewModel, int unk);
-	virtual float C_BasePlayer__GetDefaultAnimSpeed(void);
-	virtual void C_BasePlayer__ThirdPersonSwitch(bool thirdperson);
-	virtual void sub_2CAF2C0(); // added mid-july 2018. Possibly related to CViewAngleAnimation::RunAnimation
-	virtual int GetPlayerID(void);
-	virtual bool C_BasePlayer__CanSetSoundMixer(void);
-	virtual void* C_BasePlayer__GetSoundscapeListener(void);
-	virtual bool C_BasePlayer__WeaponHasInfiniteAmmo(void* C_BaseCombatWeapon);
-	virtual void C_BasePlayer__PlayerSolidMask(bool unk);
-	virtual void C_BasePlayer__PreThink(void);
-	virtual void C_BasePlayer__PostThink(void);
-	virtual void C_BasePlayer__ItemPreFrame(void);
-	virtual void C_BasePlayer__ItemPostFrame(void);
-	virtual void C_BasePlayer__AbortReload(void);
-	virtual void C_BasePlayer__SelectLastItem(void);
-	virtual void C_BasePlayer__Weapon_SetLast(void* C_BaseCombatWeapon);
-	virtual bool C_BasePlayer__Weapon_ShouldSetLast(void* C_BaseCombatWeapon, void* C_BaseCombatWeapon2);
-	virtual bool C_BasePlayer__Weapon_ShouldSelectItem(void* C_BaseCombatWeapon);
-	virtual void* C_BasePlayer__GetLastWeapon(void);
-	virtual void* C_BasePlayer__SelectItem(const char* name, int unk);
-	virtual void* C_BasePlayer__SelectItem(void* C_BaseCombatWeapon);
-	virtual void C_BasePlayer__UpdateClientData(void);
-	virtual float C_DOTAPlayer__GetFOV(void);
-	virtual float C_DOTAPlayer__GetDefaultFOV(void);
-	virtual bool C_BasePlayer__IsZoomed(void);
-	virtual float C_DOTAPlayer__GetNearZ(void);
-	virtual float C_DOTAPlayer__GetFarZ(void);
-	virtual void ViewPunch(const QAngle& out);
-	virtual void sub_2C8F980(); // added late June 2018, takes 2 args, sets them in class.
-	virtual void C_BasePlayer__OverrideView(void* CViewSetup);
-	virtual const char* GetPlayerName(void); // ce: 372+1, rel: 81
-	virtual const char* GetCharacterDisplayName(void);
-	virtual Vector* C_BasePlayer__GetPlayerMins(void);
-	virtual Vector* C_BasePlayer__GetPlayerMaxs(void);
-	virtual void* C_DOTAPlayer__GetPlayerColor(void);
-	virtual void C_BasePlayer__UpdateCollisionBounds(void);
-	virtual CBaseEntity* C_BasePlayer__GetUseEntity(void);
-	virtual CBaseEntity* C_BasePlayer__GetHeldEntity(void);
-	virtual CBaseEntity* C_BasePlayer__GetPotentialUseEntity(void);
-	virtual void C_BasePlayer__SetVehicleRole(int unk);
-	virtual void C_BasePlayer__SetAnimation(int PLAYER_ANIM);
-	virtual QAngle* C_BasePlayer__GetPunchAngle(void);
-	virtual bool sub_2AF93E0(); // added after ti8 - returns 1 by default.
-	virtual float C_BasePlayer__GetMinFOV(void);
-	virtual void C_BasePlayer__PlayPlayerJingle(void);
-	virtual void C_BasePlayer__UpdateStepSound(void* CPhysSurfaceProperties, const Vector &pos, const Vector &unk);
-	virtual void C_BasePlayer__PlayStepSound(Vector &pos, void* CPhysSurfaceProperties, float unk, bool unk2);
-	virtual void C_BasePlayer__GetFootstepSurface(const Vector &pos, const char* unk);
-	virtual void C_BasePlayer__GetStepSoundVelocities(float *outSpeedX, float *outSpeedY);
-	virtual void C_BasePlayer__SetStepSoundTime(int stepSoundTimes_t, bool);
-	virtual void C_BasePlayer__ExitLadder(void);
-	virtual void C_BasePlayer__IsAbleToAutoCenterOnLadders(void);
-	virtual void C_BasePlayer__Hints(void);
-	virtual void C_BasePlayer__GetFogParams(void);
-	virtual void C_BasePlayer__OnAchievementAchieved(int iAchievement);
-	virtual void sub_2AF9440(); // added after ti8
-	virtual void sub_2AF9450(); // ^^
-	virtual void sub_2860060();
-	virtual void C_BasePlayer__CalcPlayerView(Vector& eyeOrigin, QAngle& eyeAngles, float& fov);
-	virtual void C_DOTAPlayer__CalcObserverView(Vector& eyeOrigin, QAngle& eyeAngles, float& fov);
-	virtual void C_BasePlayer__GetChaseCamViewOffset(void *targetC_BaseEntity);
-	virtual void C_BasePlayer__CalcChaseCamView(Vector& eyeOrigin, QAngle& eyeAngles, float& fov);
-	virtual void C_BasePlayer__CalcInEyeCamView(Vector& eyeOrigin, QAngle& eyeAngles, float& fov);
-	virtual void C_BasePlayer__CalcDeathCamView(Vector& eyeOrigin, QAngle& eyeAngles, float& fov);
-	virtual void C_BasePlayer__CalcRoamingView(Vector& eyeOrigin, QAngle& eyeAngles, float& fov);
-	virtual void C_BasePlayer__CalcFreezeCamView(Vector& eyeOrigin, QAngle& eyeAngles, float& fov);
-	virtual void C_BasePlayer__SetLocalViewAngles(const QAngle &viewAngles);
-	virtual void C_BasePlayer__SetViewAngles(const QAngle& ang);
-	virtual bool C_BasePlayer__IsDucked(void);
-	virtual bool C_BasePlayer__IsDucking(void);
-	virtual float C_BasePlayer__GetFallVelocity(void);
-	virtual CBaseEntity* C_BasePlayer__FindEntityClassForward(char* className);// Return C_BaseEntity*
-	virtual CBaseEntity* C_BasePlayer__FindEntityForward(bool fHull);          // ^^
-	virtual CBaseEntity* C_BasePlayer__FindPickerEntityClass(char* className); // ^^
-	virtual CBaseEntity* C_BasePlayer__FindPickerEntity(void);                 // ^^
-	virtual void C_BasePlayer__FindEntityInheritingFromForward(void* CSchemaClassBindingBase);
-	virtual void C_DOTAPlayer__FindPickerEntityInheritingFrom(void* CSchemaClassBindingBase);
-	virtual void C_DOTAPlayer__ProcessMouseclick(ButtonCode_t button, bool unk, bool unk2);
-	virtual void C_DotaPlayer__PrepareUnitOrders(DotaUnitOrder_t order, int entHandle, Vector movePosition, int abilityIndex, PlayerOrderIssuer_t orderIssuer, void* entity, OrderQueueBehavior_t queueBehavior, bool showEffects);
-	virtual void* C_DOTAPlayer__GetValidCursor(void);
-	virtual bool C_DOTAPlayer__ShouldRegenerateOriginFromCellBits(void);
+	virtual void OnBecomeLocalPlayer(); // 302, 
+	virtual void CalcView(); // 303, 
+	virtual void CalcViewModelView(); // 304, 
+	virtual void CalcRoll(); // 305, 
+	virtual void IsInThirdPersonView(); // 306, 
+	virtual void SetPlayerUnderwater(); // 307, 
+	virtual void PlayWadeSound(); // 308, #STR: "Player.Wade"
+	virtual void ActivePlayerCombatCharacter(); // 309, 
+	virtual void n_310(); // 310, 
+	virtual void Weapon_ShootPosition(); // 311, 
+	virtual void Weapon_ShootAngles(); // 312, 
+	virtual void Weapon_CanUse(); // 313, 
+	virtual void Weapon_DropPrimary(); // 314, 
+	virtual void GetAutoaimVector(); // 315, 
+	virtual void CreateMove(); // 316, 
+	virtual void SendMove(); // 317, 
+	virtual void AvoidPhysicsProps(); // 318, 
+	virtual void PlayerUse(); // 319, 
+	virtual void GetUseTarget(); // 320, 
+	virtual void FindUseEntity(); // 321, #STR: "Trace using: %s\n", "Radial using: %s\n", "no usable entity found"
+	virtual void IsUseableEntity(); // 322, 
+	virtual void OverrideMouseInput(); // 323, 
+	virtual void OverrideJoystickInput(); // 324, 
+	virtual void n_325(); // 325, 
+	virtual void GetObserverMode(); // 326, 
+	virtual void GetObserverTarget(); // 327, 
+	virtual void IsBot(); // 328, 
+	virtual void TeamChange(int); // 329, 
+	virtual void n_330(); // 330, 
+	virtual void GetFlashlightTextureName(); // 331, 
+	virtual void GetFlashlightFOV(); // 332, 
+	virtual void GetFlashlightFarZ(); // 333, 
+	virtual void GetFlashlightLinearAtten(); // 334, 
+	virtual void CastsFlashlightShadows(); // 335, 
+	virtual void GetFlashlightOffset(); // 336, 
+	virtual void IsAllowedToSwitchWeapons(); // 337, 
+	virtual void GetActiveWeaponForSelection(); // 338, 
+	virtual void n_339(); // 339, 
+	virtual void GetRenderedWeaponModel(); // 340, 
+	virtual void IsOverridingViewmodel(); // 341, 
+	virtual void DrawOverriddenViewmodel(); // 342, 
+	virtual void GetDefaultAnimSpeed(); // 343, 
+	virtual void ThirdPersonSwitch(); // 344, 
+	virtual void n_345(); // 345, 
+	virtual int GetPlayerID(); // 346, 
+	virtual void CanSetSoundMixer(); // 347, 
+	virtual void GetSoundscapeListener(); // 348, 
+	virtual void WeaponHasInfiniteAmmo(); // 349, 
+	virtual void PlayerSolidMask(); // 350, 
+	virtual void PreThink(); // 351, 
+	virtual void PostThink(); // 352, 
+	virtual void ItemPreFrame(); // 353, 
+	virtual void ItemPostFrame(); // 354, 
+	virtual void AbortReload(); // 355, 
+	virtual void SelectLastItem(); // 356, 
+	virtual void Weapon_SetLast(); // 357, 
+	virtual void Weapon_ShouldSetLast(); // 358, 
+	virtual void Weapon_ShouldSelectItem(); // 359, 
+	virtual void GetLastWeapon(); // 360, 
+	virtual void SelectItem(); // 361, 
+	virtual void SelectItem(const char*, int); // 362, 
+	virtual void UpdateClientData(void*); // 363, 
+	virtual void GetFOV(); // 364, 
+	virtual void GetDefaultFOV(); // 365, 
+	virtual void IsZoomed(); // 366, 
+	virtual void GetNearZ(); // 367, 
+	virtual void GetFarZ(); // 368, 
+	virtual void ViewPunch(); // 369, 
+	virtual void OverrideView(); // 370, 
+	virtual void n_371(); // 371, 
+	virtual const char* GetPlayerName(); // 372, #STR: "invalid index"
+	virtual const char* GetCharacterDisplayName(); // 373, 
+	virtual void GetPlayerMins(); // 374, 
+	virtual void GetPlayerMaxs(); // 375, 
+	virtual void GetPlayerColor(); // 376, 
+	virtual void UpdateCollisionBounds(); // 377, 
+	virtual void GetUseEntity(); // 378, 
+	virtual void GetHeldEntity(); // 379, 
+	virtual void GetPotentialUseEntity(); // 380, 
+	virtual void SetVehicleRole(); // 381, #STR: "vehicleRole %i\n"
+	virtual void SetAnimation(); // 382, 
+	virtual void GetPunchAngle(); // 383, 
+	virtual void GetMinFOV(); // 384, 
+	virtual void PlayPlayerJingle(); // 385, 
+	virtual void UpdateStepSound(); // 386, #STR: "ladder"
+	virtual void PlayStepSound(); // 387, 
+	virtual void GetFootstepSurface(); // 388, 
+	virtual void GetStepSoundVelocities(); // 389, 
+	virtual void SetStepSoundTime(); // 390, 
+	virtual void ExitLadder(); // 391, 
+	virtual void IsAbleToAutoCenterOnLadders(); // 392, 
+	virtual void Hints(); // 393, 
+	virtual void GetFogParams(); // 394, 
+	virtual void OnAchievementAchieved(); // 395, 
+	virtual void n_396(); // 396, 
+	virtual void n_397(); // 397, 
+	virtual void n_398(); // 398, 
+	virtual void CalcPlayerView(); // 399, 
+	virtual void CalcObserverView(); // 400, 
+	virtual void GetChaseCamViewOffset(); // 401, 
+	virtual void CalcChaseCamView(); // 402, 
+	virtual void CalcInEyeCamView(); // 403, 
+	virtual void CalcDeathCamView(); // 404, 
+	virtual void CalcRoamingView(); // 405, 
+	virtual void CalcFreezeCamView(); // 406, #STR: "freezecam_started"
+	virtual void SetLocalViewAngles(); // 407, 
+	virtual void SetViewAngles(); // 408, 
+	virtual void IsDucked(); // 409, 
+	virtual void IsDucking(); // 410, 
+	virtual void GetFallVelocity(); // 411, 
+	virtual void FindEntityClassForward(); // 412, 
+	virtual void FindEntityForward(); // 413, 
+	virtual void FindPickerEntityClass(); // 414, 
+	virtual void FindPickerEntity(); // 415, 
+	virtual void FindEntityInheritingFromForward(); // 416, 
+	virtual void FindPickerEntityInheritingFrom(); // 417, 
+	virtual void ProcessMouseclick(); // 418, 
+	virtual void PrepareUnitOrders(); // 419, 
+	virtual void GetValidCursor(); // 420, 
+	virtual void ShouldRegenerateOriginFromCellBits(); // 421, 
 };

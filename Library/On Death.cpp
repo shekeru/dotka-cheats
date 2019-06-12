@@ -20,11 +20,15 @@ void EvaluatePlayerDeath(CGameEvent* event);
 
 bool SDK::FireEventClientSide(CGameEventManager *object, CGameEvent *event) 
 {
-	//if (!strcmp(event->GetName(), "dota_player_kill"))
-		/*CreateThread(0, 0, (LPTHREAD_START_ROUTINE)
-			EvaluatePlayerDeath, (LPVOID) event, 0, 0);*/
-	cout << "Event " << event->GetName() << " at " << event << " for " 
-		<< object << endl; 	EvaluatePlayerDeath(event);
+	const char* eventName = event->GetName();
+	try {
+		if (!strcmp(eventName, "dota_player_kill"))
+			EvaluatePlayerDeath(event);
+	} catch (...) {
+		printf("ERROR: %s", "no");
+	}
+	// Debug and Return
+	printf("Event %s at %xx for %xx\n", eventName, event, object);
 	return sdk.events->GetOriginalMethod(FireEventClientSide)(object, event);
 }
 
@@ -32,29 +36,29 @@ void DispatchDeathTaunt(bool inLocalTeam)
 {
 	using namespace std::chrono_literals;
 	if (inLocalTeam || difftime(time(nullptr), recent) < 45)
-		return; recent = time(0); //this_thread::sleep_for(2s);
+		return; recent = time(0);
 	engine.client->ExecuteClientCmd(messages[0]);
 }
 
 void EvaluatePlayerDeath(CGameEvent* event)
 {
-	CDotaPlayer* player = nullptr;
+	CDotaPlayer* player = nullptr; 
 	int playerId = event->GetInt("victim_userid");
 	cout << "Player Death Event: " << event << " ==> " << playerId << "\n";
 	for (int EntityIndex = 0; EntityIndex <= client.entity->GetHighestEntityIndex(); EntityIndex++)
-		if (player = (CDotaPlayer*) client.entity->GetBaseEntity(EntityIndex)) {
-			auto typeName = player->SchemaDynamicBinding()->bindingName;
-			if (strcmp(typeName, "C_DOTAPlayer"))
-				continue;
-			if (player->GetPlayerID() == playerId)
-				break;
-			if (EntityIndex > 100)
-				goto invalid;
-		} // Initial Printing
+	if (player = (CDotaPlayer*) client.entity->GetBaseEntity(EntityIndex)) {
+		auto typeName = player->SchemaDynamicBinding()->bindingName;
+		if (strcmp(typeName, "C_DOTAPlayer"))
+			continue;
+		if (player->GetPlayerID() == playerId)
+			break;
+		if (EntityIndex > 100)
+			goto invalid;
+	} // Initial Printing
 	cout << " [+] PlayerName: " << player->GetPlayerName() << endl;
 	cout << " [+] InLocalTeam: " << boolalpha << player->InLocalTeam() << endl;
-		DispatchDeathTaunt(player->InLocalTeam());	
-invalid: 
+	DispatchDeathTaunt(player->InLocalTeam());	
+invalid:
 	cout << endl;
 }
 
