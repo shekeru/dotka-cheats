@@ -189,7 +189,7 @@
     <ClInclude Include="IVPanel.h" />
     <ClInclude Include="sdk.h" />
     <ClInclude Include="Library.h" />
-    <ClInclude Include="Hooks.h" />
+    <ClInclude Include="hooks.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="vector.h" />
@@ -198,6 +198,7 @@
     <ClCompile Include="On Death.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Library.cpp" />
+    <ClCompile Include="PaintTraverse.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

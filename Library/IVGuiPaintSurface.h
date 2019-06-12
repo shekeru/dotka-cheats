@@ -3,7 +3,7 @@
 #include "CFontManager.h"
 #include "ICvar.h"
 
-class IVPanel;
+typedef unsigned long long VPANEL;
 
 typedef void(*GetVectorInScreenSpaceFn)(Vector pos, int& iX, int& iY, Vector *vecOffset);
 inline GetVectorInScreenSpaceFn GetVectorInScreenSpace;
@@ -23,9 +23,9 @@ public:
 	virtual void DrawOutlinedCircle(int x, int y, int radius, int segments);
 	virtual void DrawTexturedPolyLine(void* vguiVertex_t, int n);
 	virtual void DrawTexturedSubRect(int x0, int y0, int x1, int y1, float texs0, float text0, float texs1, float text1);
-	virtual void DrawSetTextFont(HFont* font);
-	virtual void DrawColoredText(HFont* font, int x, int y, int r, int g, int b, int a, char const* text, ...);
-	virtual void DrawColoredTextRect(HFont* font, int x0, int y0, int x1, int y1, int r, int g, int b, int a, char const* text, ...);
+	virtual void DrawSetTextFont(HFont font);
+	virtual void DrawColoredText(HFont font, int x, int y, int r, int g, int b, int a, char const* text, ...);
+	virtual void DrawColoredTextRect(HFont font, int x0, int y0, int x1, int y1, int r, int g, int b, int a, char const* text, ...);
 
 	virtual void DrawSetColor(int r, int g, int b, int a);
 	virtual void DrawSetColor(ColorRGBA color);
@@ -60,20 +60,20 @@ public:
 	virtual float GetZPos(void);
 	virtual void SetStencilReference(int ref);
 	virtual void* DrawGetTextureHandle(int id);
-	virtual void PushMakeCurrent(IVPanel* panel, bool useInsets);
-	virtual void PopMakeCurrent(IVPanel* panel);
+	virtual void PushMakeCurrent(VPANEL panel, bool useInsets);
+	virtual void PopMakeCurrent(VPANEL panel);
 	virtual float DrawGetAlphaMultiplier(void);
 	virtual void DrawGetTextPos(int &x, int &y);
 	virtual void DrawGetUnicodeCharRenderInfo(wchar_t ch, void* vguiCharRenderInfo);
-	virtual int GetFontTall(HFont* font);
-	virtual int GetFontAscent(HFont* font, wchar_t wch);
-	virtual bool IsFontAdditive(HFont* font);
-	virtual void GetCharABCwide(HFont* font, int ch, int &a, int &b, int &c);
-	virtual void GetCharacterWidth(HFont* font, int ch);
+	virtual int GetFontTall(HFont font);
+	virtual int GetFontAscent(HFont font, wchar_t wch);
+	virtual bool IsFontAdditive(HFont font);
+	virtual void GetCharABCwide(HFont font, int ch, int &a, int &b, int &c);
+	virtual void GetCharacterWidth(HFont font, int ch);
 	virtual void GetKernedCharWidth();
-	virtual void GetTextSize(HFont* font, wchar_t const* text, int &wide, int &tall);
-	virtual int GetTextHeight(HFont* font, int x, int &y, char *text, ...);
-	virtual size_t GetTextLen(HFont* font, char const*, ...);
+	virtual void GetTextSize(HFont font, wchar_t const* text, int &wide, int &tall);
+	virtual int GetTextHeight(HFont font, int x, int &y, char *text, ...);
+	virtual size_t GetTextLen(HFont font, char const*, ...);
 	virtual int CreateNewTextureID(bool procedural = false);
 	virtual int DrawGetTextureId(char const* filename);
 	virtual void DrawSetTextureFile(int id, char const* filename, int hardwareFilter, bool forceReload);
@@ -83,18 +83,18 @@ public:
 	virtual bool IsTextureIDValid(int id);
 	virtual void* DrawGetTextureMatInfoFactory(int id);
 	virtual void GetScreenSize(int &wide, int &tall);
-	virtual bool IsMinimized(IVPanel* panel);
-	virtual void FlashWindow(IVPanel panel, bool state);
-	virtual void SetTitle(IVPanel* panel, const wchar_t * title);
-	virtual const wchar_t *GetTitle(IVPanel* panel);
+	virtual bool IsMinimized(VPANEL panel);
+	virtual void FlashWindow(VPANEL panel, bool state);
+	virtual void SetTitle(VPANEL panel, const wchar_t * title);
+	virtual const wchar_t *GetTitle(VPANEL panel);
 	virtual void SurfaceGetCursorPos(int &x, int &y);
-	virtual void SwapBuffers(IVPanel* panel);
-	virtual void Invalidate(IVPanel* panel);
+	virtual void SwapBuffers(VPANEL panel);
+	virtual void Invalidate(VPANEL panel);
 	virtual bool IsCursorVisible(void);
 	virtual bool IsWithin(int x, int y);
 	virtual bool HasFocus(void);
-	virtual void SolveTraverse(IVPanel* panel, bool forceApplySchemeSettings = false);
-	virtual void PaintTraverse(IVGuiPaintSurface * surface, IVPanel* panel);
+	virtual void SolveTraverse(VPANEL panel, bool forceApplySchemeSettings = false);
+	virtual void PaintTraverse(IVGuiPaintSurface * surface, VPANEL panel);
 	virtual void* GetIconImageForFullPath(char const* pFullPath);
 	virtual const char* GetResolutionKey(void);
 	virtual int GetTextureNumFrames(int id);
@@ -102,5 +102,4 @@ public:
 	virtual void Paint3D(void* VguiPaint3DInfo_t);
 	virtual void DrawTexturedQuadArray(int n, void* VGuiTexturedQuad_t, bool clip = true);
 	virtual void QueueCustomPaintCallbackInternal(void* IVGuiCustomPaintCallback, int unk);
-
 };

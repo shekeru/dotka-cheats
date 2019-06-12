@@ -79,19 +79,10 @@
     <ClInclude Include="CBaseCombatCharacter.h">
       <Filter>Source 2 SDK\EntitySystem\Dota Specifics</Filter>
     </ClInclude>
-    <ClInclude Include="IVPanel.h">
-      <Filter>Source 2 SDK\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="utils.h">
       <Filter>Base System</Filter>
     </ClInclude>
-    <ClInclude Include="Library.h">
-      <Filter>Base System</Filter>
-    </ClInclude>
     <ClInclude Include="sdk.h">
-      <Filter>Base System</Filter>
-    </ClInclude>
-    <ClInclude Include="Hooks.h">
       <Filter>Base System</Filter>
     </ClInclude>
     <ClInclude Include="IAppSystem.h">
@@ -109,6 +100,15 @@
     <ClInclude Include="IVGuiPaintSurface.h">
       <Filter>Source 2 SDK\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="IVPanel.h">
+      <Filter>Source 2 SDK\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="hooks.h">
+      <Filter>Base System</Filter>
+    </ClInclude>
+    <ClInclude Include="Library.h">
+      <Filter>Base System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Library.cpp">
@@ -121,6 +121,9 @@
       <Filter>Cheat Logic</Filter>
     </ClCompile>
     <ClCompile Include="On Death.cpp">
+      <Filter>Cheat Logic\Hooks/Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="PaintTraverse.cpp">
       <Filter>Cheat Logic\Hooks/Hacks</Filter>
     </ClCompile>
   </ItemGroup>

@@ -9,10 +9,10 @@ public:
 	Object* LoadInterface(LPCSTR name);
 	Library(LPCSTR name)
 	{
-		printf("Module \"%s\" loaded at %x\n", module = name, handle = GetModuleHandle(name));
+		printf("Module \"%s\" loaded at %p\n", module = name, handle = GetModuleHandle(name));
 		CreateInterface = (CreateInterfaceFn)GetProcAddress(handle, "CreateInterface");
 		InterfaceList = *resolve_addr<InterfaceReg**>(0x0, CreateInterface, 3);
-			printf(" [+] CreateInterface: %x\n", CreateInterface);
+			printf(" [+] CreateInterface: %p\n", CreateInterface);
 	}
 	// Properties
 	LPCSTR module;
@@ -31,7 +31,7 @@ public:
 	void GetModules() {
 		this->client = new Library("client.dll");
 		this->engine = new Library("engine2.dll");
-		//this->vgui = new Library("vgui2.dll");
+		this->vgui = new Library("vgui2.dll");
 	};  void GetInterfaces();
 	// Stuff
 	bool isRunning = true;
@@ -45,6 +45,7 @@ public:
 	// First Tier
 	CSource2Client* client;
 	CEngineClient* engine;
+	IVPanel* panel;
 	// Second Tier
 	CGameEntitySystem* entity;
 	CGameEventManager* events;
@@ -54,12 +55,15 @@ inline class Hooking {
 public:
 	VMT* events;
 	VMT* entity;
+	VMT* panel;
 	// Helper Functions
 	void CreateVMTs() {
-		VMT* events = new VMT(sdk.events);
-		VMT* entity = new VMT(sdk.entity);
+		events = new VMT(sdk.events);
+		entity = new VMT(sdk.entity);
+		panel = new VMT(sdk.panel);
 	} void AttachVMs() {
 		events->ApplyVMT();
 		entity->ApplyVMT();
+		panel->ApplyVMT();
 	}
 } vmt;

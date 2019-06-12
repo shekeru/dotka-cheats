@@ -16,6 +16,7 @@ void Internal::GetInterfaces(){
 	// Load First Class Interfaces
 	sdk.engine = engine->LoadInterface<CEngineClient>("Source2EngineToClient001");
 	sdk.client = client->LoadInterface<CSource2Client>("Source2Client002");
+	sdk.panel = vgui->LoadInterface<IVPanel>("VGUI_Panel010");
 	
 	//for (ClientClass* current = client->GetAllClasses(); current; current = current->m_pNext) {
 	//	printf("\t%s <> %s\n", current->m_pNetworkName, current->m_pClassName);

@@ -56,6 +56,30 @@ void EvaluatePlayerDeath(CGameEvent* event)
 	cout << " [+] PlayerName: " << player->GetPlayerName() << endl;
 	cout << " [+] InLocalTeam: " << boolalpha << player->InLocalTeam() << endl;
 		DispatchDeathTaunt(player->InLocalTeam());	
+
+		for (int EntityIndex = 0; EntityIndex <= sdk.entity->GetHighestEntityIndex(); EntityIndex++)
+		if (auto entity = sdk.entity->GetBaseEntity(EntityIndex))
+			if (strstr(entity->SchemaDynamicBinding()->bindingName, "DOTA_Unit_Hero")) {
+				CDotaBaseNPC* hero = (CDotaBaseNPC*) entity;
+				cout << " [+] BindingName: " << hero->SchemaDynamicBinding()->bindingName << endl;
+				cout << " [+] Health: " << hero->GetHealth()
+					<< " / " << hero->GetMaxHealth() << endl;
+				cout << " [+] Mana: " << hero->GetMana() << " / " 
+					<< hero->GetMaxMana() << endl;
+				cout << " [+] PlayerOwner: " << playerId << " | " << hero->GetPlayerOwner() 
+					<< " ==> " << hero->GetPlayerOwnerID() << endl;
+				cout << " [+] Is Same Team: " << hero->InLocalTeam() << endl;
+				cout << " [+] Damages: " << dec << hero->GetDamageMin()
+					<< " - " << hero->GetDamageMax() << endl;
+				printf(" [+] HealthR: %f = %f + %f = %f\n", hero->GetHealthRegen(), hero->BaseHealthRegen(),
+					hero->BonusHealthRegen(), hero->IdealHealthRegen());
+				printf(" [+] ManaR: %f = %f + %f = %f\n", hero->GetManaRegen(), hero->BaseManaRegen(),
+					hero->BonusManaRegen(), hero->IdealManaRegen());
+				printf(" [+] Range, Base Armor, More Armor: %f | %f | %f \n", hero->GetAttackRange(), 
+					hero->GetBaseArmor(), hero->GetMoreArmor());
+				printf(" [+] Magic Resist: %f \n", hero->GetMagicResist());
+				cout << " [+] 328/RMS: " << dec << hero->n_328() << " - " << hero->RealMoveSpeed() << endl;
+			}	
 invalid:
 	cout << endl;
 }

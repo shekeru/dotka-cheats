@@ -2,10 +2,12 @@
 // Library Headers
 #include "CSource2Client.h"
 #include "CEngineClient.h"
+#include "IVPanel.h"
 // Managers & Systems
 #include "CEventManager.h"
 #include "CEntitySystem.h"
 // Object Headers
+#include "CDotaBaseNPC.h"
 #include "CDotaPlayer.h"
 // Misc Required
 #include <stdexcept>
