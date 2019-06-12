@@ -85,12 +85,3 @@ public:
 		delete[] vmt;
 	}
 };
-// Store for now
-inline uintptr_t GetAbsoluteAddress(uintptr_t instruction_ptr, int offset)
-{
-	return instruction_ptr + *reinterpret_cast<int32_t*>(instruction_ptr + offset) + offset + 4;
-};
-
-inline uintptr_t* vmt_slot(void* instance, int offset) {
-	return (*(uintptr_t**)instance) + offset;
-}

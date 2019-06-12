@@ -11,5 +11,4 @@
 #include <fcntl.h>
 #include <io.h>
 // reference additional headers your program requires here
-void BindCrtHandlesToStdHandles(bool bindStdIn, bool bindStdOut, bool bindStdErr);
-void ClearConsole(char fill);
+#include "utils.h"

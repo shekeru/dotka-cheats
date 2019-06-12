@@ -22,15 +22,11 @@ void EvaluatePlayerDeath(CGameEvent* event);
 bool SDK::FireEventClientSide(CGameEventManager *object, CGameEvent *event) 
 {
 	const char* eventName = event->GetName();
-	try {
-		if (!strcmp(eventName, "dota_player_kill"))
-			EvaluatePlayerDeath(event);
-	} catch (...) {
-		printf("ERROR...\n");
-	}
+	if (!strcmp(eventName, "dota_player_kill"))
+		EvaluatePlayerDeath(event);
 	// Debug and Return
 	//printf("Event %s at %x for %x\n", eventName, event, object);
-	return sdk.events->GetOriginalMethod(FireEventClientSide)(object, event);
+	return vmt.events->GetOriginalMethod(FireEventClientSide)(object, event);
 }
 
 void DispatchDeathTaunt(bool inLocalTeam) 
@@ -38,7 +34,7 @@ void DispatchDeathTaunt(bool inLocalTeam)
 	using namespace std::chrono_literals;
 	if (inLocalTeam || difftime(time(0), recent) < 45)
 		return; recent = time(0);
-	engine.client->ExecuteClientCmd(messages[rand() % 11]);
+	sdk.engine->ExecuteClientCmd(messages[rand() % 11]);
 }
 
 void EvaluatePlayerDeath(CGameEvent* event)
@@ -46,8 +42,8 @@ void EvaluatePlayerDeath(CGameEvent* event)
 	CDotaPlayer* player = nullptr; 
 	int playerId = event->GetInt("victim_userid");
 	cout << "Player Death Event: " << event << " ==> " << playerId << "\n";
-	for (int EntityIndex = 0; EntityIndex <= client.entity->GetHighestEntityIndex(); EntityIndex++)
-	if (player = (CDotaPlayer*) client.entity->GetBaseEntity(EntityIndex)) {
+	for (int EntityIndex = 0; EntityIndex <= sdk.entity->GetHighestEntityIndex(); EntityIndex++)
+	if (player = (CDotaPlayer*) sdk.entity->GetBaseEntity(EntityIndex)) {
 		auto typeName = player->SchemaDynamicBinding()->bindingName;
 		if (strcmp(typeName, "C_DOTAPlayer"))
 			continue;

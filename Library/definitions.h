@@ -1,10 +1,6 @@
 #pragma once
-
 /* generic constants */
 #define LIFE_ALIVE 0
-
-typedef unsigned long long VPANEL;
-typedef unsigned long long HFont;
 
 class ICommandLine;
 class KeyValues;
@@ -926,7 +922,7 @@ enum class EClassIds : int
 #define TEXTURE_GROUP_CUBE_MAP						"CubeMap textures"
 #define TEXTURE_GROUP_RENDER_TARGET					"RenderTargets"
 #define TEXTURE_GROUP_UNACCOUNTED					"Unaccounted textures"	// Textures that weren't assigned a texture group.
-//#define TEXTURE_GROUP_STATIC_VERTEX_BUFFER		"Static Vertex"
+#define TEXTURE_GROUP_STATIC_VERTEX_BUFFER		"Static Vertex"
 #define TEXTURE_GROUP_STATIC_INDEX_BUFFER			"Static Indices"
 #define TEXTURE_GROUP_STATIC_VERTEX_BUFFER_DISP		"Displacement Verts"
 #define TEXTURE_GROUP_STATIC_VERTEX_BUFFER_COLOR	"Lighting Verts"

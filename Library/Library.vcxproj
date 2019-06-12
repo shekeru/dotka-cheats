@@ -120,6 +120,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <CallingConvention>Cdecl</CallingConvention>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -177,27 +178,32 @@
     <ClInclude Include="CEntityInstance.h" />
     <ClInclude Include="CEntitySystem.h" />
     <ClInclude Include="CEventManager.h" />
+    <ClInclude Include="CFontManager.h" />
+    <ClInclude Include="Convar.h" />
     <ClInclude Include="CSource2Client.h" />
     <ClInclude Include="Datamap.h" />
     <ClInclude Include="definitions.h" />
     <ClInclude Include="IAppSystem.h" />
-    <ClInclude Include="SDK.h" />
-    <ClInclude Include="Modules.h" />
+    <ClInclude Include="ICVar.h" />
+    <ClInclude Include="IVGuiPaintSurface.h" />
+    <ClInclude Include="IVPanel.h" />
+    <ClInclude Include="sdk.h" />
+    <ClInclude Include="Library.h" />
     <ClInclude Include="Hooks.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="utils.h" />
     <ClInclude Include="vector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="On Death.cpp" />
-    <ClCompile Include="DLL Entry.cpp" />
-    <ClCompile Include="Module System.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Library.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Main Thread.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

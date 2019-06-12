@@ -29,7 +29,7 @@ class InterfaceReg
 public:
 	InterfaceReg(InstantiateInterfaceFn fn, const char *pName);
 public:
-	CreateInterfaceFn m_CreateFn;
+	InstantiateInterfaceFn m_CreateFn;
 	const char *m_pName;
 	InterfaceReg *m_pNext;
 	static InterfaceReg *s_pInterfaceRegs;

@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Utility Files">
-      <UniqueIdentifier>{efb2c824-4b48-4f42-a4e0-08f49eb4bc82}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source 2 SDK">
       <UniqueIdentifier>{22f8cc7c-237d-4738-8cfc-d18591817aee}</UniqueIdentifier>
     </Filter>
@@ -13,32 +10,38 @@
     <Filter Include="Source 2 SDK\EntitySystem\Dota Specifics">
       <UniqueIdentifier>{fb40c438-a4c8-4347-abbf-7db867e55c2d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Base System">
-      <UniqueIdentifier>{f06e2e44-3a6c-48ea-8cf5-4485a01b15a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Base System\Platform Files">
-      <UniqueIdentifier>{21851884-6ab0-424d-89b3-92d235f51a6a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Cheat Logic">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Source 2 SDK\EntitySystem\Basic Types">
+      <UniqueIdentifier>{d120f315-2cc2-4273-8825-7ebba88881fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base System">
+      <UniqueIdentifier>{21851884-6ab0-424d-89b3-92d235f51a6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cheat Logic\Hooks/Hacks">
+      <UniqueIdentifier>{ec4779f4-dc26-490f-ae48-3ac55057c913}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source 2 SDK\Rendering">
+      <UniqueIdentifier>{eb153628-c763-4f0d-aea1-00faf9452f40}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source 2 SDK\Interfaces">
       <UniqueIdentifier>{60c6f1df-9bd8-4357-ae82-bcd14a383432}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source 2 SDK\EntitySystem\Basic Types">
-      <UniqueIdentifier>{d120f315-2cc2-4273-8825-7ebba88881fa}</UniqueIdentifier>
+    <Filter Include="Source 2 SDK\Misc Files">
+      <UniqueIdentifier>{efb2c824-4b48-4f42-a4e0-08f49eb4bc82}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
-      <Filter>Base System\Platform Files</Filter>
+      <Filter>Base System</Filter>
     </ClInclude>
     <ClInclude Include="vector.h">
-      <Filter>Utility Files</Filter>
+      <Filter>Source 2 SDK\Misc Files</Filter>
     </ClInclude>
     <ClInclude Include="definitions.h">
-      <Filter>Utility Files</Filter>
+      <Filter>Source 2 SDK\Misc Files</Filter>
     </ClInclude>
     <ClInclude Include="CEngineClient.h">
       <Filter>Source 2 SDK\Interfaces</Filter>
@@ -46,14 +49,11 @@
     <ClInclude Include="CSource2Client.h">
       <Filter>Source 2 SDK\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="IAppSystem.h">
-      <Filter>Source 2 SDK\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="CEntitySystem.h">
       <Filter>Source 2 SDK\EntitySystem</Filter>
     </ClInclude>
     <ClInclude Include="Datamap.h">
-      <Filter>Utility Files</Filter>
+      <Filter>Source 2 SDK\Misc Files</Filter>
     </ClInclude>
     <ClInclude Include="CDotaPlayer.h">
       <Filter>Source 2 SDK\EntitySystem\Dota Specifics</Filter>
@@ -63,15 +63,6 @@
     </ClInclude>
     <ClInclude Include="CEventManager.h">
       <Filter>Source 2 SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="Hooks.h">
-      <Filter>Cheat Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK.h">
-      <Filter>Base System</Filter>
-    </ClInclude>
-    <ClInclude Include="Modules.h">
-      <Filter>Base System</Filter>
     </ClInclude>
     <ClInclude Include="CBaseEntity.h">
       <Filter>Source 2 SDK\EntitySystem\Basic Types</Filter>
@@ -88,22 +79,49 @@
     <ClInclude Include="CBaseCombatCharacter.h">
       <Filter>Source 2 SDK\EntitySystem\Dota Specifics</Filter>
     </ClInclude>
+    <ClInclude Include="IVPanel.h">
+      <Filter>Source 2 SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Base System</Filter>
+    </ClInclude>
+    <ClInclude Include="Library.h">
+      <Filter>Base System</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk.h">
+      <Filter>Base System</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks.h">
+      <Filter>Base System</Filter>
+    </ClInclude>
+    <ClInclude Include="IAppSystem.h">
+      <Filter>Source 2 SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="CFontManager.h">
+      <Filter>Source 2 SDK\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Convar.h">
+      <Filter>Source 2 SDK\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="ICVar.h">
+      <Filter>Source 2 SDK\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="IVGuiPaintSurface.h">
+      <Filter>Source 2 SDK\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Base System\Platform Files</Filter>
-    </ClCompile>
-    <ClCompile Include="On Death.cpp">
+    <ClCompile Include="Library.cpp">
       <Filter>Cheat Logic</Filter>
     </ClCompile>
-    <ClCompile Include="Main Thread.cpp">
-      <Filter>Base System</Filter>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Cheat Logic</Filter>
     </ClCompile>
-    <ClCompile Include="DLL Entry.cpp">
-      <Filter>Base System</Filter>
+    <ClCompile Include="main.cpp">
+      <Filter>Cheat Logic</Filter>
     </ClCompile>
-    <ClCompile Include="Module System.cpp">
-      <Filter>Base System</Filter>
+    <ClCompile Include="On Death.cpp">
+      <Filter>Cheat Logic\Hooks/Hacks</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
