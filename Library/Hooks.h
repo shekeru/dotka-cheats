@@ -10,6 +10,7 @@ namespace SDK {
 	//void* OnAddEntity(CEntityInstance*, CEntityHandle);
 	inline void LoadActiveHooks() {
 		vmt.events->HookVM(FireEventClientSide, 8);
+		vmt.entity->HookVM(OnRemoveEntity, 15);
 		vmt.entity->HookVM(OnAddEntity, 14);
 		vmt.panel->HookVM(PaintTraverse, 55);
 	}
