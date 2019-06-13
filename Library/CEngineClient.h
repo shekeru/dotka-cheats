@@ -33,8 +33,8 @@ public:
 	virtual void ServerCmd(int inputCommandSrc, const char* command) = 0;
 	virtual void ClientCmd(int inputCommandSrc, const char* command) = 0;
 	virtual bool GetPlayerInfo(int ent_num, void* pinfo) = 0; // 20
-	virtual CDotaPlayer* GetPlayerForUserID(void* wtf, int id) = 0;
-	virtual CDotaPlayer* GetLocalPlayer(void* fuck, int slot); // 24
+	virtual int GetPlayerForUserID(int ID) = 0;
+	virtual int GetLocalPlayer(int splitScreenSlot = 0) = 0;
 	virtual float GetLastTimestamp(void) = 0;  // 23
 	virtual int GetLastServertick(void) = 0;
 	virtual void* GetSentence(void) = 0;

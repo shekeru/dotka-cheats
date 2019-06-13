@@ -1,3 +1,5 @@
+#include <functional>
+#include <algorithm>
 #include "stdafx.h"
 #include "events.h"
 #include "hooks.h"
@@ -28,20 +30,24 @@ void DispatchDeathTaunt(bool inLocalTeam)
 
 void DotaPlayerKill(CGameEvent* event)
 {
-	dota_player_kill_macro; CDotaBaseNPC* hero = sdk.Heroes[victim_userid];
+	dota_player_kill_macro; 
 	cout << "Player Death Event: " << event << " ==> userid: " << victim_userid << "\n";
-	if (!hero) return; CDotaPlayer* player = hero->GetPlayerOwner();
+	CDotaBaseNPC* hero = *find_if(begin(sdk.Heroes), end(sdk.Heroes), 
+		[&](CDotaBaseNPC* xs)->bool{
+		return xs->GetPlayerOwnerID() == victim_userid;
+	}); if (!hero) return;
+	cout << " [+] BindingName: " << hero->SchemaDynamicBinding()->bindingName
+		<< " -> " << hero << endl;
+	cout << " [+] PlayerOwner: " << victim_userid << " | " << hero->GetPlayerOwner()
+		<< " ==> " << hero->GetPlayerOwnerID() << endl;
+	CDotaPlayer* player = hero->GetPlayerOwner(); if (!player) return;
 	cout << " [+] BindingName: " << player->SchemaDynamicBinding()->bindingName << endl;
 	cout << " [+] PlayerName: " << player->GetPlayerName() << endl;
 	cout << " [+] InLocalTeam: " << boolalpha << player->InLocalTeam() << endl;
-	cout << " [+] BindingName: " << hero->SchemaDynamicBinding()->bindingName
-		<< " -> " << hero << endl;
 	cout << " [+] Health: " << hero->GetHealth()
 		<< " / " << hero->GetMaxHealth() << endl;
 	cout << " [+] Mana: " << hero->GetMana() << " / "
 		<< hero->GetMaxMana() << endl;
-	cout << " [+] PlayerOwner: " << victim_userid << " | " << hero->GetPlayerOwner()
-		<< " ==> " << hero->GetPlayerOwnerID() << endl;
 	cout << " [+] Is Same Team: " << hero->InLocalTeam() << endl;
 	cout << " [+] Damages: " << dec << hero->GetDamageMin()
 		<< " - " << hero->GetDamageMax() << endl;
@@ -52,6 +58,8 @@ void DotaPlayerKill(CGameEvent* event)
 	printf(" [+] Range, Base Armor, More Armor: %f | %f | %f \n", hero->GetAttackRange(),
 		hero->GetBaseArmor(), hero->GetMoreArmor());
 	printf(" [+] Magic Resist: %f \n", hero->GetMagicResist());
+	//CDotaPlayer* localplayer = (CDotaPlayer*) sdk.entity->GetBaseEntity(localID);
+	//	printf("LOCALPLAYER OR BUST: %x\n", localplayer);
 	DispatchDeathTaunt(player->InLocalTeam());
 invalid:
 	cout << endl;

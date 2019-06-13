@@ -7,8 +7,7 @@ CEntityInstance* SDK::OnAddEntity(CGameEntitySystem* ecx, CEntityInstance* ptr, 
 	printf("Adding <%x> %s, index: %d\n", ptr, typeName, index & 0x7FFF);
 	// Add To Hero Map
 	if (strstr(typeName, "C_DOTA_Unit_Hero")) {
-		auto npc = (CDotaBaseNPC*) ptr;
-		sdk.Heroes[npc -> GetPlayerOwnerID()] = npc;
+		sdk.Heroes.insert((CDotaBaseNPC*) ptr);
 	} else if (strstr(typeName, "C_DOTA_BaseNPC_Creep")) {
 		sdk.Creeps.insert((CDotaBaseNPC*) ptr);
 	}; return vmt.entity->GetOriginalMethod(OnAddEntity)(ecx, ptr, index);
@@ -17,10 +16,9 @@ CEntityInstance* SDK::OnAddEntity(CGameEntitySystem* ecx, CEntityInstance* ptr, 
 CEntityInstance* SDK::OnRemoveEntity(CGameEntitySystem* ecx, CEntityInstance* ptr, CEntityHandle index)
 {
 	const char * typeName = ptr->SchemaDynamicBinding()->bindingName;
-	printf("Removing <%x> %s, index: %d\n", ptr, typeName, index & 0x7FFF);
 	if (strstr(typeName, "C_DOTA_Unit_Hero")) {
-		auto npc = (CDotaBaseNPC*) ptr;
-		sdk.Heroes.erase(npc->GetPlayerOwnerID());
+		printf("Removing <%x> %s, index: %d\n", ptr, typeName, index & 0x7FFF);
+		sdk.Heroes.erase((CDotaBaseNPC*)ptr);
 	}
 	else if (strstr(typeName, "C_DOTA_BaseNPC_Creep")) {
 		sdk.Creeps.erase((CDotaBaseNPC*) ptr);

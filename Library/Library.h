@@ -50,7 +50,7 @@ public:
 	CGameEntitySystem* entity;
 	CGameEventManager* events;
 	// My Tier
-	std::map<short, CDotaBaseNPC*> Heroes;
+	std::set<CDotaBaseNPC*> Heroes;
 	std::set<CDotaBaseNPC*> Creeps;
 } sdk;
 
