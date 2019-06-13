@@ -4,23 +4,18 @@
 void SDK::PaintTraverse(IVPanel* ecx, IVGuiPaintSurface* surface, VPANEL panel, 
 	bool force_repaint, bool allow_force)
 {
-	static CBaseEntity* entity;	static int max;
 	// No Point in wasting cycles
 	if (!sdk.engine->IsInGame())
 		goto original;
 	// Get Max, and something....
-	max = sdk.entity->GetHighestEntityIndex(); surface->PushMakeCurrent(panel, false);
-	for (int i = 1; i <= max; i++) {
-		if (!(entity = sdk.entity->GetBaseEntity(i)))
-			continue;
-		if (strstr(entity->SchemaDynamicBinding()->bindingName, "C_DOTA_BaseNPC_Creep")) {
-			CDotaBaseNPC* creep = (CDotaBaseNPC*)entity;
-			auto health = creep->GetHealth();
-			if (health && health < 95) {
-				entity->DrawEntityDebugOverlays(ENTITYHITBOXES); // White
-				if (health < 65) {
-					entity->DrawEntityDebugOverlays(ABSBOX); // Green
-				}
+	surface->PushMakeCurrent(panel, false);
+	for(auto entity : sdk.Creeps) {
+		if (!entity) continue;
+		auto health = entity->GetHealth();
+		if (health && health < 95) {
+			entity->DrawEntityDebugOverlays(ENTITYHITBOXES); // White
+			if (health < 65) {
+				entity->DrawEntityDebugOverlays(ABSBOX); // Green
 			}
 		}
 	}; surface->PopMakeCurrent(panel);

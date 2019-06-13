@@ -26,7 +26,7 @@ bool SDK::FireEventClientSide(CGameEventManager *object, CGameEvent *event)
 			event->GetInt("PlayerID"));
 	}
 	// Debug and Return
-	if (strcmp(eventName, "dota_action_success"))
+	if (strcmp(eventName, "dota_action_success") && false)
 		printf("Event %s at %x for %x\n", eventName, event, object);
 	return vmt.events->GetOriginalMethod(FireEventClientSide)(object, event);
 }

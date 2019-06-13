@@ -30,7 +30,7 @@ void DotaPlayerKill(CGameEvent* event)
 {
 	dota_player_kill_macro; int isValid;
 	cout << "Player Death Event: " << event << " ==> userid: " << victim_userid << "\n";
-	CDotaBaseNPC* hero = sdk.HeroMap[victim_userid];
+	CDotaBaseNPC* hero = sdk.Heroes[victim_userid]; if (!hero) return;
 	CDotaPlayer* player = hero->GetPlayerOwner();
 	cout << " [+] BindingName: " << player->SchemaDynamicBinding()->bindingName << endl;
 	cout << " [+] PlayerName: " << player->GetPlayerName() << endl;
@@ -53,7 +53,7 @@ void DotaPlayerKill(CGameEvent* event)
 	printf(" [+] Range, Base Armor, More Armor: %f | %f | %f \n", hero->GetAttackRange(),
 		hero->GetBaseArmor(), hero->GetMoreArmor());
 	printf(" [+] Magic Resist: %f \n", hero->GetMagicResist());
-	cout << " [+] LocalPlayer: " << sdk.engine->GetLocalPlayer(&isValid, 0) << endl;
+	cout << " [+] LocalPlayer: " << sdk.engine->GetLocalPlayer(&isValid, 1) << endl;
 	DispatchDeathTaunt(player->InLocalTeam());
 invalid:
 	cout << endl;

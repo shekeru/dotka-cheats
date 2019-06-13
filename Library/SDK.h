@@ -12,6 +12,7 @@
 // Misc Required
 #include <stdexcept>
 #include <cstdint>
+#include <set>
 #include <map>
 
 namespace detail

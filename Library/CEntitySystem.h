@@ -29,7 +29,7 @@ public:
 };
 
 #define ClearEntityDatabaseMode_t char
-#define CEntityHandle char
+#define CEntityHandle unsigned int
 #define EntitySpawnInfo_t char
 
 class CEntitySystem {
@@ -48,8 +48,8 @@ public:
 	virtual void ClearEntityDatabase(void); // 11
 	virtual CEntityInstance* FindEntityProcedural(const char *...);
 	virtual CEntityInstance* OnEntityParentChanged(CEntityInstance*, CEntityInstance*);
-	virtual void* OnAddEntity(CEntityInstance*, CEntityHandle); // 14
-	virtual void* OnRemoveEntity(CEntityInstance*, CEntityHandle); // 15
+	virtual CEntityInstance* OnAddEntity(CEntityInstance*, CEntityHandle); // 14
+	virtual CEntityInstance* OnRemoveEntity(CEntityInstance*, CEntityHandle); // 15
 	virtual void n_16();
 	virtual void SortEntities(int, EntitySpawnInfo_t *, int *, int *); // 17
 	virtual void n_18();

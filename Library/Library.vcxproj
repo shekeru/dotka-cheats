@@ -198,6 +198,7 @@
   <ItemGroup>
     <ClCompile Include="DotaPlayerKill.cpp" />
     <ClCompile Include="DotaPlayerPickHero.cpp" />
+    <ClCompile Include="EntityList.cpp" />
     <ClCompile Include="FireEventClientSide.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Library.cpp" />

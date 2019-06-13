@@ -138,5 +138,8 @@
     <ClCompile Include="DotaPlayerPickHero.cpp">
       <Filter>Cheat Logic\Hooks/Hacks\CGameEventManager</Filter>
     </ClCompile>
+    <ClCompile Include="EntityList.cpp">
+      <Filter>Cheat Logic\Hooks/Hacks</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

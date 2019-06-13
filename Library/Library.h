@@ -50,7 +50,8 @@ public:
 	CGameEntitySystem* entity;
 	CGameEventManager* events;
 	// My Tier
-	std::map<short, CDotaBaseNPC*> HeroMap;
+	std::map<short, CDotaBaseNPC*> Heroes;
+	std::set<CDotaBaseNPC*> Creeps;
 } sdk;
 
 inline class Hooking {
