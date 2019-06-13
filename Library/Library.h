@@ -49,6 +49,8 @@ public:
 	// Second Tier
 	CGameEntitySystem* entity;
 	CGameEventManager* events;
+	// My Tier
+	std::map<short, CDotaBaseNPC*> HeroMap;
 } sdk;
 
 inline class Hooking {

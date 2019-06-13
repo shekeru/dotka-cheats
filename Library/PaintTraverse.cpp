@@ -16,9 +16,11 @@ void SDK::PaintTraverse(IVPanel* ecx, IVGuiPaintSurface* surface, VPANEL panel,
 		if (strstr(entity->SchemaDynamicBinding()->bindingName, "C_DOTA_BaseNPC_Creep")) {
 			CDotaBaseNPC* creep = (CDotaBaseNPC*)entity;
 			auto health = creep->GetHealth();
-			if (health && health < 50) {
+			if (health && health < 95) {
 				entity->DrawEntityDebugOverlays(ENTITYHITBOXES); // White
-				entity->DrawEntityDebugOverlays(ABSBOX); // Green
+				if (health < 65) {
+					entity->DrawEntityDebugOverlays(ABSBOX); // Green
+				}
 			}
 		}
 	}; surface->PopMakeCurrent(panel);

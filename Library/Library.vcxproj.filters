@@ -32,6 +32,9 @@
     <Filter Include="Source 2 SDK\Misc Files">
       <UniqueIdentifier>{efb2c824-4b48-4f42-a4e0-08f49eb4bc82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Cheat Logic\Hooks/Hacks\CGameEventManager">
+      <UniqueIdentifier>{d9c07d01-d305-489f-a95b-199c29452ca1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -109,6 +112,9 @@
     <ClInclude Include="Library.h">
       <Filter>Base System</Filter>
     </ClInclude>
+    <ClInclude Include="Events.h">
+      <Filter>Cheat Logic\Hooks/Hacks\CGameEventManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Library.cpp">
@@ -120,11 +126,17 @@
     <ClCompile Include="main.cpp">
       <Filter>Cheat Logic</Filter>
     </ClCompile>
-    <ClCompile Include="On Death.cpp">
-      <Filter>Cheat Logic\Hooks/Hacks</Filter>
-    </ClCompile>
     <ClCompile Include="PaintTraverse.cpp">
       <Filter>Cheat Logic\Hooks/Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="FireEventClientSide.cpp">
+      <Filter>Cheat Logic\Hooks/Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="DotaPlayerKill.cpp">
+      <Filter>Cheat Logic\Hooks/Hacks\CGameEventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="DotaPlayerPickHero.cpp">
+      <Filter>Cheat Logic\Hooks/Hacks\CGameEventManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

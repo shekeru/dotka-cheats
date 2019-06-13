@@ -65,7 +65,7 @@ public: //wtf were those LWSS
 	virtual void IsInThirdPersonView(); // 306, 
 	virtual void SetPlayerUnderwater(); // 307, 
 	virtual void PlayWadeSound(); // 308, #STR: "Player.Wade"
-	virtual void ActivePlayerCombatCharacter(); // 309, 
+	virtual void* ActivePlayerCombatCharacter(); // 309, 
 	virtual void n_310(); // 310, 
 	virtual void Weapon_ShootPosition(); // 311, 
 	virtual void Weapon_ShootAngles(); // 312, 
@@ -169,7 +169,7 @@ public: //wtf were those LWSS
 	virtual void IsDucking(); // 410, 
 	virtual void GetFallVelocity(); // 411, 
 	virtual void FindEntityClassForward(); // 412, 
-	virtual void FindEntityForward(); // 413, 
+	virtual CBaseEntity* FindEntityForward(bool); // 413, 
 	virtual void FindPickerEntityClass(); // 414, 
 	virtual void FindPickerEntity(); // 415, 
 	virtual void FindEntityInheritingFromForward(); // 416, 
