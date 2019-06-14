@@ -56,17 +56,25 @@ public:
 
 inline class Hooking {
 public:
+	VMT* client;
 	VMT* events;
 	VMT* entity;
 	VMT* panel;
 	// Helper Functions
 	void CreateVMTs() {
+		client = new VMT(sdk.client);
 		events = new VMT(sdk.events);
 		entity = new VMT(sdk.entity);
 		panel = new VMT(sdk.panel);
 	} void AttachVMs() {
+		client->ApplyVMT();
 		events->ApplyVMT();
 		entity->ApplyVMT();
 		panel->ApplyVMT();
+	} void UnloadAll() {
+		delete events;
+		delete entity;
+		delete client;
+		delete panel;
 	}
 } vmt;

@@ -58,6 +58,8 @@ void DotaPlayerKill(CGameEvent* event)
 	printf(" [+] Range, Base Armor, More Armor: %f | %f | %f \n", hero->GetAttackRange(),
 		hero->GetBaseArmor(), hero->GetMoreArmor());
 	printf(" [+] Magic Resist: %f \n", hero->GetMagicResist());
+	cout << "FUCK the engine: " << hex << sdk.engine->GetLocalPlayer();
+	cout << " ???? "<< hex << sdk.entity->GetBaseEntity(g_LocalIndex) << endl;
 	//CDotaPlayer* localplayer = (CDotaPlayer*) sdk.entity->GetBaseEntity(localID);
 	//	printf("LOCALPLAYER OR BUST: %x\n", localplayer);
 	DispatchDeathTaunt(player->InLocalTeam());

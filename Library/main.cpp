@@ -16,7 +16,7 @@ DWORD WINAPI ModuleEntry(HMODULE hInstance)
 		while (cheat.isRunning)
 			Sleep(1000);
 		// Remove Library
-		//vmt.UnloadAll(); 
+		vmt.UnloadAll();
 		//cheat.Shutdown();
 	}
 	catch (const std::exception& ex) {

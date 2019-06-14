@@ -200,6 +200,7 @@
     <ClCompile Include="DotaPlayerPickHero.cpp" />
     <ClCompile Include="EntityList.cpp" />
     <ClCompile Include="FireEventClientSide.cpp" />
+    <ClCompile Include="FrameStageNotify.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Library.cpp" />
     <ClCompile Include="PaintTraverse.cpp" />

@@ -1,6 +1,6 @@
 #include "IAppSystem.h"
 #pragma once
-
+static int g_LocalIndex = -1;
 typedef struct player_t {
 	union {
 		int64_t xuid;
@@ -33,8 +33,8 @@ public:
 	virtual void ServerCmd(int inputCommandSrc, const char* command) = 0;
 	virtual void ClientCmd(int inputCommandSrc, const char* command) = 0;
 	virtual bool GetPlayerInfo(int ent_num, void* pinfo) = 0; // 20
-	virtual int GetPlayerForUserID(int ID) = 0;
-	virtual int GetLocalPlayer(int splitScreenSlot = 0) = 0;
+	virtual int& GetPlayerForUserID(int&, int ID) = 0;
+	virtual int& GetLocalPlayer(int& = g_LocalIndex, int screen = 0);
 	virtual float GetLastTimestamp(void) = 0;  // 23
 	virtual int GetLastServertick(void) = 0;
 	virtual void* GetSentence(void) = 0;

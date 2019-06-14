@@ -141,5 +141,8 @@
     <ClCompile Include="EntityList.cpp">
       <Filter>Cheat Logic\Hooks/Hacks</Filter>
     </ClCompile>
+    <ClCompile Include="FrameStageNotify.cpp">
+      <Filter>Cheat Logic\Hooks/Hacks</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

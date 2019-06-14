@@ -12,7 +12,7 @@ enum class ClientFrameStage_t : int
 {
 	// (haven't run any frames yet)
 	FRAME_UNDEFINED = -1,
-	FRAME_START,
+	FRAME_START = 0 ,
 	// A network packet is being recieved
 	FRAME_NET_UPDATE_START,
 	// Data has been received and we're going to start calling PostDataUpdate
