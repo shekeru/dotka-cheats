@@ -1,5 +1,5 @@
+#include "gameevents.h"
 #include "stdafx.h"
-#include "events.h"
 #include "hooks.h"
 
 bool SDK::FireEventClientSide(CGameEventManager *object, CGameEvent *event) 

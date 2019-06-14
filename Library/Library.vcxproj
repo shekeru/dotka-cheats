@@ -183,7 +183,7 @@
     <ClInclude Include="CSource2Client.h" />
     <ClInclude Include="Datamap.h" />
     <ClInclude Include="definitions.h" />
-    <ClInclude Include="Events.h" />
+    <ClInclude Include="GameEvents.h" />
     <ClInclude Include="IAppSystem.h" />
     <ClInclude Include="ICVar.h" />
     <ClInclude Include="IVGuiPaintSurface.h" />
@@ -198,7 +198,7 @@
   <ItemGroup>
     <ClCompile Include="DotaPlayerKill.cpp" />
     <ClCompile Include="DotaPlayerPickHero.cpp" />
-    <ClCompile Include="EntityList.cpp" />
+    <ClCompile Include="EntityListChange.cpp" />
     <ClCompile Include="FireEventClientSide.cpp" />
     <ClCompile Include="FrameStageNotify.cpp" />
     <ClCompile Include="main.cpp" />

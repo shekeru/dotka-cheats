@@ -8,17 +8,22 @@ void SDK::PaintTraverse(IVPanel* ecx, IVGuiPaintSurface* surface, VPANEL panel,
 	if (!sdk.engine->IsInGame())
 		goto original;
 	// Get Max, and something....
+	if (!sdk.LocalHero) goto original;
+	// Continue
 	surface->PushMakeCurrent(panel, false);
 	for(auto entity : sdk.Creeps) {
-		if (!entity) continue;
+		auto dmg = sdk.LocalHero->GetDamageMin();
 		auto health = entity->GetHealth();
-		if (health && health < 95) {
+		if (health && health < dmg * 2) {
 			entity->DrawEntityDebugOverlays(ENTITYHITBOXES); // White
-			if (health < 65) {
+			if (health < dmg) {
 				entity->DrawEntityDebugOverlays(ABSBOX); // Green
 			}
 		}
-	}; surface->PopMakeCurrent(panel);
+	}; for (auto hero : sdk.Heroes) {
+		if (!hero->InLocalTeam())
+			hero->DrawEntityDebugOverlays(OverlayFlags_t::ENTITYATTACHMENTS);
+	};  surface->PopMakeCurrent(panel);
 original:
 	vmt.panel->GetOriginalMethod(PaintTraverse)(ecx, surface, panel, 
 		force_repaint, allow_force);

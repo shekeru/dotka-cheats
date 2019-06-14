@@ -52,6 +52,8 @@ public:
 	// My Tier
 	std::set<CDotaBaseNPC*> Heroes;
 	std::set<CDotaBaseNPC*> Creeps;
+	CDotaPlayer* LocalPlayer;
+	CDotaBaseNPC* LocalHero;
 } sdk;
 
 inline class Hooking {

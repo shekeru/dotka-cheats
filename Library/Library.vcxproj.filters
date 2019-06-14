@@ -112,7 +112,7 @@
     <ClInclude Include="Library.h">
       <Filter>Base System</Filter>
     </ClInclude>
-    <ClInclude Include="Events.h">
+    <ClInclude Include="GameEvents.h">
       <Filter>Cheat Logic\Hooks/Hacks\CGameEventManager</Filter>
     </ClInclude>
   </ItemGroup>
@@ -138,10 +138,10 @@
     <ClCompile Include="DotaPlayerPickHero.cpp">
       <Filter>Cheat Logic\Hooks/Hacks\CGameEventManager</Filter>
     </ClCompile>
-    <ClCompile Include="EntityList.cpp">
+    <ClCompile Include="FrameStageNotify.cpp">
       <Filter>Cheat Logic\Hooks/Hacks</Filter>
     </ClCompile>
-    <ClCompile Include="FrameStageNotify.cpp">
+    <ClCompile Include="EntityListChange.cpp">
       <Filter>Cheat Logic\Hooks/Hacks</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,5 +1,7 @@
 #pragma once
 #include "Library.h"
+#include <functional>
+#include <algorithm>
 
 namespace SDK {
 	void PaintTraverse(IVPanel*, IVGuiPaintSurface*, VPANEL, bool, bool);
