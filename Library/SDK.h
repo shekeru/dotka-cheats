@@ -6,6 +6,7 @@
 // Managers & Systems
 #include "CEventManager.h"
 #include "CEntitySystem.h"
+#include "IClientMode.h"
 // Object Headers
 #include "CDotaBaseNPC.h"
 #include "CDotaPlayer.h"

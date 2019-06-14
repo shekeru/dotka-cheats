@@ -186,6 +186,7 @@
     <ClInclude Include="GameEvents.h" />
     <ClInclude Include="IAppSystem.h" />
     <ClInclude Include="ICVar.h" />
+    <ClInclude Include="InputSystem.h" />
     <ClInclude Include="IVGuiPaintSurface.h" />
     <ClInclude Include="IVPanel.h" />
     <ClInclude Include="sdk.h" />
@@ -201,6 +202,7 @@
     <ClCompile Include="EntityListChange.cpp" />
     <ClCompile Include="FireEventClientSide.cpp" />
     <ClCompile Include="FrameStageNotify.cpp" />
+    <ClCompile Include="IClientMode.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Library.cpp" />
     <ClCompile Include="PaintTraverse.cpp" />

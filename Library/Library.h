@@ -11,7 +11,7 @@ public:
 	{
 		printf("Module \"%s\" loaded at %p\n", module = name, handle = GetModuleHandle(name));
 		CreateInterface = (CreateInterfaceFn)GetProcAddress(handle, "CreateInterface");
-		InterfaceList = *resolve_addr<InterfaceReg**>(0x0, CreateInterface, 3);
+		InterfaceList = resolve_addr<InterfaceReg*>(0x0, CreateInterface, 3);
 			printf(" [+] CreateInterface: %p\n", CreateInterface);
 	}
 	// Properties
@@ -22,7 +22,7 @@ public:
 	// Misc Shit
 	void ListInterfaces() {
 		for (InterfaceReg* current = InterfaceList; current; current = current->m_pNext)
-			printf("\t%s => 0x%llx\n", current->m_pName, current->m_CreateFn());
+			printf("\t%s => 0x%llx\n", current->m_pName, current->m_CreateFn);
 	};
 };
 
@@ -49,6 +49,7 @@ public:
 	// Second Tier
 	CGameEntitySystem* entity;
 	CGameEventManager* events;
+	IClientMode* cmode;
 	// My Tier
 	std::set<CDotaBaseNPC*> Heroes;
 	std::set<CDotaBaseNPC*> Creeps;

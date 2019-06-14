@@ -98,4 +98,22 @@ public:
 	virtual ClientClass* GetAllClasses(); // 27
 	virtual void ReceivedServerInfo(void* GameSessionConfiguration_t, void* ILoopModePrerequisiteRegistry);
 	virtual void FrameStageNotify(ClientFrameStage_t stage); // 29
+	virtual void HudVidInit(void); // 30
+	virtual void HudUpdate(bool bActive);
+	virtual void HudReset(void);
+	virtual void HudText(void* client_textmessage_t);
+	virtual void IN_ClearStates(void); // 34
+	virtual bool IN_IsKeyDown(const char *name, bool isDown);
+	virtual void DecalShoot(); // 36
+	virtual void PlayerDecalShoot();
+	virtual void OnLevelLoadingStarted(void); // 38
+	virtual void CenterStringOff(void);
+	virtual void View_Fade(void* ScreenFade_t);
+	virtual void OnSplitScreenStateChanged(void);
+	virtual void ResetHudCloseCaption(void);
+	virtual int GetPlayerTeamIndex(int entIndex);
+	virtual void render_perf_shit();
+	virtual bool CanVoiceChat(void);
+	virtual void OnFullEntityUpdate(void);
+	virtual void OnServerConnectionTimedOut(void const * ns_address);
 };

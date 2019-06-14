@@ -115,6 +115,9 @@
     <ClInclude Include="GameEvents.h">
       <Filter>Cheat Logic\Hooks/Hacks\CGameEventManager</Filter>
     </ClInclude>
+    <ClInclude Include="InputSystem.h">
+      <Filter>Source 2 SDK</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Library.cpp">
@@ -143,6 +146,9 @@
     </ClCompile>
     <ClCompile Include="EntityListChange.cpp">
       <Filter>Cheat Logic\Hooks/Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="IClientMode.h">
+      <Filter>Source 2 SDK\Interfaces</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
