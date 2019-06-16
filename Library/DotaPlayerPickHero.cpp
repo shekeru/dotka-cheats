@@ -5,9 +5,13 @@
 void DotaPlayerPickHero(CGameEvent* event) 
 {
 	dota_player_pick_hero_macro;
-	//auto entity = (CDotaBaseNPC*) sdk.entity->GetBaseEntity(heroindex);
-	//if (entity) {
-	//	auto playerId = entity->GetPlayerOwnerID(); sdk.Heroes[playerId] = entity;
-	//	printf("[HeroPicked] PlayerID %d: <%d> %s\n", playerId, heroindex, hero);
-	//}
+	auto entity = (CDotaBaseNPC*) sdk.entity->GetBaseEntity(heroindex);
+	if (entity) {
+		auto playerId = entity->GetPlayerOwnerID();
+		printf("[HeroPicked] PlayerID %d: <%d> %s", playerId, heroindex, hero);
+		if (playerId == sdk.LocalPlayer->GetPlayerID()) {
+			printf(" ((LOCALHERO))");
+			sdk.LocalHero = entity;
+		} printf("\n");
+	}
 }

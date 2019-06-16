@@ -53,6 +53,7 @@ public:
 	// My Tier
 	std::set<CDotaBaseNPC*> Heroes;
 	std::set<CDotaBaseNPC*> Creeps;
+	std::set<CDotaBaseNPC*> Wards;
 	CDotaPlayer* LocalPlayer;
 	CDotaBaseNPC* LocalHero;
 } sdk;

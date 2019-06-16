@@ -11,6 +11,7 @@ void SDK::PaintTraverse(IVPanel* ecx, IVGuiPaintSurface* surface, VPANEL panel,
 	if (!sdk.LocalHero) goto original;
 	// Continue
 	surface->PushMakeCurrent(panel, false);
+	// Creeps
 	for(auto entity : sdk.Creeps) {
 		auto dmg = sdk.LocalHero->GetDamageMin();
 		auto health = entity->GetHealth();
@@ -20,10 +21,20 @@ void SDK::PaintTraverse(IVPanel* ecx, IVGuiPaintSurface* surface, VPANEL panel,
 				entity->DrawEntityDebugOverlays(ABSBOX); // Green
 			}
 		}
-	}; for (auto hero : sdk.Heroes) {
+	}; 
+	// Heroes
+	for (auto hero : sdk.Heroes) {
 		if (!hero->InLocalTeam())
-			hero->DrawEntityDebugOverlays(OverlayFlags_t::ENTITYATTACHMENTS);
-	};  surface->PopMakeCurrent(panel);
+			hero->DrawEntityDebugOverlays(ENTITYATTACHMENTS);
+	};  
+	// Wards
+	for (auto ward : sdk.Wards) {
+		if (!ward->InLocalTeam())
+			ward->DrawEntityDebugOverlays(ENTITYATTACHMENTS);
+			ward->DrawEntityDebugOverlays(ENTITYHITBOXES);
+	};
+	// Resume
+	surface->PopMakeCurrent(panel);
 original:
 	vmt.panel->GetOriginalMethod(PaintTraverse)(ecx, surface, panel, 
 		force_repaint, allow_force);
