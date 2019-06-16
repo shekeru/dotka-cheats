@@ -9,6 +9,7 @@ namespace SDK {
 	void FrameStageNotify(CSource2Client* ecx, ClientFrameStage_t stage);
 	CEntityInstance* OnAddEntity(CGameEntitySystem*, CEntityInstance*, CEntityHandle);
 	CEntityInstance* OnRemoveEntity(CGameEntitySystem*, CEntityInstance*, CEntityHandle);
+	CEntityInstance* OnEntityParentChanged(CGameEntitySystem*, CEntityInstance*, CEntityInstance*);
 	//void* OnAddEntity(CEntityInstance*, CEntityHandle);
 	inline void LoadActiveHooks() {
 		vmt.client->HookVM(FrameStageNotify, 29);
@@ -16,6 +17,7 @@ namespace SDK {
 		// Entity System
 		vmt.entity->HookVM(OnRemoveEntity, 15);
 		vmt.entity->HookVM(OnAddEntity, 14);
+		vmt.entity->HookVM(OnEntityParentChanged, 13);
 		// Misc
 		vmt.panel->HookVM(PaintTraverse, 55);
 	}

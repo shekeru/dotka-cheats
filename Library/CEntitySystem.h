@@ -47,7 +47,7 @@ public:
 	virtual void n_10();
 	virtual void ClearEntityDatabase(void); // 11
 	virtual CEntityInstance* FindEntityProcedural(const char *...);
-	virtual CEntityInstance* OnEntityParentChanged(CEntityInstance*, CEntityInstance*);
+	virtual CEntityInstance* OnEntityParentChanged(CEntityInstance*, CEntityInstance*); //13
 	virtual CEntityInstance* OnAddEntity(CEntityInstance*, CEntityHandle); // 14
 	virtual CEntityInstance* OnRemoveEntity(CEntityInstance*, CEntityHandle); // 15
 	virtual void n_16();
