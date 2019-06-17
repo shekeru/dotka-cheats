@@ -25,7 +25,7 @@ void SDK::PaintTraverse(IVPanel* ecx, IVGuiPaintSurface* surface, VPANEL panel,
 	// Heroes
 	for (auto hero : sdk.Heroes) {
 		if (!hero->InLocalTeam())
-			hero->DrawEntityDebugOverlays(ENTITYATTACHMENTS);
+			hero->DrawEntityDebugOverlays(BBOX);
 	};  
 	// Wards
 	for (auto ward : sdk.Wards) {
