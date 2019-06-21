@@ -46,6 +46,41 @@ enum DOTATeam_t : int {
 class CBaseEntity : public CEntityInstance
 {
 public:
+	inline int FindDataMapElementOffset(const char *element, Datamap* dMap = 0) {
+		if(dMap == nullptr) dMap = this->GetPredDescMap();
+		while (dMap) {
+			for (uint64_t i = 0; i < dMap->numFields; i++) {
+				if (!dMap->dataDesc[i].fieldName)
+					continue;
+
+				if (!strcmp(dMap->dataDesc[i].fieldName, element))
+					return dMap->dataDesc[i].fieldOffset[TD_OFFSET_NORMAL];
+
+				if (dMap->dataDesc[i].type == FIELD_EMBEDDED) {
+					if (dMap->dataDesc[i].td) {
+						int temp = FindDataMapElementOffset(element, dMap->dataDesc[i].td);
+						if (temp != 0)
+							return temp;
+					}
+				}
+			}
+			dMap = dMap->baseMap;
+		}
+		return 0;
+	}
+	inline Vector* const GetNetworkOrigin()
+	{
+		static int offset = FindDataMapElementOffset("m_vecNetworkOrigin");
+		if (!offset) {
+			printf("[ERROR] NetworkOrigin offset is Zero!\n");
+			return NULL;
+		}; return (Vector*)(((uintptr_t)this) + offset);
+	}
+	inline bool IsInRange() {
+		auto b = this->GetNetworkOrigin();
+		return false;
+	}
+	// Virtual Funcs
 	virtual Datamap* GetPredDescMap(); // 26, 
 	virtual CCollisionProperty* GetCollideable(); // 27, 
 	virtual void GetPredictionCopyable(); // 28, 

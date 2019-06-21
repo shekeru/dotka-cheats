@@ -75,25 +75,3 @@ public:
 	Datamap * td;
 	void *_unk2[5];
 };
-
-inline int FindDataMapElementOffset(Datamap *dMap, const char *element) {
-	while (dMap) {
-		for (uint64_t i = 0; i < dMap->numFields; i++) {
-			if (!dMap->dataDesc[i].fieldName)
-				continue;
-
-			if (!strcmp(dMap->dataDesc[i].fieldName, element))
-				return dMap->dataDesc[i].fieldOffset[TD_OFFSET_NORMAL];
-
-			if (dMap->dataDesc[i].type == FIELD_EMBEDDED) {
-				if (dMap->dataDesc[i].td) {
-
-					int temp = FindDataMapElementOffset(dMap->dataDesc[i].td, element);
-					if (temp != 0)
-						return temp;
-				}
-			}
-		}
-		dMap = dMap->baseMap;
-	} return 0;
-}
