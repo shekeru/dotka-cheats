@@ -11,6 +11,11 @@ CEntityInstance* SDK::OnAddEntity(CGameEntitySystem* ecx, CEntityInstance* ptr, 
 		if (sdk.engine->GetLocalPlayer() == (index & 0x7FFF)) {
 			printf("\tWarning, New local player set from data above!\n");
 				sdk.LocalPlayer = (CDotaPlayer*) ptr;
+			//if (vmt.player)
+			//	delete vmt.player;
+			//vmt.player = new VMT(sdk.LocalPlayer);
+			//vmt.player->HookVM(SDK::PrepareUnitOrders, 419);
+			//vmt.player->ApplyVMT();
 		}
 	} else if (strstr(typeName, "DOTA_Unit_Hero")) {
 		auto hero = (CDotaBaseNPC*) ptr; sdk.Heroes.insert(hero);

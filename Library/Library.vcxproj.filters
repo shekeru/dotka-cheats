@@ -150,5 +150,8 @@
     <ClCompile Include="IClientMode.h">
       <Filter>Source 2 SDK\Interfaces</Filter>
     </ClCompile>
+    <ClCompile Include="PrepareUnitOrders.cpp">
+      <Filter>Cheat Logic\Hooks/Hacks</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

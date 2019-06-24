@@ -10,7 +10,8 @@ namespace SDK {
 	CEntityInstance* OnAddEntity(CGameEntitySystem*, CEntityInstance*, CEntityHandle);
 	CEntityInstance* OnRemoveEntity(CGameEntitySystem*, CEntityInstance*, CEntityHandle);
 	CEntityInstance* OnEntityParentChanged(CGameEntitySystem*, CEntityInstance*, CEntityInstance*);
-	//void* OnAddEntity(CEntityInstance*, CEntityHandle);
+	void PrepareUnitOrders(CDotaPlayer *ecx, DotaUnitOrder_t order, int targetIndex, Vector movePosition, int abilityIndex, PlayerOrderIssuer_t orderIssuer,
+		CDotaBaseNPC *entity, bool queue, OrderQueueBehavior_t queueBehavior, bool showEffects);
 	inline void LoadActiveHooks() {
 		vmt.client->HookVM(FrameStageNotify, 29);
 		vmt.events->HookVM(FireEventClientSide, 8);

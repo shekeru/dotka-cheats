@@ -4,7 +4,7 @@
 std::vector<CDotaBaseNPC*> in_range = {};
 
 void SDK::FrameStageNotify(CSource2Client* ecx, ClientFrameStage_t stage) {
-	CDotaBaseNPC* best;
+	decltype(in_range)::iterator best;
 	switch (stage) {
 	case ClientFrameStage_t::FRAME_START:
 		break;
@@ -17,10 +17,9 @@ void SDK::FrameStageNotify(CSource2Client* ecx, ClientFrameStage_t stage) {
 				return x->IsInRange(sdk.LocalHero) && 
 					x->CanLastHit(sdk.LocalHero);
 		}); 
-		best = *std::min_element(in_range.begin(), in_range.end(), [](CDotaBaseNPC* a, CDotaBaseNPC* b) {
-			return a->GetHealth() * a->GetBaseArmor()
-				< b->GetHealth() * b->GetBaseArmor();
-		}); if (best) printf("go hit %p\n", best);
+		best = std::min_element(in_range.begin(), in_range.end(), [](auto a, auto b) {
+			return a->GetHealth() * a->GetBaseArmor() < b->GetHealth() * b->GetBaseArmor();
+		}); if (best < in_range.end()) printf("go hit %p\n", *best);
 		in_range.clear(); break;
 	default:
 		break;

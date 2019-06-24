@@ -60,6 +60,7 @@ public:
 
 inline class Hooking {
 public:
+	VMT* player;
 	VMT* client;
 	VMT* events;
 	VMT* entity;
