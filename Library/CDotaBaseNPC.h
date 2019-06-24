@@ -8,14 +8,14 @@ class CDotaBaseNPC : public CBaseCombatCharacter
 {
 public:
 	inline bool IsInRange(CDotaBaseNPC* attacker) {
+		if (!GetHealth()) return false;
 		auto x = *this->GetNetworkOrigin();
 		auto y = *attacker->GetNetworkOrigin();
 		return attacker->GetAttackRange() 
 			>= (y - x).Length2D();
 	}
 	inline bool CanLastHit(CDotaBaseNPC* attacker) {
-		return GetHealth() * GetBaseArmor() 
-			<= attacker->GetDamageMin();
+		return GetHealth() <= attacker->GetDamageMin();
 	}
 	// Virtuals
 	virtual void GetZChangeSpeed(); // 302, 

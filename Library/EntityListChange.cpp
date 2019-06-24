@@ -5,17 +5,18 @@
 CEntityInstance* SDK::OnAddEntity(CGameEntitySystem* ecx, CEntityInstance* ptr, CEntityHandle index)
 {
 	const char * typeName = ptr->SchemaDynamicBinding()->bindingName;
-	//printf("Adding <%x> %s, index: %d\n", ptr, typeName, index & 0x7FFF);
+	if (strstr(typeName, "DotaCamera"))
+		printf("Adding <%x> %s, index: %d\n", ptr, typeName, index & 0x7FFF);
 	if (!strcmp(typeName, "C_DOTAPlayer")) {
 		printf("Player <%x> %s, index: %d\n", ptr, typeName, index & 0x7FFF);
 		if (sdk.engine->GetLocalPlayer() == (index & 0x7FFF)) {
+			sdk.LocalPlayer = (CDotaPlayer*)ptr;
 			printf("\tWarning, New local player set from data above!\n");
-				sdk.LocalPlayer = (CDotaPlayer*) ptr;
-			//if (vmt.player)
-			//	delete vmt.player;
-			//vmt.player = new VMT(sdk.LocalPlayer);
-			//vmt.player->HookVM(SDK::PrepareUnitOrders, 419);
-			//vmt.player->ApplyVMT();
+			if (vmt.player) 
+				delete vmt.player;
+			vmt.player = new VMT(sdk.LocalPlayer);
+			vmt.player->HookVM(SDK::PrepareUnitOrders, 419);
+			vmt.player->ApplyVMT();
 		}
 	} else if (strstr(typeName, "DOTA_Unit_Hero")) {
 		auto hero = (CDotaBaseNPC*) ptr; sdk.Heroes.insert(hero);
@@ -33,7 +34,7 @@ CEntityInstance* SDK::OnRemoveEntity(CGameEntitySystem* ecx, CEntityInstance* pt
 	const char * typeName = ptr->SchemaDynamicBinding()->bindingName;
 	if (strstr(typeName, "DOTA_Unit_Hero")) {
 		printf("Removing <%x> %s, index: %d\n", ptr, typeName, index & 0x7FFF);
-		sdk.Heroes.erase((CDotaBaseNPC*)ptr);
+		sdk.Heroes.erase((CDotaBaseNPC*) ptr);
 	} else if (strstr(typeName, "C_DOTA_BaseNPC_Creep")) {
 		sdk.Creeps.erase((CDotaBaseNPC*) ptr);
 	} else if (!strcmp(typeName, "CDOTA_NPC_Observer_Ward")) {

@@ -10,8 +10,7 @@ void DotaPlayerPickHero(CGameEvent* event)
 		auto playerId = entity->GetPlayerOwnerID();
 		printf("[HeroPicked] PlayerID %d: <%d> %s", playerId, heroindex, hero);
 		if (playerId == sdk.LocalPlayer->GetPlayerID()) {
-			printf(" ((LOCALHERO))");
-			sdk.LocalHero = entity;
+			printf(" ((LOCALHERO))"); sdk.LocalHero = entity;
 		} printf("\n");
 	}
 }
