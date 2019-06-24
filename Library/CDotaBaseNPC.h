@@ -7,6 +7,17 @@ class C_DOTABaseAbility;
 class CDotaBaseNPC : public CBaseCombatCharacter
 {
 public:
+	inline bool IsInRange(CDotaBaseNPC* attacker) {
+		auto x = *this->GetNetworkOrigin();
+		auto y = *attacker->GetNetworkOrigin();
+		return attacker->GetAttackRange() 
+			>= (y - x).Length2D();
+	}
+	inline bool CanLastHit(CDotaBaseNPC* attacker) {
+		return GetHealth() * GetBaseArmor() 
+			<= attacker->GetDamageMin();
+	}
+	// Virtuals
 	virtual void GetZChangeSpeed(); // 302, 
 	virtual void GetBonusFlyHeight(); // 303, 
 	virtual void ShouldDoFlyHeightVisual(); // 304, 

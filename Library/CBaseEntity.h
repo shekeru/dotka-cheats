@@ -76,10 +76,6 @@ public:
 			return NULL;
 		}; return (Vector*)(((uintptr_t)this) + offset);
 	}
-	inline bool IsInRange() {
-		auto b = this->GetNetworkOrigin();
-		return false;
-	}
 	// Virtual Funcs
 	virtual Datamap* GetPredDescMap(); // 26, 
 	virtual CCollisionProperty* GetCollideable(); // 27, 

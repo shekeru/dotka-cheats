@@ -14,13 +14,12 @@ void SDK::FrameStageNotify(CSource2Client* ecx, ClientFrameStage_t stage) {
 		if (!sdk.LocalHero) break;
 		std::copy_if(sdk.Creeps.begin(), sdk.Creeps.end(), 
 			std::back_inserter(in_range), [](CDotaBaseNPC* x) {
-			return sdk.LocalHero->GetAttackRange() > (*x->GetNetworkOrigin()
-				- *sdk.LocalHero->GetNetworkOrigin()).Length2D() && 
-			x->GetHealth() * x->GetBaseArmor() <= sdk.LocalHero->GetDamageMin();
+				return x->IsInRange(sdk.LocalHero) && 
+					x->CanLastHit(sdk.LocalHero);
 		}); 
 		best = *std::min_element(in_range.begin(), in_range.end(), [](CDotaBaseNPC* a, CDotaBaseNPC* b) {
 			return a->GetHealth() * a->GetBaseArmor()
-				> b->GetHealth() * b->GetBaseArmor();
+				< b->GetHealth() * b->GetBaseArmor();
 		}); if (best) printf("go hit %p\n", best);
 		in_range.clear(); break;
 	default:

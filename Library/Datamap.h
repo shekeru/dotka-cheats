@@ -49,7 +49,6 @@ enum
 {
 	TD_OFFSET_NORMAL = 0,
 	TD_OFFSET_PACKED = 1,
-
 	// Must be last
 	TD_OFFSET_COUNT,
 };
@@ -65,13 +64,26 @@ public:
 	Datamap *baseMap; // Ex: For C_DOTAPlayer it would be next baseclass C_BasePlayer, can be NULL
 };
 
-class TypeDescription
+class TypeDescription // 8 * 13 = 104 bytes
 {
 public:
-	fieldtype_t type;
-	const char *fieldName;
-	int fieldOffset[TD_OFFSET_COUNT];
-	void *_unk[5];
-	Datamap * td;
-	void *_unk2[5];
+	fieldtype_t type; // 8
+	const char* fieldName; // 16
+	int fieldOffset[TD_OFFSET_COUNT]; // 24
+	// speculated
+	unsigned short fieldSize; // 26
+	unsigned short flags; // 28
+	const char* externalName; // 36
+	void* pSaveRestoreOps; // 44
+	void* inputFunc; // 52
+	// Fuck it
+	Datamap * td; // 60
+	int fieldSizeInBytes; // 64
+	void* override_field; // 72
+	int override_count; // 76
+	float fieldTolerance; // 80
+	int flatOffset[TD_OFFSET_COUNT]; // 92
+	// kill me
+	void* _padding; // 96
+	~TypeDescription(); // 104
 };
