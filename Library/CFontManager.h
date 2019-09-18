@@ -37,12 +37,12 @@ enum class FontDrawType_t : int
 	FONT_DRAW_TYPE_COUNT = 2,
 };
 
-class HFont;
+typedef unsigned long long HFont;
 // "DefaultFontAliasGroup" xref to the one that's by a bunch of `mov dword ptr [rax+xx], 0` - this is Init()
 class CFontManager : IAppSystem
 {
 public:
-	virtual HFont* CreateFont(void) = 0;
+	virtual HFont CreateFont(void) = 0;
 	virtual void ClearAllFonts(void) = 0;
 	virtual void SetLanguage(const char *language) = 0;
 	virtual const char* GetLanguage(void) = 0;
@@ -51,27 +51,27 @@ public:
 	virtual void RemoveFontAliasList(const char*) = 0;
 	virtual void GetFontAliases(const char*) = 0;
 	virtual void CreateFontAlias(const char*, const char*, bool) = 0;
-	virtual HFont* GetFont(const char* name, const char* unk, bool unk2) = 0;  // 20
+	virtual HFont GetFont(const char* name, const char* unk, bool unk2) = 0;  // 20
 	virtual void LoadFont(const char*, const char*, int, int, bool, int, int, int, int, int, const char*) = 0;
-	virtual HFont* FindFont(const char*, bool, const char*) = 0;
-	virtual HFont* FindOrLoadFont(const char*, const char*, int, int, bool, int, int, int, int, int, const char*) = 0;
+	virtual HFont FindFont(const char*, bool, const char*) = 0;
+	virtual HFont FindOrLoadFont(const char*, const char*, int, int, bool, int, int, int, int, int, const char*) = 0;
 	virtual void GetTrueFontName(void const * FontAlias_t) = 0;
 	virtual void GetFontRange(const char*, int &, int &, const char*) = 0;
 	virtual void SetFontRange(const char*, int, int, const char*) = 0;
-	virtual bool SetFontGlyphSet(HFont*, const char* windowsFontName, int size, int, int, int, int, int, int flags) = 0;
-	virtual void GetFontName(HFont*) = 0;
-	virtual void GetFontTall(HFont*) = 0;
-	virtual void GetCharacterWidth(HFont*, int) = 0;
-	virtual void GetKernedCharWidth(HFont*, wchar_t, wchar_t, wchar_t, float &, float &, float &) = 0;
-	virtual void GetCharABCwide(HFont*, int, int &, int &, int &) = 0;
-	virtual void GetTextSize(HFont*, const wchar_t*, int &, int &) = 0;
+	virtual bool SetFontGlyphSet(HFont, const char* windowsFontName, int size, int, int, int, int, int, int flags) = 0;
+	virtual void GetFontName(HFont) = 0;
+	virtual void GetFontTall(HFont) = 0;
+	virtual void GetCharacterWidth(HFont, int) = 0;
+	virtual void GetKernedCharWidth(HFont, wchar_t, wchar_t, wchar_t, float &, float &, float &) = 0;
+	virtual void GetCharABCwide(HFont, int, int &, int &, int &) = 0;
+	virtual void GetTextSize(HFont, const wchar_t*, int &, int &) = 0;
 	virtual void GetTextureHandle(int) = 0;
-	virtual void GetFontAscent(HFont*, wchar_t) = 0;
-	virtual void GetFontUnderlined(HFont*) = 0;
-	virtual bool IsFontAdditive(HFont*) = 0;
-	virtual void PrecacheFontCharacters(HFont*, wchar_t *) = 0;
+	virtual void GetFontAscent(HFont, wchar_t) = 0;
+	virtual void GetFontUnderlined(HFont) = 0;
+	virtual bool IsFontAdditive(HFont) = 0;
+	virtual void PrecacheFontCharacters(HFont, wchar_t *) = 0;
 	virtual void ClearFontTextureCache(void) = 0;
-	virtual void GetTextureForChar(HFont*, int FontDrawType_t, wchar_t, int *, float **) = 0;
+	virtual void GetTextureForChar(HFont, int FontDrawType_t, wchar_t, int *, float **) = 0;
 	virtual void ClearTemporaryFontCache(void) = 0;
 	virtual void SpewFonts(const char *, float) = 0;
 	virtual void DESTROY1() = 0;

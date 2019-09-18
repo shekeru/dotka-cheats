@@ -95,4 +95,8 @@ public:
 		ReleaseVMT();
 		delete[] vmt;
 	}
+	void CheckVMT(int last_known) {
+		if (method_count != last_known)
+			printf("<VMT ERROR>, for _interface_ with x of y\n");
+	}
 };

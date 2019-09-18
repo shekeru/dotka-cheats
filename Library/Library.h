@@ -32,17 +32,20 @@ public:
 		this->client = new Library("client.dll");
 		this->engine = new Library("engine2.dll");
 		this->vgui = new Library("vgui2.dll");
+		this->mats = new Library("materialsystem2.dll");
 	};  void GetInterfaces();
 	// Stuff
 	bool isRunning = true;
 	Library* client;
 	Library* engine;
 	Library* vgui;
+	Library* mats;
 } cheat;
 
 inline class Interfaces {
 public:
 	// First Tier
+	CFontManager* fonts;
 	CSource2Client* client;
 	CEngineClient* engine;
 	IVPanel* panel;

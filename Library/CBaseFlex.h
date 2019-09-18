@@ -3,64 +3,65 @@
 
 class CBaseAnimating : public CBaseModelEntity {
 public:
-	virtual void SetTransmit(); // 218, 
-	virtual void GetRenderData(); // 219, 
-	virtual void UpdateClientSideAnimation(); // 220, 
-	virtual void ComputeClientSideAnimationFlags(); // 221, 
-	virtual void n_222(); // 222, 
-	virtual void n_223(); // 223, 
-	virtual void n_224(); // 224, 
+	virtual void SetTransmit(); // 221, 
+	virtual void GetRenderData(); // 222, 
+	virtual void UpdateClientSideAnimation(); // 223, 
+	virtual void ComputeClientSideAnimationFlags(); // 224, 
 	virtual void n_225(); // 225, 
-	virtual void InitPoseParameters(); // 226, 
-	virtual void CachePoseParameters(); // 227, 
-	virtual void UncorrectViewModelAttachment(); // 228, 
-	virtual void SetModelScale(); // 229, 
-	virtual void OnNewSequence(); // 230, 
-	virtual void IsActivityFinished(); // 231, 
-	virtual void OnSequenceFinished(); // 232, 
-	virtual void GetIdealSpeed(); // 233, 
-	virtual void GetIdealAccel(); // 234, 
-	virtual void n_235(); // 235, 
-	virtual void HandleAnimEvent(); // 236, 
-	virtual void n_237(); // 237, 
-	virtual void n_238(); // 238, #STR: "cl_particle_fallback_base", "attachment_type",
-	virtual void HandleScriptedAnimEvent(); // 239, 
-	virtual void HandleBehaviorAnimEvent(); // 240, 
-	virtual void SpeechAnimEvent(); // 241, 
-	virtual void ControlMouth(); // 242, #STR: "mouth"
-	virtual void IsViewModelOrAttachment(); // 243, 
-	virtual void n_244(); // 244, 
-	virtual void IsClientRagdoll(); // 245, 
-	virtual void BecomeRagdollOnClient(); // 246, 
-	virtual void CreateClientRagdoll(); // 247, #STR: "client_ragdoll"
-	virtual void GetRagdollInitBoneArrays(); // 248, 
-	virtual void n_249(); // 249, 
-	virtual void DispatchMuzzleEffect(); // 250, #STR: "attachment", "COMBINE", "PISTOL", "SHOTGUN", "weaponType"
-	virtual void EjectParticleBrass(); // 251, 
-	virtual void DoMuzzleFlash(); // 252, 
-	virtual void ProcessMuzzleFlashEvent(); // 253, 
-	virtual void IsViewModel(); // 254, 
-	virtual void FormatViewModelAttachment(); // 255, 
-	virtual void IsMenuModel(); // 256, 
-	virtual void ComputeStencilState(); // 257, 
-	virtual void WantsInterpolatedVars(); // 258, 
-	virtual void n_259(); // 259, 
-	virtual void n_260(); // 260, 
+	virtual void n_226(); // 226, 
+	virtual void n_227(); // 227, 
+	virtual void n_228(); // 228, 
+	virtual void InitPoseParameters(); // 229, 
+	virtual void CachePoseParameters(); // 230, 
+	virtual void UncorrectViewModelAttachment(); // 231, 
+	virtual void SetModelScale(); // 232, 
+	virtual void OnNewSequence(); // 233, 
+	virtual void IsActivityFinished(); // 234, 
+	virtual void OnSequenceFinished(); // 235, 
+	virtual void GetIdealSpeed(); // 236, 
+	virtual void GetIdealAccel(); // 237, 
+	virtual void n_238(); // 238, 
+	virtual void HandleAnimEvent(); // 239, 
+	virtual void n_240(); // 240, 
+	virtual void n_241(); // 241, #STR: "cl_particle_fallback_base", "attachment_type",
+	virtual void HandleScriptedAnimEvent(); // 242, 
+	virtual void HandleBehaviorAnimEvent(); // 243, 
+	virtual void SpeechAnimEvent(); // 244, 
+	virtual void n_245(); // 245, 
+	virtual void ControlMouth(); // 246, #STR: "mouth"
+	virtual void IsViewModelOrAttachment(); // 247, 
+	virtual void n_248(); // 248, 
+	virtual void IsClientRagdoll(); // 249, 
+	virtual void BecomeRagdollOnClient(); // 250, 
+	virtual void CreateClientRagdoll(); // 251, #STR: "client_ragdoll"
+	virtual void GetRagdollInitBoneArrays(); // 252, 
+	virtual void n_253(); // 253, 
+	virtual void DispatchMuzzleEffect(); // 254, #STR: "attachment", "COMBINE", "PISTOL", "SHOTGUN", "weaponType"
+	virtual void EjectParticleBrass(); // 255, 
+	virtual void DoMuzzleFlash(); // 256, 
+	virtual void ProcessMuzzleFlashEvent(); // 257, 
+	virtual void IsViewModel(); // 258, 
+	virtual void FormatViewModelAttachment(); // 259, 
+	virtual void IsMenuModel(); // 260, 
+	virtual void ComputeStencilState(); // 261, 
+	virtual void WantsInterpolatedVars(); // 262, 
+	virtual void n_263(); // 263, 
+	virtual void n_264(); // 264, 
 };
 
 class CBaseAnimatingOverlay : public CBaseAnimating {
 public:
-	virtual void AnimatingOverlayFn(); // 261, anim overlay 
+	virtual void AnimatingOverlayFn(); // 265, anim overlay 
 };
 
 class CBaseFlex : public CBaseAnimatingOverlay {
 public:
-	virtual void InitPhonemeMappings(); // 262, #STR: "%s_weak", "%s_strong", "phonemes"
-	virtual void OwnsChoreoScene(); // 263, 
-	virtual void OverrideBlinkWeight(); // 264, 
-	virtual void StartSceneEvent(); // 265, 
-	virtual void ProcessSequenceSceneEvent(); // 266, 
-	virtual void ClearSceneEvent(); // 267, 
-	virtual void CheckSceneEventCompletion(); // 268, 
-	virtual void ShouldProcessSceneEvents(); // 269, 
+	virtual void InitPhonemeMappings(); // 266, #STR: "%s_weak", "%s_strong", "phonemes"
+	virtual void OwnsChoreoScene(); // 267, 
+	virtual void OverrideBlinkWeight(); // 268, 
+	virtual void StartSceneEvent(); // 269, 
+	virtual void ProcessSequenceSceneEvent(); // 270, 
+	virtual void ClearSceneEvent(); // 271, 
+	virtual void CheckSceneEventCompletion(); // 272, 
+	virtual void ShouldProcessSceneEvents(); // 273, 
 };
