@@ -10,14 +10,14 @@ void SDK::PaintTraverse(IVPanel* ecx, IVGuiPaintSurface* surface, VPANEL panel,
 	if (sdk.engine->IsInGame() && sdk.LocalHero)
 		old_code(surface);
 	// Continue
-	int line = 45;
-	auto display = [&](std::string text) {
-		surface->DrawColoredText(HFont(2), 500, 
-			line += 25, 255, 255, 255, 
-			255, text.c_str());
-	};
+	int line = 25;
+	//auto display = [&](std::string text) {
+	//	surface->DrawColoredText(HFont(2), 850, 
+	//		line += 25, 255, 255, 255, 
+	//		255, text.c_str());
+	//};
 	for (auto hero : sdk.Heroes) {
-		display(hero->SchemaDynamicBinding()->bindingName);
+		//display(hero->SchemaDynamicBinding()->bindingName);
 		//display(hero->CBE_PlayerName());
 		if (!hero->InLocalTeam())
 			hero->DrawEntityDebugOverlays(BBOX);
