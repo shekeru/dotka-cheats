@@ -468,22 +468,30 @@ enum MouseCodeState_t
 
 struct CUserCmd
 {
-	void *vtable;
-	int32_t command_number;
-	int32_t tick_count;
-	Vector viewangles;
-	Vector aimdirection;
-	int32_t buttons;
-	int32_t unk;
-	unsigned char impulse;
-	/*
-	int32_t weaponselect; //0x0034
-	int32_t weaponsubtype; //0x0038
-	int32_t randomSeed; //0x003C
-	short mousedx;
-	short mousedy;
-	char _pad_0070[0x70];
-	*/
+	void* vftable; // 0x0, 0x8
+	int command_number; // 0x8, 0x4
+	int tick_count; // 0xC, 0x4
+	QAngle viewangles; // 0x10, 0xC
+	float forwardmove; // 0x1C, 0x4
+	float sidemove; // 0x20, 0x4
+	float upmove; // 0x24, 0x4
+	uint64_t buttons; // 0x28, 0x8
+	int impulse; // 0x30, 0x1
+	CEntityIndex weaponselect; // 0x34, 0x4
+	CEntityIndex weaponsubtype; // 0x38, 0x4
+	int random_seed; // 0x3C, 0x4
+	short mousedx; // 0x40, 0x2
+	short mousedy; // 0x42, 0x2
+	short gap6; // 0x44, 0x4
+	short camerax; // 0x46, 0x2
+	short cameraz; // 0x48, 0x2
+	int8_t click_behaviors; // 0x4A, 0x1
+	bool scoreboard_opened; // 0x4B, 0x1
+	int8_t shopmask; // 0x4C, 0x1 ?
+	int8_t spectator_stats_category_id; // 0x4D, 0x1
+	int8_t spectator_stats_sort_method; // 0x4E, 0x1
+	int8_t gap7; // 0x4F, 0x1
+	Vector vec_under_cursor; // 0x50, 0x12
 };
 
 struct PlatWindow_t__;
